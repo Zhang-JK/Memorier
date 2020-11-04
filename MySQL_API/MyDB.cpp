@@ -49,12 +49,12 @@ bool MyDB::exeSQL(string sql)
         result = mysql_store_result(mysql);  //获取结果集
         if (result)  // 返回了结果集
         {
-           int  num_fields = mysql_num_fields(result);   //获取结果集中总共的字段数，即列数
-           int  num_rows=mysql_num_rows(result);       //获取结果集中总共的行数
-           for(int i=0;i<num_rows;i++) //输出每一行
+            int num_fields = mysql_num_fields(result);   //获取结果集中总共的字段数，即列数
+            int num_rows = mysql_num_rows(result);       //获取结果集中总共的行数
+            for(int i=0;i<num_rows;i++) //输出每一行
             {
                 //获取下一行数据
-                row=mysql_fetch_row(result);
+                row = mysql_fetch_row(result);
                 if(row<0) break;
 
                 for(int j=0;j<num_fields;j++)  //输出每一字段
@@ -79,8 +79,6 @@ bool MyDB::exeSQL(string sql)
             }
         }
     }
-
     return true;
-
 }
 

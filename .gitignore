@@ -4,3 +4,4 @@
 *.exe
 debug
 test
+*.json
