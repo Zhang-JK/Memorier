@@ -8,18 +8,20 @@ using namespace std;
 class Record {
 public:
     Record();
-    Record(int size);
-    Record(Record& record);
+    Record(int capacity);
     ~Record();
-    void operator=(Record record);
-    void operator[](string field);
+    string operator[](string field) { return get(field); }
     string get(string field);
     Record& set(string field, string data);
+    void printForDebug();
 private:
     string * fieldList;
     string * dataList;
     int size;
-    void expansion(int size);
+    int DEFAULT_CAPACITY = 4;
+    int capacity;
+    void expansion(int newCapacity);
+    int getIndex(string field);
 };
 
 #endif
