@@ -1,26 +1,33 @@
 #ifndef TEXT_H_
 #define TEXT_H_
 
-#include "LinkedList.h"
 #include "Card.h"
+#include<vector>
+
+using std::vector;
 
 //helper struct
 struct Quiz{
 	int s,t;
+	bool operator<(Quiz b){return this->s<b.s;}
 };
 
 
 class Text: public Card{
 private:
 	string text;
-	LinkedList<Quiz> quiz;
+//	LinkedList<Quiz> quiz;
+	vector<Quiz> quiz;
+	void add(); // add more quiz
+	void elongate();
+	virtual bool print_test();
+
 public:
-	Text();
+	Text(int id);
 	~Text();
 	virtual void print();
-	virtual void init(); //To be add: auto generate
-	virtual void test();
-	virtual void add(); // add more quiz
+	virtual void init();
+	virtual void option();
 };
 
-#endif /* TEXT_H_
+#endif /* TEXT_H_ */
