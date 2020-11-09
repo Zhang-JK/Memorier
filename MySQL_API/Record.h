@@ -10,10 +10,12 @@ public:
     Record();
     Record(int capacity);
     ~Record();
-    string operator[](string field) { return get(field); }
-    string get(string field);
+    string operator[](string field) const { return get(field); }
+    string get(string field) const ;
     Record& set(string field, string data);
-    void printForDebug();
+    string getField(int index) const ;
+    int getLength() const ;
+    void printForDebug() const ;
 private:
     string * fieldList;
     string * dataList;
@@ -21,7 +23,7 @@ private:
     int DEFAULT_CAPACITY = 4;
     int capacity;
     void expansion(int newCapacity);
-    int getIndex(string field);
+    int getIndex(string field) const ;
 };
 
 #endif

@@ -23,13 +23,13 @@ debug : main.out
 main.out : $(OBJS_DEBUG)
 	$(CXX) $(CXXFLAGS) -o $@ $(OBJS_DEBUG) `mysql_config --cflags --libs`
 
-MyDB_debug.o : MyDB.cpp MyDB.h
+MyDB_debug.o : MyDB.cpp MyDB.h ../LinkedList/LinkedList.h
 	$(CXX) $(CXXFLAGS) $(SQL_LIB) -g -c $< -o $@
 
 Record_debug.o : Record.cpp Record.h
 	$(CXX) $(CXXFLAGS) $(SQL_LIB) -g -c $< -o $@
 
-main_debug.o : main.cpp MyDB.h
+main_debug.o : main.cpp MyDB.h Record.h ../LinkedList/LinkedList.h
 	$(CXX) $(CXXFLAGS) $(SQL_LIB) -g -c $< -o $@
 
 clean :

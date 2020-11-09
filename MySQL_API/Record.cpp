@@ -3,6 +3,7 @@
 
 #include <string>
 #include <iostream>
+#include <iomanip>
 using namespace std;
 
 Record::Record() : capacity(DEFAULT_CAPACITY), size(0) {
@@ -20,7 +21,7 @@ Record::~Record() {
     delete [] dataList;
 }
 
-string Record::get(string field) {
+string Record::get(string field) const {
     for(int i = 0; i < size; i++)
         if( fieldList[i] == field ) return dataList[i];
     return "";
@@ -39,13 +40,23 @@ Record& Record::set(string field, string data) {
     return *this;
 }
 
-void Record::printForDebug() {
+string Record::getField(int index) const {
+    if(index >= size) return "";
+    return fieldList[index];
+}
+
+int Record::getLength() const {
+    return size;
+}
+
+void Record::printForDebug() const  {
+    cout.flags(ios::left);
     cout << "-----PRINT_START-----" << endl;
     cout << "The capacity of the Record is " << capacity << endl;
     cout << "The size of the Record is " << size << endl;
     for(int i = 0; i < size; i++) {
         // cout << "---------------------" << endl;
-        cout << fieldList[i] << "\t|\t" << dataList[i] << endl;
+        cout << setw(15) << fieldList[i] << setw(15) << dataList[i] << endl;
     }
     cout << "------PRINT_END------" << endl << endl;
 }
@@ -64,7 +75,7 @@ void Record::expansion(int newCapacity) {
     dataList = tempData;
 }
 
-int Record::getIndex(string field) {
+int Record::getIndex(string field) const {
     for(int i = 0; i < size; i++)
         if( fieldList[i] == field ) return i;
     return -1;

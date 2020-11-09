@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <sstream>
 #include "MyDB.h"
 
 using namespace std;
@@ -19,6 +20,7 @@ MyDB::~MyDB()
     if(mysql!=NULL)  //关闭数据连接
     {
         mysql_close(mysql);
+        mysql_library_end();
     }
 }
 
@@ -63,7 +65,6 @@ bool MyDB::exeSQL(string sql)
                 }
                 cout<<endl;
             }
-
         }
         else  // result==NULL
         {
@@ -78,7 +79,98 @@ bool MyDB::exeSQL(string sql)
                 return false;
             }
         }
+        mysql_free_result(result);
     }
     return true;
 }
 
+LinkedList<Record> * MyDB::query(string sql) {
+    if (mysql_query(mysql,sql.c_str()))
+    {
+        cout<<"Query Error: "<<mysql_error(mysql);
+        return nullptr;
+    }
+    else // 查询成功
+    {
+        result = mysql_store_result(mysql);  //获取结果集
+        if (result)  // 返回了结果集
+        {
+            int num_fields = mysql_num_fields(result);   
+            int num_rows = mysql_num_rows(result);       
+            MYSQL_FIELD* fields = mysql_fetch_fields(result);
+            // string fields[num_fields + 1];
+            // for(int i = 0; i < num_fields; i++)
+            //     fields[i] = mysql_fetch_fields(result)[i]->name;
+
+            LinkedList<Record> * list = new LinkedList<Record>();
+            for(int i=0;i<num_rows;i++)
+            {
+                Record* record = new Record();
+                row = mysql_fetch_row(result);
+                if(row<0) break;
+                for(int j=0;j<num_fields;j++)
+                    (*record).set(fields[j].name, row[j] == NULL ? "_NULL_" : row[j]);
+                list->add(record);
+            }
+            // delete fields;
+            mysql_free_result(result);
+            return list;
+        }
+        else
+        {
+            cout<<"Not a query statement!"<<endl;
+            return nullptr;
+        }
+    }
+}
+
+Record * MyDB::queryFirst(string sql) {
+    if (mysql_query(mysql,sql.c_str()))
+    {
+        cout<<"Query Error: "<<mysql_error(mysql);
+        return nullptr;
+    }
+    else // 查询成功
+    {
+        result = mysql_store_result(mysql);  //获取结果集
+        if (result)  // 返回了结果集
+        {
+            int num_fields = mysql_num_fields(result);   
+            int num_rows = mysql_num_rows(result);       
+            MYSQL_FIELD* fields = mysql_fetch_fields(result);
+
+            Record * record = new Record();
+            row = mysql_fetch_row(result);
+            if(row >= 0) 
+                for(int j=0;j<num_fields;j++)
+                    (*record).set(fields[j].name, row[j] == NULL ? "_NULL_" : row[j]);
+            else {
+                mysql_free_result(result);
+                return nullptr;
+            }
+            mysql_free_result(result);
+            return record;
+        }
+        else
+        {
+            cout<<"Not a query statement!"<<endl;
+            return nullptr;
+        }
+    }
+}
+
+Record * MyDB::queryById(string table, int id) {
+    stringstream ss;
+    ss << "SELECT * FROM " << table << " WHERE id = " << id;
+    return queryFirst(ss.str());
+}
+
+LinkedList<Record> * MyDB::query(string table, Record& record) {
+    stringstream ss;
+    ss << "SELECT * FROM " << table << " WHERE ";
+    for(int i = 0; i < record.getLength(); i++) {
+        ss << record.getField(i) << " = " << record[record.getField(i)];
+        if(i != record.getLength() - 1) ss << " AND ";
+    }
+    return query(ss.str());
+}
