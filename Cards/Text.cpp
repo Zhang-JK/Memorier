@@ -94,6 +94,7 @@ void Text::option()
 	cout << "1. add a quiz" << endl;
 	cout << "2. print test" << endl;
 	cout << "3. elongate text" << endl;
+	cout << ">";
 	int x;
 	cin >> x; // warning: no valid check here
 	switch(x)

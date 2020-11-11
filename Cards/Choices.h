@@ -1,29 +1,34 @@
 #ifndef CHOICES_H_
 #define CHOICES_H_
 
-#include "LinkedList.h"
+//#include "LinkedList.h"
+#include<vector>
 #include "Card.h"
 
+using std::vector;
+
 //helper struct
-struct single{
+struct Cell{
 	string txt;
-	bool corect;
+	bool ac;
 };
 
 
 class Choices: public Card{
 private:
 	string question;
-	Linked_List<single> choice;
-	bool multi;
+	vector<Cell> choice;
+	void add_choice();
+	void edit_choice();
+	void elongate();
 
 public:
-	Choices();
+	Choices(int id);
 	~Choices();
 	virtual void print();
 	virtual void init();
-	virtual void test();
-	virtual void add(); //add more choice
+	virtual void option();
+	virtual bool print_test();
 };
 
 #endif /* CHOICES_H_ */

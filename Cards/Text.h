@@ -20,7 +20,6 @@ private:
 	vector<Quiz> quiz;
 	void add(); // add more quiz
 	void elongate();
-	virtual bool print_test();
 
 public:
 	Text(int id);
@@ -28,6 +27,7 @@ public:
 	virtual void print();
 	virtual void init();
 	virtual void option();
+	virtual bool print_test();
 };
 
 #endif /* TEXT_H_ */
