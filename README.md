@@ -6,7 +6,7 @@ Cleck [Here](Proposal.md) to see our project proposal
 ## Current Progress
 ### Week 1 (11.2 - 11.8):
 **Objective: Store, display, manage cards**
-- [x] MySQL API design // aborted!
+- [x] MySQL API design // **Aborted!**
 - [ ] Base class design 
 - [x] Integrate the above with simple console interface
 
