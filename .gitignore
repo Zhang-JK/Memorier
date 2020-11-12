@@ -6,3 +6,7 @@ debug
 test
 *.json
 *.bat
+*backup
+.qmake*
+moc*
+*.user
