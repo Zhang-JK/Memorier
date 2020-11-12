@@ -71,7 +71,7 @@ void Choices::elongate()
 	question=question+temp;
 }
 
-bool Choices::print_test()
+int Choices::print_test()
 {
 	bool flag=1;
 	cout << question << endl;

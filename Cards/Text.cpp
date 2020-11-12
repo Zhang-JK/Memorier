@@ -30,7 +30,7 @@ void Text::init()
 	cin >> text;
 }
 
-bool Text::print_test()
+int Text::print_test()
 {
 	int len = quiz.size();
 //	LinkedList<Quiz>::iterator now = quiz.begin();

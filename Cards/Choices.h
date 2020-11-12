@@ -28,7 +28,7 @@ public:
 	virtual void print();
 	virtual void init();
 	virtual void option();
-	virtual bool print_test();
+	virtual int print_test();
 };
 
 #endif /* CHOICES_H_ */
