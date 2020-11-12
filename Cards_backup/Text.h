@@ -16,8 +16,9 @@ struct Quiz{
 class Text: public Card{
 private:
 	string text;
+//	LinkedList<Quiz> quiz;
 	vector<Quiz> quiz;
-	void add();
+	void add(); // add more quiz
 	void elongate();
 
 public:

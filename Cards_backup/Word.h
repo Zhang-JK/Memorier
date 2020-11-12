@@ -1,20 +1,19 @@
 #ifndef WORD_H_
 #define WORD_H_
 
-#include<vector>
-
+#include "LinkedList.h"
 #include "Card.h"
 
-using std::vector;
 
 class Word: public Card{
 private:
 	string word;
-	vector<string> trans;
+	LinkedList<string> trans;
 	void add();
 public:
-	Word(int id);
+	Word();
 	~Word();
+	string get_word() const;
 	virtual int print_test();
 	virtual void print();
 	virtual void init();
