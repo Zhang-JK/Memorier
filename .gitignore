@@ -9,3 +9,5 @@ test
 .qmake*
 moc*
 *.user
+bulid*
+build/
