@@ -1,7 +1,8 @@
 # Your study assistant - Memorier
 ### COMP2012H Project H20
 Deadline: Dec 4  
-Cleck [Here](Proposal.md) to see our project proposal
+Click [Here](Proposal.md) to see our project proposal
+Click [Here](https://drive.google.com/file/d/1QqJLKz9xDS4XIAxSsNljEVxRXbxd51rZ/view?usp=sharing) to accsee the GUI Logic diagram
 
 ## Current Progress
 ### Week 1 (11.2 - 11.8):
