@@ -53,10 +53,14 @@ OBJECTS_DIR   = ./
 ####### Files
 
 SOURCES       = main.cpp \
-		mainwindow.cpp moc_mainwindow.cpp
+		mainwindow.cpp \
+		signupwindow.cpp moc_mainwindow.cpp \
+		moc_signupwindow.cpp
 OBJECTS       = main.o \
 		mainwindow.o \
-		moc_mainwindow.o
+		signupwindow.o \
+		moc_mainwindow.o \
+		moc_signupwindow.o
 DIST          = /home/lao_jk/Qt/5.15.1/gcc_64/mkspecs/features/spec_pre.prf \
 		/home/lao_jk/Qt/5.15.1/gcc_64/mkspecs/common/unix.conf \
 		/home/lao_jk/Qt/5.15.1/gcc_64/mkspecs/common/linux.conf \
@@ -234,8 +238,10 @@ DIST          = /home/lao_jk/Qt/5.15.1/gcc_64/mkspecs/features/spec_pre.prf \
 		/home/lao_jk/Qt/5.15.1/gcc_64/mkspecs/features/yacc.prf \
 		/home/lao_jk/Qt/5.15.1/gcc_64/mkspecs/features/lex.prf \
 		LoginAndMainpage.pro mainwindow.h \
-		ui_mainwindow.h main.cpp \
-		mainwindow.cpp
+		signupwindow.h \
+		ui_WelcomeWindow.h main.cpp \
+		mainwindow.cpp \
+		signupwindow.cpp
 QMAKE_TARGET  = LoginAndMainpage
 DESTDIR       = 
 TARGET        = LoginAndMainpage
@@ -244,7 +250,7 @@ TARGET        = LoginAndMainpage
 first: all
 ####### Build rules
 
-LoginAndMainpage: ui_mainwindow.h $(OBJECTS)  
+LoginAndMainpage: ui_mainwindow.h ui_signupwindow.h $(OBJECTS)  
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
 
 Makefile: LoginAndMainpage.pro /home/lao_jk/Qt/5.15.1/gcc_64/mkspecs/linux-g++/qmake.conf /home/lao_jk/Qt/5.15.1/gcc_64/mkspecs/features/spec_pre.prf \
@@ -617,9 +623,9 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /home/lao_jk/Qt/5.15.1/gcc_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents mainwindow.h ui_mainwindow.h $(DISTDIR)/
-	$(COPY_FILE) --parents main.cpp mainwindow.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents mainwindow.ui $(DISTDIR)/
+	$(COPY_FILE) --parents mainwindow.h signupwindow.h ui_WelcomeWindow.h $(DISTDIR)/
+	$(COPY_FILE) --parents main.cpp mainwindow.cpp signupwindow.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents mainwindow.ui signupwindow.ui $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -651,9 +657,9 @@ compiler_moc_predefs_clean:
 moc_predefs.h: /home/lao_jk/Qt/5.15.1/gcc_64/mkspecs/features/data/dummy.cpp
 	g++ -pipe -g -Wall -Wextra -dM -E -o moc_predefs.h /home/lao_jk/Qt/5.15.1/gcc_64/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc_mainwindow.cpp
+compiler_moc_header_make_all: moc_mainwindow.cpp moc_signupwindow.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_mainwindow.cpp
+	-$(DEL_FILE) moc_mainwindow.cpp moc_signupwindow.cpp
 moc_mainwindow.cpp: mainwindow.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QMainWindow \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qmainwindow.h \
@@ -765,16 +771,131 @@ moc_mainwindow.cpp: mainwindow.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/bin/moc
 	/home/lao_jk/Qt/5.15.1/gcc_64/bin/moc $(DEFINES) --include '/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/LoginAndMainpage/moc_predefs.h' -I/home/lao_jk/Qt/5.15.1/gcc_64/mkspecs/linux-g++ -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/LoginAndMainpage' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/LoginAndMainpage' -I/home/lao_jk/Qt/5.15.1/gcc_64/include -I/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets -I/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui -I/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include mainwindow.h -o moc_mainwindow.cpp
 
+moc_signupwindow.cpp: signupwindow.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QMainWindow \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qmainwindow.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qtguiglobal.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qglobal.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qconfig.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qtcore-config.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qsystemdetection.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qprocessordetection.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcompilerdetection.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qtypeinfo.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qsysinfo.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qlogging.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qflags.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qatomic.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qbasicatomic.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qgenericatomic.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qatomic_cxx11.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qatomic_msvc.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qglobalstatic.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qmutex.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qnumeric.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qversiontagging.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qtgui-config.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qtwidgets-config.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qwidget.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qwindowdefs.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qobjectdefs.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qnamespace.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qwindowdefs_win.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qobject.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qstring.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qchar.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qbytearray.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qrefcount.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qarraydata.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qstringliteral.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qstringalgorithms.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qstringview.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qstringbuilder.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qlist.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qalgorithms.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qiterator.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qhashfunctions.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qpair.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qvector.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcontainertools_impl.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qpoint.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qbytearraylist.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qstringlist.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qregexp.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qstringmatcher.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcoreevent.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qscopedpointer.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qmetatype.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qvarlengtharray.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcontainerfwd.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qobject_impl.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qmargins.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qpaintdevice.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qrect.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qsize.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qpalette.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qcolor.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qrgb.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qrgba64.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qbrush.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qmatrix.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qpolygon.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qregion.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qdatastream.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qiodevice.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qline.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qtransform.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qimage.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qpixelformat.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qpixmap.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qsharedpointer.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qshareddata.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qhash.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qfont.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qfontmetrics.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qfontinfo.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qsizepolicy.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qcursor.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qkeysequence.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qevent.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qvariant.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qmap.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qdebug.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qtextstream.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qlocale.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qset.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcontiguouscache.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qurl.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qurlquery.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qfile.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qfiledevice.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qvector2d.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qtouchdevice.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qtabwidget.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qicon.h \
+		moc_predefs.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/bin/moc
+	/home/lao_jk/Qt/5.15.1/gcc_64/bin/moc $(DEFINES) --include '/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/LoginAndMainpage/moc_predefs.h' -I/home/lao_jk/Qt/5.15.1/gcc_64/mkspecs/linux-g++ -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/LoginAndMainpage' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/LoginAndMainpage' -I/home/lao_jk/Qt/5.15.1/gcc_64/include -I/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets -I/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui -I/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include signupwindow.h -o moc_signupwindow.cpp
+
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_mainwindow.h
+compiler_uic_make_all: ui_mainwindow.h ui_signupwindow.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_mainwindow.h
+	-$(DEL_FILE) ui_mainwindow.h ui_signupwindow.h
 ui_mainwindow.h: mainwindow.ui \
 		/home/lao_jk/Qt/5.15.1/gcc_64/bin/uic
 	/home/lao_jk/Qt/5.15.1/gcc_64/bin/uic mainwindow.ui -o ui_mainwindow.h
+
+ui_signupwindow.h: signupwindow.ui \
+		/home/lao_jk/Qt/5.15.1/gcc_64/bin/uic
+	/home/lao_jk/Qt/5.15.1/gcc_64/bin/uic signupwindow.ui -o ui_signupwindow.h
 
 compiler_yacc_decl_make_all:
 compiler_yacc_decl_clean:
@@ -1011,6 +1132,7 @@ mainwindow.o: mainwindow.cpp mainwindow.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qtouchdevice.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qtabwidget.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qicon.h \
+		signupwindow.h \
 		ui_mainwindow.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QVariant \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/QIcon \
@@ -1024,11 +1146,6 @@ mainwindow.o: mainwindow.cpp mainwindow.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QLabel \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qlabel.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qframe.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QMenuBar \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qmenubar.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qmenu.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qaction.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qactiongroup.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QPushButton \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qpushbutton.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qabstractbutton.h \
@@ -1042,8 +1159,151 @@ mainwindow.o: mainwindow.cpp mainwindow.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QWidget
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o mainwindow.cpp
 
+signupwindow.o: signupwindow.cpp signupwindow.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QMainWindow \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qmainwindow.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qtguiglobal.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qglobal.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qconfig.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qtcore-config.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qsystemdetection.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qprocessordetection.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcompilerdetection.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qtypeinfo.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qsysinfo.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qlogging.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qflags.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qatomic.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qbasicatomic.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qgenericatomic.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qatomic_cxx11.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qatomic_msvc.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qglobalstatic.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qmutex.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qnumeric.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qversiontagging.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qtgui-config.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qtwidgets-config.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qwidget.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qwindowdefs.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qobjectdefs.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qnamespace.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qwindowdefs_win.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qobject.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qstring.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qchar.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qbytearray.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qrefcount.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qarraydata.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qstringliteral.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qstringalgorithms.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qstringview.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qstringbuilder.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qlist.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qalgorithms.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qiterator.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qhashfunctions.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qpair.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qvector.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcontainertools_impl.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qpoint.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qbytearraylist.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qstringlist.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qregexp.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qstringmatcher.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcoreevent.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qscopedpointer.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qmetatype.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qvarlengtharray.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcontainerfwd.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qobject_impl.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qmargins.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qpaintdevice.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qrect.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qsize.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qpalette.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qcolor.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qrgb.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qrgba64.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qbrush.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qmatrix.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qpolygon.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qregion.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qdatastream.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qiodevice.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qline.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qtransform.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qimage.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qpixelformat.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qpixmap.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qsharedpointer.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qshareddata.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qhash.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qfont.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qfontmetrics.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qfontinfo.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qsizepolicy.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qcursor.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qkeysequence.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qevent.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qvariant.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qmap.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qdebug.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qtextstream.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qlocale.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qset.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcontiguouscache.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qurl.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qurlquery.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qfile.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qfiledevice.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qvector2d.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qtouchdevice.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qtabwidget.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qicon.h \
+		ui_signupwindow.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QVariant \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/QIcon \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QApplication \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qapplication.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcoreapplication.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qeventloop.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qdesktopwidget.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qguiapplication.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qinputmethod.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QHBoxLayout \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qboxlayout.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qlayout.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qlayoutitem.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qgridlayout.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QLabel \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qlabel.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qframe.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QLineEdit \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qlineedit.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qtextcursor.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qtextformat.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qpen.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qtextoption.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QPushButton \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qpushbutton.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qabstractbutton.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QStatusBar \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qstatusbar.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QVBoxLayout \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QWidget
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o signupwindow.o signupwindow.cpp
+
 moc_mainwindow.o: moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp
+
+moc_signupwindow.o: moc_signupwindow.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_signupwindow.o moc_signupwindow.cpp
 
 ####### Install
 

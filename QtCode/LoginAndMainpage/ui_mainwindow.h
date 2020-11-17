@@ -14,7 +14,6 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
-#include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QVBoxLayout>
@@ -28,14 +27,13 @@ public:
     QWidget *centralwidget;
     QWidget *verticalLayoutWidget;
     QVBoxLayout *verticalLayout;
-    QLabel *label;
+    QLabel *title;
     QWidget *verticalLayoutWidget_2;
     QVBoxLayout *verticalLayout_2;
-    QPushButton *pushButton;
+    QPushButton *loginButton;
     QWidget *verticalLayoutWidget_3;
     QVBoxLayout *verticalLayout_3;
-    QPushButton *pushButton_2;
-    QMenuBar *menubar;
+    QPushButton *signButton;
     QStatusBar *statusbar;
 
     void setupUi(QMainWindow *MainWindow)
@@ -55,26 +53,26 @@ public:
         verticalLayout = new QVBoxLayout(verticalLayoutWidget);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         verticalLayout->setContentsMargins(0, 0, 0, 0);
-        label = new QLabel(verticalLayoutWidget);
-        label->setObjectName(QString::fromUtf8("label"));
+        title = new QLabel(verticalLayoutWidget);
+        title->setObjectName(QString::fromUtf8("title"));
         QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
-        sizePolicy.setHeightForWidth(label->sizePolicy().hasHeightForWidth());
-        label->setSizePolicy(sizePolicy);
+        sizePolicy.setHeightForWidth(title->sizePolicy().hasHeightForWidth());
+        title->setSizePolicy(sizePolicy);
         QFont font;
         font.setFamily(QString::fromUtf8("Ubuntu Condensed"));
         font.setPointSize(90);
         font.setBold(true);
         font.setWeight(75);
-        label->setFont(font);
-        label->setMouseTracking(true);
-        label->setStyleSheet(QString::fromUtf8("color: rgba(255,255,255,150)"));
-        label->setFrameShadow(QFrame::Raised);
-        label->setScaledContents(false);
-        label->setAlignment(Qt::AlignCenter);
+        title->setFont(font);
+        title->setMouseTracking(true);
+        title->setStyleSheet(QString::fromUtf8("color: rgba(255,255,255,150)"));
+        title->setFrameShadow(QFrame::Raised);
+        title->setScaledContents(false);
+        title->setAlignment(Qt::AlignCenter);
 
-        verticalLayout->addWidget(label);
+        verticalLayout->addWidget(title);
 
         verticalLayoutWidget_2 = new QWidget(centralwidget);
         verticalLayoutWidget_2->setObjectName(QString::fromUtf8("verticalLayoutWidget_2"));
@@ -82,24 +80,24 @@ public:
         verticalLayout_2 = new QVBoxLayout(verticalLayoutWidget_2);
         verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
         verticalLayout_2->setContentsMargins(0, 0, 0, 0);
-        pushButton = new QPushButton(verticalLayoutWidget_2);
-        pushButton->setObjectName(QString::fromUtf8("pushButton"));
-        sizePolicy.setHeightForWidth(pushButton->sizePolicy().hasHeightForWidth());
-        pushButton->setSizePolicy(sizePolicy);
+        loginButton = new QPushButton(verticalLayoutWidget_2);
+        loginButton->setObjectName(QString::fromUtf8("loginButton"));
+        sizePolicy.setHeightForWidth(loginButton->sizePolicy().hasHeightForWidth());
+        loginButton->setSizePolicy(sizePolicy);
         QFont font1;
         font1.setFamily(QString::fromUtf8("Fira Code"));
         font1.setPointSize(20);
         font1.setBold(false);
         font1.setItalic(false);
         font1.setWeight(18);
-        pushButton->setFont(font1);
-        pushButton->setStyleSheet(QString::fromUtf8("font: 150 20pt \"Fira Code\";\n"
+        loginButton->setFont(font1);
+        loginButton->setStyleSheet(QString::fromUtf8("font: 150 20pt \"Fira Code\";\n"
 "color: rgb(255, 255, 255);\n"
 "background-color: rgba(120,194,169,70);\n"
 "border:4px solid black;"));
-        pushButton->setFlat(false);
+        loginButton->setFlat(false);
 
-        verticalLayout_2->addWidget(pushButton);
+        verticalLayout_2->addWidget(loginButton);
 
         verticalLayoutWidget_3 = new QWidget(centralwidget);
         verticalLayoutWidget_3->setObjectName(QString::fromUtf8("verticalLayoutWidget_3"));
@@ -107,23 +105,19 @@ public:
         verticalLayout_3 = new QVBoxLayout(verticalLayoutWidget_3);
         verticalLayout_3->setObjectName(QString::fromUtf8("verticalLayout_3"));
         verticalLayout_3->setContentsMargins(0, 0, 0, 0);
-        pushButton_2 = new QPushButton(verticalLayoutWidget_3);
-        pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
-        sizePolicy.setHeightForWidth(pushButton_2->sizePolicy().hasHeightForWidth());
-        pushButton_2->setSizePolicy(sizePolicy);
-        pushButton_2->setStyleSheet(QString::fromUtf8("font: 150 20pt \"Fira Code\";\n"
+        signButton = new QPushButton(verticalLayoutWidget_3);
+        signButton->setObjectName(QString::fromUtf8("signButton"));
+        sizePolicy.setHeightForWidth(signButton->sizePolicy().hasHeightForWidth());
+        signButton->setSizePolicy(sizePolicy);
+        signButton->setStyleSheet(QString::fromUtf8("font: 150 20pt \"Fira Code\";\n"
 "color: rgb(255, 255, 255);\n"
 "background-color: rgba(120,194,169,70);\n"
 "border:4px solid black;"));
-        pushButton_2->setFlat(false);
+        signButton->setFlat(false);
 
-        verticalLayout_3->addWidget(pushButton_2);
+        verticalLayout_3->addWidget(signButton);
 
         MainWindow->setCentralWidget(centralwidget);
-        menubar = new QMenuBar(MainWindow);
-        menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 800, 22));
-        MainWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
         MainWindow->setStatusBar(statusbar);
@@ -136,9 +130,9 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
-        label->setText(QCoreApplication::translate("MainWindow", "Memerior", nullptr));
-        pushButton->setText(QCoreApplication::translate("MainWindow", "Login In", nullptr));
-        pushButton_2->setText(QCoreApplication::translate("MainWindow", "Sign Up", nullptr));
+        title->setText(QCoreApplication::translate("MainWindow", "Memerior", nullptr));
+        loginButton->setText(QCoreApplication::translate("MainWindow", "Login In", nullptr));
+        signButton->setText(QCoreApplication::translate("MainWindow", "Sign Up", nullptr));
     } // retranslateUi
 
 };
