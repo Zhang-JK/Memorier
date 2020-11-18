@@ -12,6 +12,7 @@ Click [Here](https://drive.google.com/file/d/1QqJLKz9xDS4XIAxSsNljEVxRXbxd51rZ/v
 - [x] Drived Classes design (4 in total)
 - [x] Integrate the above with simple console interface
 - [x] Network API encapsulating (done with Qt)
+- [x] Linked List Template
 - [ ] Proficiency calculation method
 
 ### 2. Qt Interface
