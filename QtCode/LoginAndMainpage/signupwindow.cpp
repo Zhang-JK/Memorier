@@ -1,4 +1,5 @@
 #include "signupwindow.h"
+#include "tools.h"
 #include "ui_signupwindow.h"
 
 #include <QMessageBox>
@@ -51,7 +52,7 @@ void SignUpWindow::inputValidator()
         ui->errorMsg->setAlignment(Qt::AlignCenter);
         return;
     }
-    
+
     QSqlQuery query;
     QString sqlQuery = QString("SELECT id FROM account WHERE username = '%1'").arg(username);
     qDebug() << "Generated sql: " << sqlQuery;
@@ -67,10 +68,18 @@ void SignUpWindow::inputValidator()
     //if valid
     if (updateUserData(username, password1))
     {
-        if (!(QMessageBox::information(this, tr("Success"), tr("Sign up successfully!\nPlease click continue to login in."), tr("Continue"))))
+        int id = 0;
+        QString sqlQueryId = QString("SELECT id FROM account WHERE username = '%1'").arg(username);
+        qDebug() << "Generated sql: " << sqlQueryId;
+        if (!query.exec(sqlQueryId))
+            qDebug() << "Query Error: " << query.lastError().driverText();
+        if (query.next())
+            id = query.value(query.record().indexOf("id")).toInt();
+        InsertLog(id, "Sign Up");
+        if (!(QMessageBox::information(this, tr("Success"), tr("Sign up successfully!\nPlease click continue to log in."), tr("Continue"))))
         {
             this->close();
-            emit sendLoginInfo(username);
+            emit sendLoginInfo(username, id);
         }
     }
     else
@@ -102,25 +111,4 @@ bool SignUpWindow::updateUserData(QString username, QString password)
         return false;
     }
     return true;
-}
-
-QString SignUpWindow::getRandomString(int length)
-{
-    qsrand(QDateTime::currentMSecsSinceEpoch());
-
-    const char ch[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
-    int size = sizeof(ch);
-
-    char *str = new char[length + 1];
-
-    int num = 0;
-    for (int i = 0; i < length; ++i)
-    {
-        num = qrand() % (size - 1);
-        str[i] = ch[num];
-    }
-
-    QString res(str);
-    qDebug() << "Generated random string: " << res;
-    return res;
 }

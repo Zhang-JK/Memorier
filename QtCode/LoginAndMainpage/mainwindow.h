@@ -19,8 +19,9 @@ public:
     ~MainWindow();
 
 private slots:
-    void receiveLoginInfo(QString account);
-    // void openLoginIn();
+    void receiveLoginInfo(QString account, int accountId);
+    void directLogin();
+    void openLogin();
     void openSignUp();
 
 private:

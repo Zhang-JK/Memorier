@@ -1,4 +1,5 @@
 #include "mainwindow.h"
+#include "LoginInfo.h"
 
 #include <QApplication>
 #include <QPixmap>
@@ -19,9 +20,14 @@ int main(int argc, char *argv[])
     db.setDatabaseName("Memorier"); //使用的数据库
     qDebug() << "Database Connecting";
 
-    if (!db.open())                                     //打开数据库
+    if (!db.open())
+    {
         qDebug() << "ERROR: " << db.lastError().text(); //数据库打开失败
+    }
+    else
+    {
+        w.show();
+    }
 
-    w.show();
     return a.exec();
 }
