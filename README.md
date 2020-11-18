@@ -5,14 +5,32 @@ Click [Here](Proposal.md) to see our project proposal
 Click [Here](https://drive.google.com/file/d/1QqJLKz9xDS4XIAxSsNljEVxRXbxd51rZ/view?usp=sharing) to accsee the GUI Logic diagram
 
 ## Current Progress
-### Week 1 (11.2 - 11.8):
+### 1. Basic Class Design
 **Objective: Store, display, manage cards**
 - [x] MySQL API design // **Aborted!**
-- [x] Base class design 
+- [x] Base card class design 
+- [x] Drived Classes design (4 in total)
 - [x] Integrate the above with simple console interface
+- [x] Network API encapsulating (done with Qt)
+- [ ] Proficiency calculation method
 
-### Week 2 (11.9 - 11.15):
-**Objective: Simple GUI, Finish All Card design**
-- [x] Card design including its drived classes (without GUI)
-- [ ] Qt interface: main maunal, card display
-- [ ] QtSQL encapsulating, Network API encapsulating
+### 2. Qt Interface
+**Objective: Qt Design, [Here](https://drive.google.com/file/d/1QqJLKz9xDS4XIAxSsNljEVxRXbxd51rZ/view?usp=sharing) is the GUI Design**
+- [x] Welcome Page
+- [x] Login and Sign Up page
+- [ ] Main Library page
+- [ ] Add cards
+- [ ] Review page
+- [ ] Testing page
+- [ ] Manage page
+
+### 3. Optimization
+**Optimization The Project**
+- [x] Auto Login and password protection
+- [ ] More API to implement auxiliary functions (auto word select, auto translate...)
+- [ ] Port to Android platform
+- [ ] Add setting page 
+- [ ] Beautify the UI
+
+### 4. Report
+**To Be Continue**
