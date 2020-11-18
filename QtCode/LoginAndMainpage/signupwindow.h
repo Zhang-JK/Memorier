@@ -18,9 +18,15 @@ public:
     ~SignUpWindow();
 
 signals:
+    void sendLoginInfo(QString);
+
+private slots:
+    void inputValidator();
 
 private:
     Ui::SignUpWindow *ui;
+    bool updateUserData(QString, QString);
+    QString getRandomString(int length);
 };
 
 #endif // SIGNUPWINDOW_H

@@ -19,7 +19,7 @@ public:
     ~MainWindow();
 
 private slots:
-    void receiveLoginInfo(QString account, QString session);
+    void receiveLoginInfo(QString account);
     // void openLoginIn();
     void openSignUp();
 

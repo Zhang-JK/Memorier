@@ -18,7 +18,7 @@
     <normaloff>images/icontest.png</normaloff>images/icontest.png</iconset>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color:rgb(25, 195, 232);</string>
+   <string notr="true">background-color:rgb(114, 159, 207)</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QLabel" name="label">
@@ -127,10 +127,10 @@
      </item>
     </layout>
    </widget>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="submitButton">
     <property name="geometry">
      <rect>
-      <x>240</x>
+      <x>250</x>
       <y>280</y>
       <width>89</width>
       <height>25</height>
@@ -143,11 +143,24 @@
    <widget class="QLabel" name="errorMsg">
     <property name="geometry">
      <rect>
-      <x>190</x>
-      <y>310</y>
-      <width>191</width>
-      <height>16</height>
+      <x>0</x>
+      <y>305</y>
+      <width>601</width>
+      <height>20</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Fira Code</family>
+      <pointsize>12</pointsize>
+      <weight>9</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color:rgb(239, 41, 41);
+font: 75 12pt &quot;Fira Code&quot;;</string>
     </property>
     <property name="text">
      <string/>

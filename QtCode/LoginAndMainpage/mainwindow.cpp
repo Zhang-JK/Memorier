@@ -26,10 +26,10 @@ MainWindow::~MainWindow()
 void MainWindow::openSignUp()
 {
     SignUpWindow *signUp = new SignUpWindow(this);
-    connect(signUp, SIGNAL(sendLoginInfo(QString, QString)), this, SLOT(receiveLoginInfo(QString, QString)));
+    connect(signUp, SIGNAL(sendLoginInfo(QString)), this, SLOT(receiveLoginInfo(QString)));
     signUp->show();
 }
 
-void MainWindow::receiveLoginInfo(QString account, QString session)
+void MainWindow::receiveLoginInfo(QString account)
 {
 }
