@@ -15,7 +15,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     setWindowTitle("Memerior");
 
-    QPixmap pixmap("./images/bg_resize.jpg"); //设定图片
+    QPixmap pixmap(":/image/images/bg_resize.jpg"); //设定图片
     QPalette palette;                         //创建一个调色板对象
     palette.setBrush(backgroundRole(), QBrush(pixmap));
     setPalette(palette);         //设置窗口调色板为palette，窗口和画笔相关联

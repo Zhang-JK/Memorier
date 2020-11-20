@@ -26,3 +26,5 @@ SOURCES += LoginInfo.cpp \
            mainwindow.cpp \
            signupwindow.cpp \
            tools.cpp
+RESOURCES += \
+    assets.qrc

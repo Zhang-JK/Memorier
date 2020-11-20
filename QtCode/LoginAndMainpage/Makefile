@@ -57,7 +57,8 @@ SOURCES       = LoginInfo.cpp \
 		main.cpp \
 		mainwindow.cpp \
 		signupwindow.cpp \
-		tools.cpp moc_loginwindow.cpp \
+		tools.cpp qrc_assets.cpp \
+		moc_loginwindow.cpp \
 		moc_mainwindow.cpp \
 		moc_signupwindow.cpp
 OBJECTS       = LoginInfo.o \
@@ -66,6 +67,7 @@ OBJECTS       = LoginInfo.o \
 		mainwindow.o \
 		signupwindow.o \
 		tools.o \
+		qrc_assets.o \
 		moc_loginwindow.o \
 		moc_mainwindow.o \
 		moc_signupwindow.o
@@ -442,7 +444,8 @@ Makefile: LoginAndMainpage.pro /home/lao_jk/Qt/5.15.1/gcc_64/mkspecs/linux-g++/q
 		/home/lao_jk/Qt/5.15.1/gcc_64/mkspecs/features/exceptions.prf \
 		/home/lao_jk/Qt/5.15.1/gcc_64/mkspecs/features/yacc.prf \
 		/home/lao_jk/Qt/5.15.1/gcc_64/mkspecs/features/lex.prf \
-		LoginAndMainpage.pro
+		LoginAndMainpage.pro \
+		assets.qrc
 	$(QMAKE) -o Makefile LoginAndMainpage.pro
 /home/lao_jk/Qt/5.15.1/gcc_64/mkspecs/features/spec_pre.prf:
 /home/lao_jk/Qt/5.15.1/gcc_64/mkspecs/common/unix.conf:
@@ -621,6 +624,7 @@ Makefile: LoginAndMainpage.pro /home/lao_jk/Qt/5.15.1/gcc_64/mkspecs/linux-g++/q
 /home/lao_jk/Qt/5.15.1/gcc_64/mkspecs/features/yacc.prf:
 /home/lao_jk/Qt/5.15.1/gcc_64/mkspecs/features/lex.prf:
 LoginAndMainpage.pro:
+assets.qrc:
 qmake: FORCE
 	@$(QMAKE) -o Makefile LoginAndMainpage.pro
 
@@ -635,6 +639,7 @@ dist: distdir FORCE
 distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
+	$(COPY_FILE) --parents assets.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents /home/lao_jk/Qt/5.15.1/gcc_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents LoginInfo.h loginwindow.h mainwindow.h signupwindow.h tools.h $(DISTDIR)/
 	$(COPY_FILE) --parents LoginInfo.cpp loginwindow.cpp main.cpp mainwindow.cpp signupwindow.cpp tools.cpp $(DISTDIR)/
@@ -662,8 +667,16 @@ check: first
 
 benchmark: first
 
-compiler_rcc_make_all:
+compiler_rcc_make_all: qrc_assets.cpp
 compiler_rcc_clean:
+	-$(DEL_FILE) qrc_assets.cpp
+qrc_assets.cpp: assets.qrc \
+		/home/lao_jk/Qt/5.15.1/gcc_64/bin/rcc \
+		images/icontest.png \
+		images/bg.jpg \
+		images/bg_resize.jpg
+	/home/lao_jk/Qt/5.15.1/gcc_64/bin/rcc -name assets assets.qrc -o qrc_assets.cpp
+
 compiler_moc_predefs_make_all: moc_predefs.h
 compiler_moc_predefs_clean:
 	-$(DEL_FILE) moc_predefs.h
@@ -1031,7 +1044,7 @@ compiler_yacc_impl_make_all:
 compiler_yacc_impl_clean:
 compiler_lex_make_all:
 compiler_lex_clean:
-compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean compiler_uic_clean 
+compiler_clean: compiler_rcc_clean compiler_moc_predefs_clean compiler_moc_header_clean compiler_uic_clean 
 
 ####### Compile
 
@@ -1227,35 +1240,6 @@ loginwindow.o: loginwindow.cpp loginwindow.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qtabwidget.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qicon.h \
 		ui_loginwindow.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QVariant \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/QIcon \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QApplication \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qapplication.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcoreapplication.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qeventloop.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qdesktopwidget.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qguiapplication.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qinputmethod.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QHBoxLayout \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qboxlayout.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qlayout.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qlayoutitem.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qgridlayout.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QLabel \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qlabel.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qframe.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QLineEdit \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qlineedit.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qtextcursor.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qtextformat.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qpen.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qtextoption.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QPushButton \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qpushbutton.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qabstractbutton.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QStatusBar \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qstatusbar.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QWidget \
 		LoginInfo.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QString \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtSql/QtSql \
@@ -1264,6 +1248,7 @@ loginwindow.o: loginwindow.cpp loginwindow.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QtCoreDepends \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qabstractanimation.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qabstracteventdispatcher.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qeventloop.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qabstractitemmodel.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qabstractnativeeventfilter.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qabstractproxymodel.h \
@@ -1292,6 +1277,7 @@ loginwindow.o: loginwindow.cpp loginwindow.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcollator.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcommandlineoption.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcommandlineparser.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcoreapplication.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qconcatenatetablesproxymodel.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcryptographichash.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qdeadlinetimer.h \
@@ -1407,6 +1393,7 @@ loginwindow.o: loginwindow.cpp loginwindow.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qstyle.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qtabbar.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qrubberband.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qframe.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qlistview.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qabstractitemview.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qabstractscrollarea.h \
@@ -1808,29 +1795,6 @@ mainwindow.o: mainwindow.cpp mainwindow.h \
 		signupwindow.h \
 		loginwindow.h \
 		ui_mainwindow.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QVariant \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/QIcon \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QApplication \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qapplication.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcoreapplication.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qeventloop.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qdesktopwidget.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qguiapplication.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qinputmethod.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QLabel \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qlabel.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qframe.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QPushButton \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qpushbutton.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qabstractbutton.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QStatusBar \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qstatusbar.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QVBoxLayout \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qboxlayout.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qlayout.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qlayoutitem.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qgridlayout.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QWidget \
 		LoginInfo.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QString \
 		tools.h \
@@ -1840,6 +1804,7 @@ mainwindow.o: mainwindow.cpp mainwindow.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QtCoreDepends \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qabstractanimation.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qabstracteventdispatcher.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qeventloop.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qabstractitemmodel.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qabstractnativeeventfilter.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qabstractproxymodel.h \
@@ -1868,6 +1833,7 @@ mainwindow.o: mainwindow.cpp mainwindow.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcollator.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcommandlineoption.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcommandlineparser.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcoreapplication.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qconcatenatetablesproxymodel.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcryptographichash.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qdeadlinetimer.h \
@@ -1983,6 +1949,7 @@ mainwindow.o: mainwindow.cpp mainwindow.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qstyle.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qtabbar.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qrubberband.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qframe.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qlistview.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qabstractitemview.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qabstractscrollarea.h \
@@ -2106,36 +2073,6 @@ signupwindow.o: signupwindow.cpp signupwindow.h \
 		tools.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QString \
 		ui_signupwindow.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QVariant \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/QIcon \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QApplication \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qapplication.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcoreapplication.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qeventloop.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qdesktopwidget.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qguiapplication.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qinputmethod.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QHBoxLayout \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qboxlayout.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qlayout.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qlayoutitem.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qgridlayout.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QLabel \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qlabel.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qframe.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QLineEdit \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qlineedit.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qtextcursor.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qtextformat.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qpen.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qtextoption.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QPushButton \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qpushbutton.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qabstractbutton.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QStatusBar \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qstatusbar.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QVBoxLayout \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QWidget \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QMessageBox \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qmessagebox.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qdialog.h \
@@ -2145,6 +2082,7 @@ signupwindow.o: signupwindow.cpp signupwindow.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QtCoreDepends \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qabstractanimation.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qabstracteventdispatcher.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qeventloop.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qabstractitemmodel.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qabstractnativeeventfilter.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qabstractproxymodel.h \
@@ -2173,6 +2111,7 @@ signupwindow.o: signupwindow.cpp signupwindow.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcollator.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcommandlineoption.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcommandlineparser.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcoreapplication.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qconcatenatetablesproxymodel.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcryptographichash.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qdeadlinetimer.h \
@@ -2288,6 +2227,7 @@ signupwindow.o: signupwindow.cpp signupwindow.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qstyle.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qtabbar.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qrubberband.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qframe.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qlistview.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qabstractitemview.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qabstractscrollarea.h \
@@ -2565,6 +2505,9 @@ tools.o: tools.cpp tools.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtSql/qsqlresult.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtSql/qtsqlversion.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o tools.o tools.cpp
+
+qrc_assets.o: qrc_assets.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_assets.o qrc_assets.cpp
 
 moc_loginwindow.o: moc_loginwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_loginwindow.o moc_loginwindow.cpp
