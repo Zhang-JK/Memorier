@@ -1,0 +1,10 @@
+debug/LoginInfo.o
+debug/loginwindow.o
+debug/main.o
+debug/mainwindow.o
+debug/signupwindow.o
+debug/tools.o
+debug/qrc_assets.o
+debug/moc_loginwindow.o
+debug/moc_mainwindow.o
+debug/moc_signupwindow.o

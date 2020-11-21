@@ -1,0 +1,10 @@
+release/LoginInfo.o
+release/loginwindow.o
+release/main.o
+release/mainwindow.o
+release/signupwindow.o
+release/tools.o
+release/qrc_assets.o
+release/moc_loginwindow.o
+release/moc_mainwindow.o
+release/moc_signupwindow.o
