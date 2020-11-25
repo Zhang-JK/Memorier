@@ -16,16 +16,15 @@ struct Quiz{
 class Text: public Card{
 private:
 	string text;
-	vector<Quiz> quiz;
-	void add();
+    vector<Quiz> quiz;
 	void elongate();
 
 public:
     Text();
-	~Text();
-	virtual void print();
-	virtual void option();
-	virtual int print_test();
+    ~Text();
+
+    virtual QString add(int);
+    virtual QString option(int id =0 , QString str="");
 };
 
 #endif /* TEXT_H_ */

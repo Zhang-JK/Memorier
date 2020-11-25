@@ -17,9 +17,13 @@ public:
     ~addcardMain();
     void set_type(Card::cardType type_);
 
+signals:
+    void pre_finish();
+
 private slots:
     void on_Butconfirm_clicked();
     void on_Butcancel_clicked();
+    void option();
 
 private:
     Ui::addcardMain *ui;

@@ -59,7 +59,7 @@
      <string notr="true">font: 75 18pt &quot;Times New Roman&quot;;</string>
     </property>
    </widget>
-   <widget class="QLabel" name="Lable_2">
+   <widget class="QLabel" name="Lable_title">
     <property name="geometry">
      <rect>
       <x>60</x>
@@ -72,7 +72,7 @@
      <string notr="true">font: 75 18pt &quot;Times New Roman&quot;;</string>
     </property>
     <property name="text">
-     <string>Title of your card</string>
+     <string>lable title</string>
     </property>
    </widget>
    <widget class="QTextEdit" name="Input_prob">
@@ -91,7 +91,7 @@
    <widget class="QLabel" name="Lable_prob">
     <property name="geometry">
      <rect>
-      <x>70</x>
+      <x>60</x>
       <y>140</y>
       <width>171</width>
       <height>21</height>
@@ -101,13 +101,13 @@
      <string notr="true">font: 75 18pt &quot;Times New Roman&quot;;</string>
     </property>
     <property name="text">
-     <string>TBchange</string>
+     <string>lable prob</string>
     </property>
    </widget>
    <widget class="QLabel" name="Lable_ans">
     <property name="geometry">
      <rect>
-      <x>70</x>
+      <x>60</x>
       <y>230</y>
       <width>171</width>
       <height>21</height>
@@ -117,7 +117,7 @@
      <string notr="true">font: 75 18pt &quot;Times New Roman&quot;;</string>
     </property>
     <property name="text">
-     <string>TBchange</string>
+     <string>lable ans</string>
     </property>
    </widget>
    <widget class="QTextEdit" name="Input_ans">

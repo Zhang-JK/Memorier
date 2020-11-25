@@ -11,8 +11,9 @@ private:
 public:
 	Plain();
 	~Plain();
+    virtual QString add(int);
+    virtual QString option(int id =0 , QString str="");
     virtual void print();
-    virtual void option(int id, QString str);
 	virtual int print_test();
 };
 

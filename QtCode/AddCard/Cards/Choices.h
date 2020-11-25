@@ -9,25 +9,20 @@ using std::vector;
 
 //helper struct
 struct Cell{
-	string txt;
+    QString txt;
 	bool ac;
 };
 
 
 class Choices: public Card{
 private:
-	string question;
-	vector<Cell> choice;
-	void add_choice();
-	void edit_choice();
-	void elongate();
+    vector<Cell> choice;
 
 public:
     Choices();
-	~Choices();
-	virtual void print();
-	virtual void option();
-	virtual int print_test();
+    ~Choices();
+    virtual QString add(int);
+    virtual QString option(int id =0 , QString str="");
 };
 
 #endif /* CHOICES_H_ */

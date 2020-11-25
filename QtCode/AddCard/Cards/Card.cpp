@@ -21,6 +21,11 @@ int Card::get_id() const
 	return id;
 }
 
+QString Card::get_prob() const
+{
+    return prob;
+}
+
 int Card::get_time() const
 {
 	return static_cast<int>(time(0))/86400;
@@ -45,6 +50,9 @@ int Card::print_test(){}
 
 void Card::print(){}
 
-void Card::option(){}
+QString Card::add(int x){return "null";}
 
-void Card::option(int id, QString str){}
+
+QString Card::option(int id, QString str){return "null";}
+
+

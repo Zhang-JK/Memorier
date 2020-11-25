@@ -36,11 +36,12 @@ public:
     Card();
 	virtual ~Card();
 	int get_id() const;
+    QString get_prob() const;
 	int test();
     virtual int print_test();
+    virtual QString add(int);
     virtual void print();
-    virtual void option();
-    virtual void option(int id, QString str);
+    virtual QString option(int id =0, QString str = "");
     void set_title(QString);
     void set_prob(QString);
 	

@@ -17,6 +17,14 @@ Word::Word():Card()
 
 Word::~Word() {}
 
+QString Word::add(int x)
+{
+    if(x==1) return "The title:";
+    if(x==2) return "New word:";
+    if(x==3) return "Translation:";
+    return "null";
+}
+
 void Word::print()
 {
 	//waiting GUI
@@ -28,12 +36,16 @@ int Word::print_test()
 
 }
 
-void Word::add()
+
+
+QString Word::option(int id, QString str)
 {
-
-}
-
-void Word::option()
-{
-
+    if(id==1) word = str;
+    if(id==2)
+    {
+        if(already_trans) return "null";
+        already_trans=1;
+        return translateAPI(str);
+    }
+    return "null";
 }

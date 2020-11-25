@@ -9,34 +9,21 @@
 
 Text::Text():Card()
 {
-\
+
 }
 
 Text::~Text() {}
 
-void Text::print()
+
+QString Text::add(int x)
 {
-	//waiting GUI
+    if(x==1) return "The title:";
+    if(x==2) return "The text:";
+    if(x==3) return "Some hint:";
+    return "null";
 }
 
-\
-
-int Text::print_test()
+QString Text::option(int id, QString str)
 {
-
-}
-
-void Text::add()
-{
-
-}
-
-void Text::elongate()
-{
-
-}
-
-void Text::option()
-{
-
+    return "null";
 }

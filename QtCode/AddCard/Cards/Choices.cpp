@@ -9,32 +9,25 @@ Choices::Choices():Card()
 
 Choices::~Choices() {}
 
-void Choices::print()
+
+QString Choices::add(int x)
 {
-	//waiting GUI
+    if(x==1) return "The title:";
+    if(x==2) return "The problem:";
+    if(x==3) return "Some hint:";
+    return "null";
 }
 
-void Choices::add_choice()
+QString Choices::option(int id , QString str)
 {
-
-}
-
-void Choices::edit_choice()
-{
-
-}
-
-void Choices::elongate()
-{
-
-}
-
-int Choices::print_test()
-{
-
-}
-
-void Choices::option()
-{
-
+    if(id==1) //add ans
+    {
+        Cell temp;
+        int n=str.length();
+        temp.txt=str;
+        temp.txt.remove(n-1,1);
+        temp.ac=(str[n-1]=="T");
+        choice.push_back(temp);
+    }
+    return "null";
 }
