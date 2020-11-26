@@ -14,6 +14,9 @@
 #include <QString>
 
 QString translateAPI(QString text, QString target = "en", QString source = "zh");
-QString translateDataHandler(QNetworkReply *response);
+// QString translateDataHandler(QNetworkReply *response);
+
+QList<QString> textRazorAPI(QString text);
+// QList<QString> textRazorHandler(QNetworkReply *response);
 
 #endif
