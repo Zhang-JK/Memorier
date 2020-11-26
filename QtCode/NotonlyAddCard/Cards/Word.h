@@ -12,7 +12,6 @@ class Word: public Card{
 private:
     QString word;
     vector<string> trans;
-    bool already_trans=0;
 public:
     Word();
 	~Word();

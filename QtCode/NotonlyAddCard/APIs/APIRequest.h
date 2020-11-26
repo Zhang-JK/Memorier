@@ -13,7 +13,10 @@
 #include <QEventLoop>
 #include <QString>
 
-QString translateAPI(QString text, QString target = "zh", QString source = "en");
-QString translateDataHandler(QNetworkReply *response);
+QString translateAPI(QString text, QString target = "en", QString source = "zh");
+// QString translateDataHandler(QNetworkReply *response);
+
+QList<QString> textRazorAPI(QString text);
+// QList<QString> textRazorHandler(QNetworkReply *response);
 
 #endif

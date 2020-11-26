@@ -1,0 +1,17 @@
+debug/APIRequest.o
+debug/addcard.o
+debug/addcardmain.o
+debug/addchoices.o
+debug/addtext.o
+debug/Card.o
+debug/Choices.o
+debug/Plain.o
+debug/Text.o
+debug/Word.o
+debug/main.o
+debug/test.o
+debug/moc_addcard.o
+debug/moc_addcardmain.o
+debug/moc_addchoices.o
+debug/moc_addtext.o
+debug/moc_test.o

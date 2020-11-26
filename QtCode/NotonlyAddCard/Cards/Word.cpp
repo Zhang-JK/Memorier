@@ -43,8 +43,6 @@ QString Word::option(int id, QString str)
     if(id==1) word = str;
     if(id==2)
     {
-        if(already_trans) return "null";
-        already_trans=1;
         return translateAPI(str);
     }
     return "null";

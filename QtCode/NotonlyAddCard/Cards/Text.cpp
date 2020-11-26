@@ -25,5 +25,21 @@ QString Text::add(int x)
 
 QString Text::option(int id, QString str)
 {
+    if(id==1)
+    {
+        hint=str;
+        return "null";
+    }
+    if(id==2)
+    {
+        int x=0;
+        while(str[x]!='-') x++;
+        QString t=str;
+        Quiz temp;
+        temp.s=(t.left(x)).toInt();
+        temp.t=(str.remove(0,x+1)).toInt();
+        quiz.push_back(temp);
+        return "null";
+    }
     return "null";
 }

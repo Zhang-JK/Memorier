@@ -3,6 +3,7 @@
 
 #include "Card.h"
 #include<vector>
+#include <QString>
 
 using std::vector;
 
@@ -15,9 +16,8 @@ struct Quiz{
 
 class Text: public Card{
 private:
-	string text;
     vector<Quiz> quiz;
-	void elongate();
+    QString hint;
 
 public:
     Text();

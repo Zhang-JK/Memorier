@@ -1,0 +1,17 @@
+release/APIRequest.o
+release/addcard.o
+release/addcardmain.o
+release/addchoices.o
+release/addtext.o
+release/Card.o
+release/Choices.o
+release/Plain.o
+release/Text.o
+release/Word.o
+release/main.o
+release/test.o
+release/moc_addcard.o
+release/moc_addcardmain.o
+release/moc_addchoices.o
+release/moc_addtext.o
+release/moc_test.o

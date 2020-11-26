@@ -57,7 +57,7 @@ void addChoices::on_Butfinish_clicked()
     extern Card* __card;
     for(int i=1;i<=num;++i)
     {
-        __card->option(1,Intxt[i]->toPlainText()+(Inac[i]->isChecked()?"T":"F"));
+        __card->option(2,Intxt[i]->toPlainText()+(Inac[i]->isChecked()?"T":"F"));
     }
     this->close();
     emit second_finish();

@@ -27,6 +27,7 @@ void addcardMain::option()
     extern Card* __card;
     if(type==Card::cardType::Word)
     {
+        disconnect(ui->Input_ans, SIGNAL(selectionChanged()), this, SLOT(option()));
         QString temp = __card->option(2,ui->Input_prob->toPlainText());
         if(temp!="null")
             ui->Input_ans->setText(temp);

@@ -47,7 +47,7 @@ void AddCard::on_ButText_clicked()
     __card = new Text;
     addcardMain* addmain = new addcardMain(this);
     connect(addmain, SIGNAL(pre_finish()), this, SLOT(add_text()));
-    addmain->set_type(Card::cardType::Plain);
+    addmain->set_type(Card::cardType::Text);
     addmain->show();
 }
 
@@ -69,6 +69,8 @@ void AddCard::add_choices()
 void AddCard::add_text()
 {
     addText* addtext = new addText(this);
+    connect(addtext, SIGNAL(second_finish()), this, SLOT(send_data()));
+    addtext->init();
     addtext->show();
 }
 

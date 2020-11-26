@@ -20,7 +20,11 @@ QString Choices::add(int x)
 
 QString Choices::option(int id , QString str)
 {
-    if(id==1) //add ans
+    if(id==1)
+    {
+        hint = str;
+    }
+    if(id==2) //add ans
     {
         Cell temp;
         int n=str.length();

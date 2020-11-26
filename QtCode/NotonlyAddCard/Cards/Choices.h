@@ -16,6 +16,7 @@ struct Cell{
 
 class Choices: public Card{
 private:
+    QString hint;
     vector<Cell> choice;
 
 public:
