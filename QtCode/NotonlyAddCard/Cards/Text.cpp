@@ -9,7 +9,7 @@
 
 Text::Text():Card()
 {
-
+    type = Card::cardType::Text;
 }
 
 Text::~Text() {}
@@ -40,6 +40,13 @@ QString Text::option(int id, QString str)
         temp.t=(str.remove(0,x+1)).toInt();
         quiz.push_back(temp);
         return "null";
+    }
+    if(id==3)
+    {
+        QString ans = "";
+        for(int i = 0; i < quiz.size(); i++)
+            ans += (QString(quiz[i].s) + ";" + QString(quiz[i].t) + ";");
+        return ans;
     }
     return "null";
 }

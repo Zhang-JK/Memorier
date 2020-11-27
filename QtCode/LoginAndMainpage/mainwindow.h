@@ -18,6 +18,9 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+signals:
+    void libStart();
+
 private slots:
     void receiveLoginInfo(QString account, int accountId);
     void directLogin();

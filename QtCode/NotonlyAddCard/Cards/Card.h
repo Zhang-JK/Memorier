@@ -16,7 +16,7 @@ using std::string;
 class Card{
 
 public:
-    enum cardType{Plain, Text, Word, Choices};
+    enum cardType{Plain=0, Text=1, Word=2, Choices=3};
     static const QString typeName[4];
     QString title;
     QString prob;
@@ -29,13 +29,15 @@ protected:
 	int timestamp;
 	int lastime;
 	int id;
+    cardType type;
 
 
 public:
-	int get_time() const;
     Card();
 	virtual ~Card();
 	int get_id() const;
+	int get_time() const;
+	cardType get_type() const;
     QString get_prob() const;
 	int test();
     virtual int print_test();

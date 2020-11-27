@@ -1,23 +1,25 @@
 #ifndef WORD_H_
 #define WORD_H_
 
-#include<vector>
+#include <vector>
 
 #include "Card.h"
-#include "../APIs/APIRequest.h"
+#include "APIRequest.h"
 
 using std::vector;
 
-class Word: public Card{
+class Word : public Card
+{
 private:
     QString word;
     vector<string> trans;
+
 public:
     Word();
-	~Word();
-	virtual int print_test();
+    ~Word();
+    virtual int print_test();
     virtual QString add(int);
-	virtual void print();
+    virtual void print();
     virtual QString option(int id = 0, QString str = "");
 };
 

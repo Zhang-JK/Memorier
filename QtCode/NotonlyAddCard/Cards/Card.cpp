@@ -21,6 +21,11 @@ int Card::get_id() const
 	return id;
 }
 
+Card::cardType Card::get_type() const
+{
+    return type;
+}
+
 QString Card::get_prob() const
 {
     return prob;
@@ -51,7 +56,6 @@ int Card::print_test(){}
 void Card::print(){}
 
 QString Card::add(int x){return "null";}
-
 
 QString Card::option(int id, QString str){return "null";}
 

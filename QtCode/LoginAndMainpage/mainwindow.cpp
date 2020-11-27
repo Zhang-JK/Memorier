@@ -4,9 +4,12 @@
 #include "ui_mainwindow.h"
 #include "LoginInfo.h"
 #include "tools.h"
+#include "libwindow.h"
 
 #include <QtSql>
 #include <QMessageBox>
+
+extern LibWindow lw;
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::MainWindow)
@@ -16,13 +19,15 @@ MainWindow::MainWindow(QWidget *parent)
     setWindowTitle("Memerior");
 
     QPixmap pixmap(":/image/images/bg_resize.jpg"); //设定图片
-    QPalette palette;                         //创建一个调色板对象
+    QPalette palette;                               //创建一个调色板对象
     palette.setBrush(backgroundRole(), QBrush(pixmap));
     setPalette(palette);         //设置窗口调色板为palette，窗口和画笔相关联
     setAutoFillBackground(true); //设置窗体自动填充背景
 
     connect(ui->signButton, SIGNAL(clicked()), this, SLOT(openSignUp()));
     connect(ui->loginButton, SIGNAL(clicked()), this, SLOT(openLogin()));
+    // connect(this, SIGNAL(libStart()), this, SLOT(openLib()));
+    connect(this, SIGNAL(libStart()), this, SLOT(close()));
 }
 
 MainWindow::~MainWindow()
@@ -69,7 +74,7 @@ void MainWindow::receiveLoginInfo(QString username, int accountId)
                                 .arg(accountId);
         qDebug() << "Generated sql: " << sqlUpdate;
         if (!update.exec(sqlUpdate))
-            qDebug() << "Query Error: " << query.lastError().driverText();
+            qDebug() << "Query Error: " << update.lastError().driverText();
     }
     else
     {
@@ -85,6 +90,9 @@ void MainWindow::receiveLoginInfo(QString username, int accountId)
 
     // log
     InsertLog(accountId, "Log In");
+
+    // start lib main page
+    emit libStart();
 }
 
 void MainWindow::directLogin()
@@ -102,14 +110,23 @@ void MainWindow::directLogin()
         expireAt = query.value(query.record().indexOf("expire_at")).toUInt();
         id = query.value(query.record().indexOf("account_id")).toInt();
     }
-    else hasError = true;
-    
-    if (id != LoginInfo::getId()) hasError = true;
-    if (expireAt < QDateTime::currentDateTime().toSecsSinceEpoch()) hasError = true;
-    
+    else
+        hasError = true;
+
+    if (id != LoginInfo::getId())
+        hasError = true;
+    if (expireAt < QDateTime::currentDateTime().toSecsSinceEpoch())
+        hasError = true;
+
     if (hasError)
+    {
         if (!(QMessageBox::warning(this, tr("Auto Login Fail"), tr("Your login infomation is invalid or already expired, please login again."), tr("Ok"))))
             LoginInfo::cleanLoginInfo();
-    else 
+    }
+    else
+    {
         InsertLog(id, "Direct Log In");
+        // start lib main page
+        emit libStart();
+    }
 }

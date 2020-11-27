@@ -24,6 +24,7 @@ public:
     ~Choices();
     virtual QString add(int);
     virtual QString option(int id =0 , QString str="");
+
 };
 
 #endif /* CHOICES_H_ */

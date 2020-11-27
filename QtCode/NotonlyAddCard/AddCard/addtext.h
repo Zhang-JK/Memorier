@@ -8,10 +8,11 @@
 #include <QBrush>
 #include <QTextCharFormat>
 #include <QList>
-#include "../APIs/APIRequest.h"
+#include "APIRequest.h"
 
-namespace Ui {
-class addText;
+namespace Ui
+{
+    class addText;
 }
 
 class addText : public QMainWindow
@@ -35,7 +36,7 @@ private slots:
 private:
     Ui::addText *ui;
     int len;
-    int* a;
+    int *a;
     int api = -1;
     QList<QString> TXTapi;
     void selection(QTextCursor cur);

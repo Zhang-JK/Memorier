@@ -5,7 +5,9 @@
 
 
 Plain::Plain():Card()
-{}
+{
+    type = Card::cardType::Plain;
+}
 
 Plain::~Plain() {}
 
@@ -33,6 +35,10 @@ QString Plain::option(int id , QString str)
     if(id==1) //add ans
     {
         ans=str;
+    }
+    if(id==3)
+    {
+        return ans;
     }
     return "null";
 }

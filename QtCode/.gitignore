@@ -1,0 +1,14 @@
+.vscode
+.old*
+*.o
+*.out
+*.exe
+debug
+test
+*.json
+*.bat
+.qmake*
+moc*
+*.user
+bulid*
+build/

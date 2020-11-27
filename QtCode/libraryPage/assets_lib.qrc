@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="image">
+        <file>images/bg_resize.jpg</file>
+        <file>images/bg.jpg</file>
+        <file>images/icontest.png</file>
+    </qresource>
+</RCC>
