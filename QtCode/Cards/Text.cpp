@@ -15,7 +15,7 @@ Text::Text():Card()
 Text::~Text() {}
 
 
-QString Text::add(int x)
+QString Text::add_display(int x) const
 {
     if(x==1) return "The title:";
     if(x==2) return "The text:";
@@ -43,10 +43,31 @@ QString Text::option(int id, QString str)
     }
     if(id==3)
     {
-        QString ans = "";
+        QString ans = hint + ";;";
         for(int i = 0; i < quiz.size(); i++)
-            ans += (QString(quiz[i].s) + ";" + QString(quiz[i].t) + ";");
+            ans += (QString::number(quiz[i].s) + ";" + QString::number(quiz[i].t) + ";");
         return ans;
+    }
+    if(id==4)
+    {
+        int i=0;
+        while(str[i]!=";" || str[i+1]!=";") i++;
+        hint = str.left(i);
+        str.remove(0,i+2);
+        while(str.size()>0)
+        {
+            Quiz temp;
+            i=0;
+            while(str[i]!=";") i++;
+            temp.s=(str.left(i)).toInt();
+            str.remove(0,i+1);
+            i=0;
+            while(str[i]!=";") i++;
+            temp.t=(str.left(i)).toInt();
+            str.remove(0,i+1);
+            quiz.push_back(temp);
+        }
+        return "null";
     }
     return "null";
 }

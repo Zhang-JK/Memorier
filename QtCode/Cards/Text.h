@@ -23,7 +23,7 @@ public:
     Text();
     ~Text();
 
-    virtual QString add(int);
+    virtual QString add_display(int) const;
     virtual QString option(int id =0 , QString str="");
 };
 

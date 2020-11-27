@@ -2,8 +2,8 @@
 #define LIBWINDOW_H
 
 #include <QMainWindow>
-#include "addcard.h"
-#include "Cards.h"
+#include "../AddCard/addcard.h"
+#include "../Cards/Cards.h"
 
 namespace Ui {
 class LibWindow;

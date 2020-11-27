@@ -30,28 +30,26 @@ HEADERS += APIs/APIRequest.h \
            LoginAndMainpage/loginwindow.h \
            LoginAndMainpage/mainwindow.h \
            LoginAndMainpage/signupwindow.h \
-           NotonlyAddCard/test.h \
            libraryPage/libwindow.h \
            tools/LoginInfo.h \
            tools/tools.h \
-           NotonlyAddCard/AddCard/addcard.h \
-           NotonlyAddCard/AddCard/addcardmain.h \
-           NotonlyAddCard/AddCard/addchoices.h \
-           NotonlyAddCard/AddCard/addtext.h \
-           NotonlyAddCard/Cards/Card.h \
-           NotonlyAddCard/Cards/Cards.h \
-           NotonlyAddCard/Cards/Choices.h \
-           NotonlyAddCard/Cards/Plain.h \
-           NotonlyAddCard/Cards/Text.h \
-           NotonlyAddCard/Cards/Word.h
+           AddCard/addcard.h \
+           AddCard/addcardmain.h \
+           AddCard/addchoices.h \
+           AddCard/addtext.h \
+           Cards/Card.h \
+           Cards/Cards.h \
+           Cards/Choices.h \
+           Cards/Plain.h \
+           Cards/Text.h \
+           Cards/Word.h
 FORMS += LoginAndMainpage/loginwindow.ui \
          LoginAndMainpage/mainwindow.ui \
          LoginAndMainpage/signupwindow.ui \
-         NotonlyAddCard/test.ui \
-         NotonlyAddCard/AddCard/addcard.ui \
-         NotonlyAddCard/AddCard/addcardmain.ui \
-         NotonlyAddCard/AddCard/addchoices.ui \
-         NotonlyAddCard/AddCard/addtext.ui \
+         AddCard/addcard.ui \
+         AddCard/addcardmain.ui \
+         AddCard/addchoices.ui \
+         AddCard/addtext.ui \
          libraryPage/libwindow.ui
 SOURCES += main.cpp \
            APIs/APIRequest.cpp \
@@ -59,19 +57,17 @@ SOURCES += main.cpp \
            LoginAndMainpage/main_login.cpp \
            LoginAndMainpage/mainwindow.cpp \
            LoginAndMainpage/signupwindow.cpp \
-           NotonlyAddCard/main_test.cpp \
-           NotonlyAddCard/test.cpp \
            libraryPage/libwindow.cpp \
            tools/LoginInfo.cpp \
            tools/tools.cpp \
-           NotonlyAddCard/AddCard/addcard.cpp \
-           NotonlyAddCard/AddCard/addcardmain.cpp \
-           NotonlyAddCard/AddCard/addchoices.cpp \
-           NotonlyAddCard/AddCard/addtext.cpp \
-           NotonlyAddCard/Cards/Card.cpp \
-           NotonlyAddCard/Cards/Choices.cpp \
-           NotonlyAddCard/Cards/Plain.cpp \
-           NotonlyAddCard/Cards/Text.cpp \
-           NotonlyAddCard/Cards/Word.cpp
+           AddCard/addcard.cpp \
+           AddCard/addcardmain.cpp \
+           AddCard/addchoices.cpp \
+           AddCard/addtext.cpp \
+           Cards/Card.cpp \
+           Cards/Choices.cpp \
+           Cards/Plain.cpp \
+           Cards/Text.cpp \
+           Cards/Word.cpp
 RESOURCES += LoginAndMainpage/assets.qrc \
              libraryPage/assets_lib.qrc

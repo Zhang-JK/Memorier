@@ -26,8 +26,9 @@ protected:
 //	double ac_rate;
 	int review_times;
 	int ac_time;
-	int timestamp;
-	int lastime;
+    long timestamp;
+    long lastime;
+    long next_review;
 	int id;
     cardType type;
 
@@ -35,19 +36,28 @@ protected:
 public:
     Card();
 	virtual ~Card();
-	int get_id() const;
-	int get_time() const;
+    void set_id(int i);
+    int get_id() const;
 	cardType get_type() const;
     QString get_prob() const;
-	int test();
+    long get_nextReview() const;
+    void test_update(int);
     virtual int print_test();
-    virtual QString add(int);
+    virtual QString add_display(int) const;
     virtual void print();
     virtual QString option(int id =0, QString str = "");
     void set_title(QString);
     void set_prob(QString);
+    void set_init_time(long t);
 	
 };
+
+// option id list:
+// 1 - set answer for this card
+// 2 - set special data for this card
+// 3 - encode to storage
+// 4 - decode
+
 
 
 #endif /* CARD_H_ */

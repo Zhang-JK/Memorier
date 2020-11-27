@@ -7,17 +7,6 @@ addChoices::addChoices(QWidget *parent) :
     ui(new Ui::addChoices)
 {
     ui->setupUi(this);
-}
-
-addChoices::~addChoices()
-{
-    delete ui;
-}
-
-void addChoices::init()
-{
-    extern Card* __card;
-    ui->text->setText(__card->get_prob());
     num=2;
     Inac[1] = ui->Inac1;
     Inac[2] = ui->Inac2;
@@ -34,6 +23,13 @@ void addChoices::init()
         Inac[i]->setVisible(false);
         Intxt[i]->setVisible(false);
     }
+    extern Card* __card;
+    ui->text->setText(__card->get_prob());
+}
+
+addChoices::~addChoices()
+{
+    delete ui;
 }
 
 void addChoices::on_Butadd_clicked()

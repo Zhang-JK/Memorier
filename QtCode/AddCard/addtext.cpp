@@ -9,15 +9,6 @@ addText::addText(QWidget *parent) :
     ui(new Ui::addText)
 {
     ui->setupUi(this);
-}
-
-addText::~addText()
-{
-    delete ui;
-}
-
-void addText::init()
-{
     extern Card* __card;
     connect(ui->text, SIGNAL(selectionChanged()), this, SLOT(selection()));
     ui->text->setText(__card->get_prob());
@@ -28,6 +19,13 @@ void addText::init()
     len=__card->get_prob().length();
     a=new int[len]{0};
 }
+
+addText::~addText()
+{
+    delete ui;
+    delete [] a;
+}
+
 
 void addText::on_ButAPI_clicked()
 {
@@ -89,7 +87,6 @@ void addText::on_Butfinish_clicked()
         __card->option(2, QString::number(i) + "-" + QString::number(j));
         i=j+1;
     }
-    delete [] a;
     emit second_finish();
     close();
 }
@@ -100,12 +97,11 @@ void addText::selection(QTextCursor cur)
     int st=cur.selectionStart(), en=cur.selectionEnd();
     for(int i=st;i<en;i++) a[i]=1;
 
-    QBrush tbrush;
-    QTextEdit::ExtraSelection temp;
-    QTextCharFormat tformat;
-    tformat.setForeground(tbrush);
-    temp.cursor=cur;
-    temp.format=tformat;
-    tbrush.setColor(QColor("red"));
-    ui->text->setExtraSelections(QList<QTextEdit::ExtraSelection>{temp});
+    QTextCharFormat fmt;
+    fmt.setForeground(QColor(255,0,0));
+    cur.mergeCharFormat(fmt);
+    ui->text->setTextCursor(cur);
+    ui->text->mergeCurrentCharFormat(fmt);
+    cur.setPosition(en);
+    ui->text->setTextCursor(cur);
 }

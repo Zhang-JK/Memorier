@@ -61,7 +61,6 @@ void AddCard::send_data()
 void AddCard::add_choices()
 {
     addChoices* addch= new addChoices(this);
-    addch->init();
     connect(addch, SIGNAL(second_finish()), this, SLOT(send_data()));
     addch->show();
 }
@@ -70,7 +69,6 @@ void AddCard::add_text()
 {
     addText* addtext = new addText(this);
     connect(addtext, SIGNAL(second_finish()), this, SLOT(send_data()));
-    addtext->init();
     addtext->show();
 }
 

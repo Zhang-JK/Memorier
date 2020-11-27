@@ -11,7 +11,7 @@ Plain::Plain():Card()
 
 Plain::~Plain() {}
 
-QString Plain::add(int x)
+QString Plain::add_display(int x) const
 {
     if(x==1) return "The title:";
     if(x==2) return "The problem:";

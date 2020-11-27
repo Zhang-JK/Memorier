@@ -13,9 +13,9 @@ void addcardMain::set_type(Card::cardType type_)
     extern Card* __card;
     type = type_;
     ui->Lable_type->setText(Card::typeName[type]);
-    ui->Lable_title->setText(__card->add(1));
-    ui->Lable_prob->setText(__card->add(2));
-    ui->Lable_ans->setText(__card->add(3));
+    ui->Lable_title->setText(__card->add_display(1));
+    ui->Lable_prob->setText(__card->add_display(2));
+    ui->Lable_ans->setText(__card->add_display(3));
     if(type==Card::cardType::Word)
     {
         connect(ui->Input_ans, SIGNAL(selectionChanged()), this, SLOT(option()));

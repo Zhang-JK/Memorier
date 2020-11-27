@@ -17,7 +17,6 @@ class addChoices : public QMainWindow
 public:
     explicit addChoices(QWidget *parent = nullptr);
     ~addChoices();
-    void init();
 
 signals:
     void second_finish();

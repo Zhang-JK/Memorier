@@ -1,17 +1,13 @@
 #include<cmath>
-#include<cstring>
-#include<ctime>
 #include "Card.h"
+#include <QDateTime>
 
 const QString Card::typeName[4]={"Plain", "Text", "Word", "Choices"};
 
 
 Card::Card():
 	review_times(0),
-	ac_time(0),
-	timestamp(get_time()),
-	lastime(timestamp),
-    id(0)
+    ac_time(0)
 {}
 
 Card::~Card() = default;
@@ -31,14 +27,24 @@ QString Card::get_prob() const
     return prob;
 }
 
-int Card::get_time() const
+
+void Card::set_id(int i){id=i;}
+
+void Card::set_init_time(long t)
 {
-	return static_cast<int>(time(0))/86400;
+    timestamp=lastime=t;
+    next_review=t+86400;
 }
 
-int Card::test()
-{
+long Card::get_nextReview() const {return next_review;}
 
+void Card::test_update(int ac)
+{
+    review_times++;
+    if(ac) ac_time++;
+    long tnow = QDateTime::currentDateTime().toSecsSinceEpoch();
+    next_review = tnow+(tnow-lastime+86400)/(2-ac);
+    lastime = tnow;
 }
 
 void Card::set_title(QString title_)
@@ -55,7 +61,7 @@ int Card::print_test(){}
 
 void Card::print(){}
 
-QString Card::add(int x){return "null";}
+QString Card::add_display(int x) const{return "null";}
 
 QString Card::option(int id, QString str){return "null";}
 

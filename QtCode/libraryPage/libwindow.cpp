@@ -1,6 +1,5 @@
 #include "libwindow.h"
 #include "ui_libwindow.h"
-#include "test.h"
 #include "LoginInfo.h"
 
 #include <QtSql>
@@ -33,9 +32,11 @@ void LibWindow::addCard_data(Card *temp)
 {
     QSqlQuery update;
     long timestamp = QDateTime::currentDateTime().toSecsSinceEpoch();
-    QString sqlUpdate = QString("INSERT INTO card (`type`,account,title,review_times,ac_time,create_time,last_review,question,answer,proficiency) VALUES (%1,%2,'%3',%4,%5,%6,%7,'%8','%9',%10)")
+    temp->set_id(LoginInfo::getId());
+    temp->set_init_time(timestamp);
+    QString sqlUpdate = QString("INSERT INTO card (`type`,account,title,review_times,ac_time,create_time,last_review,question,answer,next_review) VALUES (%1,%2,'%3',%4,%5,%6,%7,'%8','%9',%10)")
                             .arg(int(temp->get_type())) // type
-                            .arg(LoginInfo::getId())        // accountId
+                            .arg(temp->get_id())        // accountId
                             .arg(temp->title)               // title
                             .arg(0)                         // review_times
                             .arg(0)                         // ac_time
@@ -43,7 +44,7 @@ void LibWindow::addCard_data(Card *temp)
                             .arg(timestamp)                 // last_review
                             .arg(temp->get_prob())          // question
                             .arg(temp->option(3))           // answer
-                            .arg(0);                        // proficiency
+                            .arg(temp->get_nextReview());   // next_review
     qDebug() << "Generated sql: " << sqlUpdate;
     if (!update.exec(sqlUpdate))
         qDebug() << "Query Error: " << update.lastError().driverText();

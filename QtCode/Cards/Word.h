@@ -11,15 +11,13 @@ using std::vector;
 class Word : public Card
 {
 private:
-    QString word;
-    vector<string> trans;
+    QString trans;
 
 public:
     Word();
     ~Word();
     virtual int print_test();
-    virtual QString add(int);
-    virtual void print();
+    virtual QString add_display(int) const;
     virtual QString option(int id = 0, QString str = "");
 };
 

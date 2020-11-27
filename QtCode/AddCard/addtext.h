@@ -5,7 +5,6 @@
 #include "../Cards/Cards.h"
 #include <QTextCursor>
 #include <QColor>
-#include <QBrush>
 #include <QTextCharFormat>
 #include <QList>
 #include "APIRequest.h"
@@ -22,7 +21,6 @@ class addText : public QMainWindow
 public:
     explicit addText(QWidget *parent = nullptr);
     ~addText();
-    void init();
 
 signals:
     void second_finish();

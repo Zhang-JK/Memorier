@@ -17,7 +17,7 @@ Word::Word():Card()
 
 Word::~Word() {}
 
-QString Word::add(int x)
+QString Word::add_display(int x) const
 {
     if(x==1) return "The title:";
     if(x==2) return "New word:";
@@ -25,10 +25,6 @@ QString Word::add(int x)
     return "null";
 }
 
-void Word::print()
-{
-	//waiting GUI
-}
 
 
 int Word::print_test()
@@ -40,17 +36,14 @@ int Word::print_test()
 
 QString Word::option(int id, QString str)
 {
-    if(id==1) word = str;
+    if(id==1) trans = str;
     if(id==2)
     {
-        return translateAPI(str);
+        return translateAPI(str,"zh","en");
     }
     if(id==3)
     {
-        QString ans = "";
-        for(int i = 0; i < trans.size(); i++)
-            ans += (QString::fromStdString(trans[i]) + ";" + QString::fromStdString(trans[i]) + ";");
-        return ans;
+        return trans;
     }
     return "null";
 }
