@@ -19,7 +19,7 @@ Click [Here](https://drive.google.com/file/d/1QqJLKz9xDS4XIAxSsNljEVxRXbxd51rZ/v
 **Objective: Qt Design, [Here](https://drive.google.com/file/d/1QqJLKz9xDS4XIAxSsNljEVxRXbxd51rZ/view?usp=sharing) is the GUI Design**
 - [x] Welcome Page
 - [x] Login and Sign Up page
-- [ ] Main Library page
+- [x] Main Library page
 - [ ] Add cards
 - [ ] Review page
 - [ ] Testing page
@@ -28,6 +28,7 @@ Click [Here](https://drive.google.com/file/d/1QqJLKz9xDS4XIAxSsNljEVxRXbxd51rZ/v
 ### 3. Optimization
 **Optimization The Project**
 - [x] Auto Login and password protection
+- [x] Merge projects
 - [ ] More API to implement auxiliary functions (auto word select, auto translate...)
 - [ ] Port to Android platform
 - [ ] Add setting page 
