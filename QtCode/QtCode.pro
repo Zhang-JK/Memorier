@@ -5,13 +5,12 @@
 TEMPLATE = app
 TARGET = Memorier
 INCLUDEPATH += . \
-               ./APIs \
                ./tools \
+               ./tools/APIs \
                ./libraryPage \
                ./LoginAndMainpage \
-               ./NotonlyAddCard \
-               ./NotonlyAddCard/AddCard \
-               ./NotonlyAddCard/Cards 
+               ./AddCard \
+               ./Cards 
 DESTDIR += ./debug
 QT += widgets core gui
 QT += sql
@@ -26,7 +25,7 @@ CONFIG += debug
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 # Input
-HEADERS += APIs/APIRequest.h \
+HEADERS += tools/APIs/APIRequest.h \
            LoginAndMainpage/loginwindow.h \
            LoginAndMainpage/mainwindow.h \
            LoginAndMainpage/signupwindow.h \
@@ -52,7 +51,7 @@ FORMS += LoginAndMainpage/loginwindow.ui \
          AddCard/addtext.ui \
          libraryPage/libwindow.ui
 SOURCES += main.cpp \
-           APIs/APIRequest.cpp \
+           tools/APIs/APIRequest.cpp \
            LoginAndMainpage/loginwindow.cpp \
            LoginAndMainpage/main_login.cpp \
            LoginAndMainpage/mainwindow.cpp \

@@ -17,7 +17,7 @@ CXX           = g++
 DEFINES       = -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_SQL_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB
 CFLAGS        = -pipe -g -Wall -Wextra -D_REENTRANT -fPIC $(DEFINES)
 CXXFLAGS      = -pipe -g -Wall -Wextra -D_REENTRANT -fPIC $(DEFINES)
-INCPATH       = -I. -I. -IAPIs -Itools -IlibraryPage -ILoginAndMainpage -INotonlyAddCard -INotonlyAddCard/AddCard -INotonlyAddCard/Cards -I/home/lao_jk/Qt/5.15.1/gcc_64/include -I/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets -I/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui -I/home/lao_jk/Qt/5.15.1/gcc_64/include/QtSql -I/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork -I/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore -I. -I/usr/include/libdrm -I. -I/home/lao_jk/Qt/5.15.1/gcc_64/mkspecs/linux-g++
+INCPATH       = -I. -I. -Itools -Itools/APIs -IlibraryPage -ILoginAndMainpage -IAddCard -ICards -I/home/lao_jk/Qt/5.15.1/gcc_64/include -I/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets -I/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui -I/home/lao_jk/Qt/5.15.1/gcc_64/include/QtSql -I/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork -I/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore -I. -I/usr/include/libdrm -I. -I/home/lao_jk/Qt/5.15.1/gcc_64/mkspecs/linux-g++
 QMAKE         = /home/lao_jk/Qt/5.15.1/gcc_64/bin/qmake
 DEL_FILE      = rm -f
 CHK_DIR_EXISTS= test -d
@@ -53,30 +53,27 @@ OBJECTS_DIR   = ./
 ####### Files
 
 SOURCES       = main.cpp \
-		APIs/APIRequest.cpp \
+		tools/APIs/APIRequest.cpp \
 		LoginAndMainpage/loginwindow.cpp \
 		LoginAndMainpage/main_login.cpp \
 		LoginAndMainpage/mainwindow.cpp \
 		LoginAndMainpage/signupwindow.cpp \
-		NotonlyAddCard/main_test.cpp \
-		NotonlyAddCard/test.cpp \
 		libraryPage/libwindow.cpp \
 		tools/LoginInfo.cpp \
 		tools/tools.cpp \
-		NotonlyAddCard/AddCard/addcard.cpp \
-		NotonlyAddCard/AddCard/addcardmain.cpp \
-		NotonlyAddCard/AddCard/addchoices.cpp \
-		NotonlyAddCard/AddCard/addtext.cpp \
-		NotonlyAddCard/Cards/Card.cpp \
-		NotonlyAddCard/Cards/Choices.cpp \
-		NotonlyAddCard/Cards/Plain.cpp \
-		NotonlyAddCard/Cards/Text.cpp \
-		NotonlyAddCard/Cards/Word.cpp qrc_assets.cpp \
+		AddCard/addcard.cpp \
+		AddCard/addcardmain.cpp \
+		AddCard/addchoices.cpp \
+		AddCard/addtext.cpp \
+		Cards/Card.cpp \
+		Cards/Choices.cpp \
+		Cards/Plain.cpp \
+		Cards/Text.cpp \
+		Cards/Word.cpp qrc_assets.cpp \
 		qrc_assets_lib.cpp \
 		moc_loginwindow.cpp \
 		moc_mainwindow.cpp \
 		moc_signupwindow.cpp \
-		moc_test.cpp \
 		moc_libwindow.cpp \
 		moc_addcard.cpp \
 		moc_addcardmain.cpp \
@@ -88,8 +85,6 @@ OBJECTS       = main.o \
 		main_login.o \
 		mainwindow.o \
 		signupwindow.o \
-		main_test.o \
-		test.o \
 		libwindow.o \
 		LoginInfo.o \
 		tools.o \
@@ -107,7 +102,6 @@ OBJECTS       = main.o \
 		moc_loginwindow.o \
 		moc_mainwindow.o \
 		moc_signupwindow.o \
-		moc_test.o \
 		moc_libwindow.o \
 		moc_addcard.o \
 		moc_addcardmain.o \
@@ -289,43 +283,40 @@ DIST          = /home/lao_jk/Qt/5.15.1/gcc_64/mkspecs/features/spec_pre.prf \
 		/home/lao_jk/Qt/5.15.1/gcc_64/mkspecs/features/exceptions.prf \
 		/home/lao_jk/Qt/5.15.1/gcc_64/mkspecs/features/yacc.prf \
 		/home/lao_jk/Qt/5.15.1/gcc_64/mkspecs/features/lex.prf \
-		QtCode.pro APIs/APIRequest.h \
+		QtCode.pro tools/APIs/APIRequest.h \
 		LoginAndMainpage/loginwindow.h \
 		LoginAndMainpage/mainwindow.h \
 		LoginAndMainpage/signupwindow.h \
-		NotonlyAddCard/test.h \
 		libraryPage/libwindow.h \
 		tools/LoginInfo.h \
 		tools/tools.h \
-		NotonlyAddCard/AddCard/addcard.h \
-		NotonlyAddCard/AddCard/addcardmain.h \
-		NotonlyAddCard/AddCard/addchoices.h \
-		NotonlyAddCard/AddCard/addtext.h \
-		NotonlyAddCard/Cards/Card.h \
-		NotonlyAddCard/Cards/Cards.h \
-		NotonlyAddCard/Cards/Choices.h \
-		NotonlyAddCard/Cards/Plain.h \
-		NotonlyAddCard/Cards/Text.h \
-		NotonlyAddCard/Cards/Word.h main.cpp \
-		APIs/APIRequest.cpp \
+		AddCard/addcard.h \
+		AddCard/addcardmain.h \
+		AddCard/addchoices.h \
+		AddCard/addtext.h \
+		Cards/Card.h \
+		Cards/Cards.h \
+		Cards/Choices.h \
+		Cards/Plain.h \
+		Cards/Text.h \
+		Cards/Word.h main.cpp \
+		tools/APIs/APIRequest.cpp \
 		LoginAndMainpage/loginwindow.cpp \
 		LoginAndMainpage/main_login.cpp \
 		LoginAndMainpage/mainwindow.cpp \
 		LoginAndMainpage/signupwindow.cpp \
-		NotonlyAddCard/main_test.cpp \
-		NotonlyAddCard/test.cpp \
 		libraryPage/libwindow.cpp \
 		tools/LoginInfo.cpp \
 		tools/tools.cpp \
-		NotonlyAddCard/AddCard/addcard.cpp \
-		NotonlyAddCard/AddCard/addcardmain.cpp \
-		NotonlyAddCard/AddCard/addchoices.cpp \
-		NotonlyAddCard/AddCard/addtext.cpp \
-		NotonlyAddCard/Cards/Card.cpp \
-		NotonlyAddCard/Cards/Choices.cpp \
-		NotonlyAddCard/Cards/Plain.cpp \
-		NotonlyAddCard/Cards/Text.cpp \
-		NotonlyAddCard/Cards/Word.cpp
+		AddCard/addcard.cpp \
+		AddCard/addcardmain.cpp \
+		AddCard/addchoices.cpp \
+		AddCard/addtext.cpp \
+		Cards/Card.cpp \
+		Cards/Choices.cpp \
+		Cards/Plain.cpp \
+		Cards/Text.cpp \
+		Cards/Word.cpp
 QMAKE_TARGET  = Memorier
 DESTDIR       = debug/
 TARGET        = debug/Memorier
@@ -334,7 +325,7 @@ TARGET        = debug/Memorier
 first: all
 ####### Build rules
 
-debug/Memorier: ui_loginwindow.h ui_mainwindow.h ui_signupwindow.h ui_test.h ui_addcard.h ui_addcardmain.h ui_addchoices.h ui_addtext.h ui_libwindow.h $(OBJECTS)  
+debug/Memorier: ui_loginwindow.h ui_mainwindow.h ui_signupwindow.h ui_addcard.h ui_addcardmain.h ui_addchoices.h ui_addtext.h ui_libwindow.h $(OBJECTS)  
 	@test -d debug/ || mkdir -p debug/
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
 
@@ -713,9 +704,9 @@ distdir: FORCE
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents LoginAndMainpage/assets.qrc libraryPage/assets_lib.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents /home/lao_jk/Qt/5.15.1/gcc_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents APIs/APIRequest.h LoginAndMainpage/loginwindow.h LoginAndMainpage/mainwindow.h LoginAndMainpage/signupwindow.h NotonlyAddCard/test.h libraryPage/libwindow.h tools/LoginInfo.h tools/tools.h NotonlyAddCard/AddCard/addcard.h NotonlyAddCard/AddCard/addcardmain.h NotonlyAddCard/AddCard/addchoices.h NotonlyAddCard/AddCard/addtext.h NotonlyAddCard/Cards/Card.h NotonlyAddCard/Cards/Cards.h NotonlyAddCard/Cards/Choices.h NotonlyAddCard/Cards/Plain.h NotonlyAddCard/Cards/Text.h NotonlyAddCard/Cards/Word.h $(DISTDIR)/
-	$(COPY_FILE) --parents main.cpp APIs/APIRequest.cpp LoginAndMainpage/loginwindow.cpp LoginAndMainpage/main_login.cpp LoginAndMainpage/mainwindow.cpp LoginAndMainpage/signupwindow.cpp NotonlyAddCard/main_test.cpp NotonlyAddCard/test.cpp libraryPage/libwindow.cpp tools/LoginInfo.cpp tools/tools.cpp NotonlyAddCard/AddCard/addcard.cpp NotonlyAddCard/AddCard/addcardmain.cpp NotonlyAddCard/AddCard/addchoices.cpp NotonlyAddCard/AddCard/addtext.cpp NotonlyAddCard/Cards/Card.cpp NotonlyAddCard/Cards/Choices.cpp NotonlyAddCard/Cards/Plain.cpp NotonlyAddCard/Cards/Text.cpp NotonlyAddCard/Cards/Word.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents LoginAndMainpage/loginwindow.ui LoginAndMainpage/mainwindow.ui LoginAndMainpage/signupwindow.ui NotonlyAddCard/test.ui NotonlyAddCard/AddCard/addcard.ui NotonlyAddCard/AddCard/addcardmain.ui NotonlyAddCard/AddCard/addchoices.ui NotonlyAddCard/AddCard/addtext.ui libraryPage/libwindow.ui $(DISTDIR)/
+	$(COPY_FILE) --parents tools/APIs/APIRequest.h LoginAndMainpage/loginwindow.h LoginAndMainpage/mainwindow.h LoginAndMainpage/signupwindow.h libraryPage/libwindow.h tools/LoginInfo.h tools/tools.h AddCard/addcard.h AddCard/addcardmain.h AddCard/addchoices.h AddCard/addtext.h Cards/Card.h Cards/Cards.h Cards/Choices.h Cards/Plain.h Cards/Text.h Cards/Word.h $(DISTDIR)/
+	$(COPY_FILE) --parents main.cpp tools/APIs/APIRequest.cpp LoginAndMainpage/loginwindow.cpp LoginAndMainpage/main_login.cpp LoginAndMainpage/mainwindow.cpp LoginAndMainpage/signupwindow.cpp libraryPage/libwindow.cpp tools/LoginInfo.cpp tools/tools.cpp AddCard/addcard.cpp AddCard/addcardmain.cpp AddCard/addchoices.cpp AddCard/addtext.cpp Cards/Card.cpp Cards/Choices.cpp Cards/Plain.cpp Cards/Text.cpp Cards/Word.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents LoginAndMainpage/loginwindow.ui LoginAndMainpage/mainwindow.ui LoginAndMainpage/signupwindow.ui AddCard/addcard.ui AddCard/addcardmain.ui AddCard/addchoices.ui AddCard/addtext.ui libraryPage/libwindow.ui $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -762,9 +753,9 @@ compiler_moc_predefs_clean:
 moc_predefs.h: /home/lao_jk/Qt/5.15.1/gcc_64/mkspecs/features/data/dummy.cpp
 	g++ -pipe -g -Wall -Wextra -dM -E -o moc_predefs.h /home/lao_jk/Qt/5.15.1/gcc_64/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc_loginwindow.cpp moc_mainwindow.cpp moc_signupwindow.cpp moc_test.cpp moc_libwindow.cpp moc_addcard.cpp moc_addcardmain.cpp moc_addchoices.cpp moc_addtext.cpp
+compiler_moc_header_make_all: moc_loginwindow.cpp moc_mainwindow.cpp moc_signupwindow.cpp moc_libwindow.cpp moc_addcard.cpp moc_addcardmain.cpp moc_addchoices.cpp moc_addtext.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_loginwindow.cpp moc_mainwindow.cpp moc_signupwindow.cpp moc_test.cpp moc_libwindow.cpp moc_addcard.cpp moc_addcardmain.cpp moc_addchoices.cpp moc_addtext.cpp
+	-$(DEL_FILE) moc_loginwindow.cpp moc_mainwindow.cpp moc_signupwindow.cpp moc_libwindow.cpp moc_addcard.cpp moc_addcardmain.cpp moc_addchoices.cpp moc_addtext.cpp
 moc_loginwindow.cpp: LoginAndMainpage/loginwindow.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QMainWindow \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qmainwindow.h \
@@ -874,7 +865,7 @@ moc_loginwindow.cpp: LoginAndMainpage/loginwindow.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qicon.h \
 		moc_predefs.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/bin/moc
-	/home/lao_jk/Qt/5.15.1/gcc_64/bin/moc $(DEFINES) --include '/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/moc_predefs.h' -I/home/lao_jk/Qt/5.15.1/gcc_64/mkspecs/linux-g++ -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/APIs' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/tools' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/libraryPage' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/LoginAndMainpage' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/NotonlyAddCard' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/NotonlyAddCard/AddCard' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/NotonlyAddCard/Cards' -I/home/lao_jk/Qt/5.15.1/gcc_64/include -I/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets -I/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui -I/home/lao_jk/Qt/5.15.1/gcc_64/include/QtSql -I/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork -I/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include LoginAndMainpage/loginwindow.h -o moc_loginwindow.cpp
+	/home/lao_jk/Qt/5.15.1/gcc_64/bin/moc $(DEFINES) --include '/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/moc_predefs.h' -I/home/lao_jk/Qt/5.15.1/gcc_64/mkspecs/linux-g++ -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/tools' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/tools/APIs' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/libraryPage' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/LoginAndMainpage' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/AddCard' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/Cards' -I/home/lao_jk/Qt/5.15.1/gcc_64/include -I/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets -I/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui -I/home/lao_jk/Qt/5.15.1/gcc_64/include/QtSql -I/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork -I/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include LoginAndMainpage/loginwindow.h -o moc_loginwindow.cpp
 
 moc_mainwindow.cpp: LoginAndMainpage/mainwindow.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QMainWindow \
@@ -985,7 +976,7 @@ moc_mainwindow.cpp: LoginAndMainpage/mainwindow.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qicon.h \
 		moc_predefs.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/bin/moc
-	/home/lao_jk/Qt/5.15.1/gcc_64/bin/moc $(DEFINES) --include '/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/moc_predefs.h' -I/home/lao_jk/Qt/5.15.1/gcc_64/mkspecs/linux-g++ -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/APIs' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/tools' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/libraryPage' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/LoginAndMainpage' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/NotonlyAddCard' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/NotonlyAddCard/AddCard' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/NotonlyAddCard/Cards' -I/home/lao_jk/Qt/5.15.1/gcc_64/include -I/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets -I/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui -I/home/lao_jk/Qt/5.15.1/gcc_64/include/QtSql -I/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork -I/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include LoginAndMainpage/mainwindow.h -o moc_mainwindow.cpp
+	/home/lao_jk/Qt/5.15.1/gcc_64/bin/moc $(DEFINES) --include '/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/moc_predefs.h' -I/home/lao_jk/Qt/5.15.1/gcc_64/mkspecs/linux-g++ -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/tools' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/tools/APIs' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/libraryPage' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/LoginAndMainpage' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/AddCard' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/Cards' -I/home/lao_jk/Qt/5.15.1/gcc_64/include -I/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets -I/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui -I/home/lao_jk/Qt/5.15.1/gcc_64/include/QtSql -I/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork -I/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include LoginAndMainpage/mainwindow.h -o moc_mainwindow.cpp
 
 moc_signupwindow.cpp: LoginAndMainpage/signupwindow.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QMainWindow \
@@ -1096,189 +1087,7 @@ moc_signupwindow.cpp: LoginAndMainpage/signupwindow.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qicon.h \
 		moc_predefs.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/bin/moc
-	/home/lao_jk/Qt/5.15.1/gcc_64/bin/moc $(DEFINES) --include '/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/moc_predefs.h' -I/home/lao_jk/Qt/5.15.1/gcc_64/mkspecs/linux-g++ -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/APIs' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/tools' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/libraryPage' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/LoginAndMainpage' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/NotonlyAddCard' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/NotonlyAddCard/AddCard' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/NotonlyAddCard/Cards' -I/home/lao_jk/Qt/5.15.1/gcc_64/include -I/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets -I/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui -I/home/lao_jk/Qt/5.15.1/gcc_64/include/QtSql -I/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork -I/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include LoginAndMainpage/signupwindow.h -o moc_signupwindow.cpp
-
-moc_test.cpp: NotonlyAddCard/test.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QMainWindow \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qmainwindow.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qtguiglobal.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qglobal.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qconfig-bootstrapped.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qconfig.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qtcore-config.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qsystemdetection.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qprocessordetection.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcompilerdetection.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qtypeinfo.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qsysinfo.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qlogging.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qflags.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qatomic.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qbasicatomic.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qatomic_bootstrap.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qgenericatomic.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qatomic_cxx11.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qatomic_msvc.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qglobalstatic.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qmutex.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qnumeric.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qversiontagging.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qtgui-config.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qtwidgets-config.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qwidget.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qwindowdefs.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qobjectdefs.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qnamespace.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qobjectdefs_impl.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qwindowdefs_win.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qobject.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qstring.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qchar.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qbytearray.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qrefcount.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qarraydata.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qstringliteral.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qstringalgorithms.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qstringview.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qstringbuilder.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qlist.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qalgorithms.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qiterator.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qhashfunctions.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qpair.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qvector.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcontainertools_impl.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qpoint.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qbytearraylist.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qstringlist.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qregexp.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qstringmatcher.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcoreevent.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qscopedpointer.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qmetatype.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qvarlengtharray.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcontainerfwd.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qobject_impl.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qmargins.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qpaintdevice.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qrect.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qsize.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qpalette.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qcolor.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qrgb.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qrgba64.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qbrush.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qmatrix.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qpolygon.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qregion.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qdatastream.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qiodevice.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qline.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qtransform.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qimage.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qpixelformat.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qpixmap.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qsharedpointer.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qshareddata.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qhash.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qsharedpointer_impl.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qfont.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qfontmetrics.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qfontinfo.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qsizepolicy.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qcursor.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qkeysequence.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qevent.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qvariant.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qmap.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qdebug.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qtextstream.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qlocale.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qset.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcontiguouscache.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qurl.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qurlquery.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qfile.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qfiledevice.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qvector2d.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qtouchdevice.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qtabwidget.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qicon.h \
-		NotonlyAddCard/AddCard/addcard.h \
-		NotonlyAddCard/AddCard/addcardmain.h \
-		NotonlyAddCard/Cards/Cards.h \
-		NotonlyAddCard/Cards/Card.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QString \
-		NotonlyAddCard/Cards/Plain.h \
-		NotonlyAddCard/Cards/Word.h \
-		APIs/APIRequest.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork/QNetworkAccessManager \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork/qnetworkaccessmanager.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork/qtnetworkglobal.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork/qtnetwork-config.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork/qnetworkrequest.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QSharedDataPointer \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QUrl \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QVariant \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QVector \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QObject \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork/QSslConfiguration \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork/qsslconfiguration.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork/qsslsocket.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork/qtcpsocket.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork/qabstractsocket.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork/qsslerror.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork/qsslcertificate.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcryptographichash.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qdatetime.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork/qssl.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QFlags \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork/QSslPreSharedKeyAuthenticator \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork/qsslpresharedkeyauthenticator.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QMetaType \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork/QNetworkRequest \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork/QNetworkReply \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork/qnetworkreply.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QIODevice \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QUrlQuery \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QJsonDocument \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qjsondocument.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qjsonvalue.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcborvalue.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcborcommon.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qregularexpression.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/quuid.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QJsonObject \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qjsonobject.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QJsonArray \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qjsonarray.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QEventLoop \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qeventloop.h \
-		NotonlyAddCard/Cards/Choices.h \
-		NotonlyAddCard/Cards/Text.h \
-		NotonlyAddCard/AddCard/addtext.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/QTextCursor \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qtextcursor.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qtextformat.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qpen.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qtextoption.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/QColor \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/QBrush \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/QTextCharFormat \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QList \
-		NotonlyAddCard/AddCard/addchoices.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QTextEdit \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qtextedit.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qabstractscrollarea.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qframe.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qtextdocument.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QCheckBox \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qcheckbox.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qabstractbutton.h \
-		moc_predefs.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/bin/moc
-	/home/lao_jk/Qt/5.15.1/gcc_64/bin/moc $(DEFINES) --include '/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/moc_predefs.h' -I/home/lao_jk/Qt/5.15.1/gcc_64/mkspecs/linux-g++ -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/APIs' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/tools' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/libraryPage' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/LoginAndMainpage' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/NotonlyAddCard' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/NotonlyAddCard/AddCard' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/NotonlyAddCard/Cards' -I/home/lao_jk/Qt/5.15.1/gcc_64/include -I/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets -I/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui -I/home/lao_jk/Qt/5.15.1/gcc_64/include/QtSql -I/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork -I/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include NotonlyAddCard/test.h -o moc_test.cpp
+	/home/lao_jk/Qt/5.15.1/gcc_64/bin/moc $(DEFINES) --include '/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/moc_predefs.h' -I/home/lao_jk/Qt/5.15.1/gcc_64/mkspecs/linux-g++ -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/tools' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/tools/APIs' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/libraryPage' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/LoginAndMainpage' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/AddCard' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/Cards' -I/home/lao_jk/Qt/5.15.1/gcc_64/include -I/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets -I/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui -I/home/lao_jk/Qt/5.15.1/gcc_64/include/QtSql -I/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork -I/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include LoginAndMainpage/signupwindow.h -o moc_signupwindow.cpp
 
 moc_libwindow.cpp: libraryPage/libwindow.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QMainWindow \
@@ -1387,14 +1196,14 @@ moc_libwindow.cpp: libraryPage/libwindow.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qtouchdevice.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qtabwidget.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qicon.h \
-		NotonlyAddCard/AddCard/addcard.h \
-		NotonlyAddCard/AddCard/addcardmain.h \
-		NotonlyAddCard/Cards/Cards.h \
-		NotonlyAddCard/Cards/Card.h \
+		AddCard/addcard.h \
+		AddCard/addcardmain.h \
+		Cards/Cards.h \
+		Cards/Card.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QString \
-		NotonlyAddCard/Cards/Plain.h \
-		NotonlyAddCard/Cards/Word.h \
-		APIs/APIRequest.h \
+		Cards/Plain.h \
+		Cards/Word.h \
+		tools/APIs/APIRequest.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork/QNetworkAccessManager \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork/qnetworkaccessmanager.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork/qtnetworkglobal.h \
@@ -1437,19 +1246,18 @@ moc_libwindow.cpp: libraryPage/libwindow.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qjsonarray.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QEventLoop \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qeventloop.h \
-		NotonlyAddCard/Cards/Choices.h \
-		NotonlyAddCard/Cards/Text.h \
-		NotonlyAddCard/AddCard/addtext.h \
+		Cards/Choices.h \
+		Cards/Text.h \
+		AddCard/addtext.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/QTextCursor \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qtextcursor.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qtextformat.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qpen.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qtextoption.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/QColor \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/QBrush \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/QTextCharFormat \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QList \
-		NotonlyAddCard/AddCard/addchoices.h \
+		AddCard/addchoices.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QTextEdit \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qtextedit.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qabstractscrollarea.h \
@@ -1460,9 +1268,9 @@ moc_libwindow.cpp: libraryPage/libwindow.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qabstractbutton.h \
 		moc_predefs.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/bin/moc
-	/home/lao_jk/Qt/5.15.1/gcc_64/bin/moc $(DEFINES) --include '/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/moc_predefs.h' -I/home/lao_jk/Qt/5.15.1/gcc_64/mkspecs/linux-g++ -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/APIs' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/tools' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/libraryPage' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/LoginAndMainpage' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/NotonlyAddCard' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/NotonlyAddCard/AddCard' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/NotonlyAddCard/Cards' -I/home/lao_jk/Qt/5.15.1/gcc_64/include -I/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets -I/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui -I/home/lao_jk/Qt/5.15.1/gcc_64/include/QtSql -I/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork -I/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include libraryPage/libwindow.h -o moc_libwindow.cpp
+	/home/lao_jk/Qt/5.15.1/gcc_64/bin/moc $(DEFINES) --include '/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/moc_predefs.h' -I/home/lao_jk/Qt/5.15.1/gcc_64/mkspecs/linux-g++ -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/tools' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/tools/APIs' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/libraryPage' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/LoginAndMainpage' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/AddCard' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/Cards' -I/home/lao_jk/Qt/5.15.1/gcc_64/include -I/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets -I/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui -I/home/lao_jk/Qt/5.15.1/gcc_64/include/QtSql -I/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork -I/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include libraryPage/libwindow.h -o moc_libwindow.cpp
 
-moc_addcard.cpp: NotonlyAddCard/AddCard/addcard.h \
+moc_addcard.cpp: AddCard/addcard.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QMainWindow \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qmainwindow.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
@@ -1569,13 +1377,13 @@ moc_addcard.cpp: NotonlyAddCard/AddCard/addcard.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qtouchdevice.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qtabwidget.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qicon.h \
-		NotonlyAddCard/AddCard/addcardmain.h \
-		NotonlyAddCard/Cards/Cards.h \
-		NotonlyAddCard/Cards/Card.h \
+		AddCard/addcardmain.h \
+		Cards/Cards.h \
+		Cards/Card.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QString \
-		NotonlyAddCard/Cards/Plain.h \
-		NotonlyAddCard/Cards/Word.h \
-		APIs/APIRequest.h \
+		Cards/Plain.h \
+		Cards/Word.h \
+		tools/APIs/APIRequest.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork/QNetworkAccessManager \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork/qnetworkaccessmanager.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork/qtnetworkglobal.h \
@@ -1618,19 +1426,18 @@ moc_addcard.cpp: NotonlyAddCard/AddCard/addcard.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qjsonarray.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QEventLoop \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qeventloop.h \
-		NotonlyAddCard/Cards/Choices.h \
-		NotonlyAddCard/Cards/Text.h \
-		NotonlyAddCard/AddCard/addtext.h \
+		Cards/Choices.h \
+		Cards/Text.h \
+		AddCard/addtext.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/QTextCursor \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qtextcursor.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qtextformat.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qpen.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qtextoption.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/QColor \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/QBrush \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/QTextCharFormat \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QList \
-		NotonlyAddCard/AddCard/addchoices.h \
+		AddCard/addchoices.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QTextEdit \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qtextedit.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qabstractscrollarea.h \
@@ -1641,9 +1448,9 @@ moc_addcard.cpp: NotonlyAddCard/AddCard/addcard.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qabstractbutton.h \
 		moc_predefs.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/bin/moc
-	/home/lao_jk/Qt/5.15.1/gcc_64/bin/moc $(DEFINES) --include '/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/moc_predefs.h' -I/home/lao_jk/Qt/5.15.1/gcc_64/mkspecs/linux-g++ -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/APIs' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/tools' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/libraryPage' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/LoginAndMainpage' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/NotonlyAddCard' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/NotonlyAddCard/AddCard' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/NotonlyAddCard/Cards' -I/home/lao_jk/Qt/5.15.1/gcc_64/include -I/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets -I/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui -I/home/lao_jk/Qt/5.15.1/gcc_64/include/QtSql -I/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork -I/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include NotonlyAddCard/AddCard/addcard.h -o moc_addcard.cpp
+	/home/lao_jk/Qt/5.15.1/gcc_64/bin/moc $(DEFINES) --include '/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/moc_predefs.h' -I/home/lao_jk/Qt/5.15.1/gcc_64/mkspecs/linux-g++ -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/tools' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/tools/APIs' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/libraryPage' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/LoginAndMainpage' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/AddCard' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/Cards' -I/home/lao_jk/Qt/5.15.1/gcc_64/include -I/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets -I/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui -I/home/lao_jk/Qt/5.15.1/gcc_64/include/QtSql -I/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork -I/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include AddCard/addcard.h -o moc_addcard.cpp
 
-moc_addcardmain.cpp: NotonlyAddCard/AddCard/addcardmain.h \
+moc_addcardmain.cpp: AddCard/addcardmain.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QMainWindow \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qmainwindow.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
@@ -1750,12 +1557,12 @@ moc_addcardmain.cpp: NotonlyAddCard/AddCard/addcardmain.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qtouchdevice.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qtabwidget.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qicon.h \
-		NotonlyAddCard/Cards/Cards.h \
-		NotonlyAddCard/Cards/Card.h \
+		Cards/Cards.h \
+		Cards/Card.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QString \
-		NotonlyAddCard/Cards/Plain.h \
-		NotonlyAddCard/Cards/Word.h \
-		APIs/APIRequest.h \
+		Cards/Plain.h \
+		Cards/Word.h \
+		tools/APIs/APIRequest.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork/QNetworkAccessManager \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork/qnetworkaccessmanager.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork/qtnetworkglobal.h \
@@ -1798,13 +1605,13 @@ moc_addcardmain.cpp: NotonlyAddCard/AddCard/addcardmain.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qjsonarray.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QEventLoop \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qeventloop.h \
-		NotonlyAddCard/Cards/Choices.h \
-		NotonlyAddCard/Cards/Text.h \
+		Cards/Choices.h \
+		Cards/Text.h \
 		moc_predefs.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/bin/moc
-	/home/lao_jk/Qt/5.15.1/gcc_64/bin/moc $(DEFINES) --include '/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/moc_predefs.h' -I/home/lao_jk/Qt/5.15.1/gcc_64/mkspecs/linux-g++ -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/APIs' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/tools' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/libraryPage' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/LoginAndMainpage' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/NotonlyAddCard' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/NotonlyAddCard/AddCard' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/NotonlyAddCard/Cards' -I/home/lao_jk/Qt/5.15.1/gcc_64/include -I/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets -I/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui -I/home/lao_jk/Qt/5.15.1/gcc_64/include/QtSql -I/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork -I/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include NotonlyAddCard/AddCard/addcardmain.h -o moc_addcardmain.cpp
+	/home/lao_jk/Qt/5.15.1/gcc_64/bin/moc $(DEFINES) --include '/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/moc_predefs.h' -I/home/lao_jk/Qt/5.15.1/gcc_64/mkspecs/linux-g++ -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/tools' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/tools/APIs' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/libraryPage' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/LoginAndMainpage' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/AddCard' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/Cards' -I/home/lao_jk/Qt/5.15.1/gcc_64/include -I/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets -I/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui -I/home/lao_jk/Qt/5.15.1/gcc_64/include/QtSql -I/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork -I/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include AddCard/addcardmain.h -o moc_addcardmain.cpp
 
-moc_addchoices.cpp: NotonlyAddCard/AddCard/addchoices.h \
+moc_addchoices.cpp: AddCard/addchoices.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QMainWindow \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qmainwindow.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
@@ -1923,12 +1730,12 @@ moc_addchoices.cpp: NotonlyAddCard/AddCard/addchoices.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QCheckBox \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qcheckbox.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qabstractbutton.h \
-		NotonlyAddCard/Cards/Cards.h \
-		NotonlyAddCard/Cards/Card.h \
+		Cards/Cards.h \
+		Cards/Card.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QString \
-		NotonlyAddCard/Cards/Plain.h \
-		NotonlyAddCard/Cards/Word.h \
-		APIs/APIRequest.h \
+		Cards/Plain.h \
+		Cards/Word.h \
+		tools/APIs/APIRequest.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork/QNetworkAccessManager \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork/qnetworkaccessmanager.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork/qtnetworkglobal.h \
@@ -1971,13 +1778,13 @@ moc_addchoices.cpp: NotonlyAddCard/AddCard/addchoices.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qjsonarray.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QEventLoop \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qeventloop.h \
-		NotonlyAddCard/Cards/Choices.h \
-		NotonlyAddCard/Cards/Text.h \
+		Cards/Choices.h \
+		Cards/Text.h \
 		moc_predefs.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/bin/moc
-	/home/lao_jk/Qt/5.15.1/gcc_64/bin/moc $(DEFINES) --include '/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/moc_predefs.h' -I/home/lao_jk/Qt/5.15.1/gcc_64/mkspecs/linux-g++ -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/APIs' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/tools' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/libraryPage' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/LoginAndMainpage' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/NotonlyAddCard' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/NotonlyAddCard/AddCard' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/NotonlyAddCard/Cards' -I/home/lao_jk/Qt/5.15.1/gcc_64/include -I/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets -I/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui -I/home/lao_jk/Qt/5.15.1/gcc_64/include/QtSql -I/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork -I/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include NotonlyAddCard/AddCard/addchoices.h -o moc_addchoices.cpp
+	/home/lao_jk/Qt/5.15.1/gcc_64/bin/moc $(DEFINES) --include '/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/moc_predefs.h' -I/home/lao_jk/Qt/5.15.1/gcc_64/mkspecs/linux-g++ -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/tools' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/tools/APIs' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/libraryPage' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/LoginAndMainpage' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/AddCard' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/Cards' -I/home/lao_jk/Qt/5.15.1/gcc_64/include -I/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets -I/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui -I/home/lao_jk/Qt/5.15.1/gcc_64/include/QtSql -I/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork -I/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include AddCard/addchoices.h -o moc_addchoices.cpp
 
-moc_addtext.cpp: NotonlyAddCard/AddCard/addtext.h \
+moc_addtext.cpp: AddCard/addtext.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QMainWindow \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qmainwindow.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
@@ -2084,12 +1891,12 @@ moc_addtext.cpp: NotonlyAddCard/AddCard/addtext.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qtouchdevice.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qtabwidget.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qicon.h \
-		NotonlyAddCard/Cards/Cards.h \
-		NotonlyAddCard/Cards/Card.h \
+		Cards/Cards.h \
+		Cards/Card.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QString \
-		NotonlyAddCard/Cards/Plain.h \
-		NotonlyAddCard/Cards/Word.h \
-		APIs/APIRequest.h \
+		Cards/Plain.h \
+		Cards/Word.h \
+		tools/APIs/APIRequest.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork/QNetworkAccessManager \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork/qnetworkaccessmanager.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork/qtnetworkglobal.h \
@@ -2132,28 +1939,27 @@ moc_addtext.cpp: NotonlyAddCard/AddCard/addtext.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qjsonarray.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QEventLoop \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qeventloop.h \
-		NotonlyAddCard/Cards/Choices.h \
-		NotonlyAddCard/Cards/Text.h \
+		Cards/Choices.h \
+		Cards/Text.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/QTextCursor \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qtextcursor.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qtextformat.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qpen.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qtextoption.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/QColor \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/QBrush \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/QTextCharFormat \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QList \
 		moc_predefs.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/bin/moc
-	/home/lao_jk/Qt/5.15.1/gcc_64/bin/moc $(DEFINES) --include '/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/moc_predefs.h' -I/home/lao_jk/Qt/5.15.1/gcc_64/mkspecs/linux-g++ -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/APIs' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/tools' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/libraryPage' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/LoginAndMainpage' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/NotonlyAddCard' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/NotonlyAddCard/AddCard' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/NotonlyAddCard/Cards' -I/home/lao_jk/Qt/5.15.1/gcc_64/include -I/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets -I/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui -I/home/lao_jk/Qt/5.15.1/gcc_64/include/QtSql -I/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork -I/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include NotonlyAddCard/AddCard/addtext.h -o moc_addtext.cpp
+	/home/lao_jk/Qt/5.15.1/gcc_64/bin/moc $(DEFINES) --include '/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/moc_predefs.h' -I/home/lao_jk/Qt/5.15.1/gcc_64/mkspecs/linux-g++ -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/tools' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/tools/APIs' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/libraryPage' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/LoginAndMainpage' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/AddCard' -I'/home/lao_jk/OneDrive/HKUST/Course/2020 Fall/COMP2012H/Project/ProjectCode/QtCode/Cards' -I/home/lao_jk/Qt/5.15.1/gcc_64/include -I/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets -I/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui -I/home/lao_jk/Qt/5.15.1/gcc_64/include/QtSql -I/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork -I/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include AddCard/addtext.h -o moc_addtext.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_loginwindow.h ui_mainwindow.h ui_signupwindow.h ui_test.h ui_addcard.h ui_addcardmain.h ui_addchoices.h ui_addtext.h ui_libwindow.h
+compiler_uic_make_all: ui_loginwindow.h ui_mainwindow.h ui_signupwindow.h ui_addcard.h ui_addcardmain.h ui_addchoices.h ui_addtext.h ui_libwindow.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_loginwindow.h ui_mainwindow.h ui_signupwindow.h ui_test.h ui_addcard.h ui_addcardmain.h ui_addchoices.h ui_addtext.h ui_libwindow.h
+	-$(DEL_FILE) ui_loginwindow.h ui_mainwindow.h ui_signupwindow.h ui_addcard.h ui_addcardmain.h ui_addchoices.h ui_addtext.h ui_libwindow.h
 ui_loginwindow.h: LoginAndMainpage/loginwindow.ui \
 		/home/lao_jk/Qt/5.15.1/gcc_64/bin/uic
 	/home/lao_jk/Qt/5.15.1/gcc_64/bin/uic LoginAndMainpage/loginwindow.ui -o ui_loginwindow.h
@@ -2166,25 +1972,21 @@ ui_signupwindow.h: LoginAndMainpage/signupwindow.ui \
 		/home/lao_jk/Qt/5.15.1/gcc_64/bin/uic
 	/home/lao_jk/Qt/5.15.1/gcc_64/bin/uic LoginAndMainpage/signupwindow.ui -o ui_signupwindow.h
 
-ui_test.h: NotonlyAddCard/test.ui \
+ui_addcard.h: AddCard/addcard.ui \
 		/home/lao_jk/Qt/5.15.1/gcc_64/bin/uic
-	/home/lao_jk/Qt/5.15.1/gcc_64/bin/uic NotonlyAddCard/test.ui -o ui_test.h
+	/home/lao_jk/Qt/5.15.1/gcc_64/bin/uic AddCard/addcard.ui -o ui_addcard.h
 
-ui_addcard.h: NotonlyAddCard/AddCard/addcard.ui \
+ui_addcardmain.h: AddCard/addcardmain.ui \
 		/home/lao_jk/Qt/5.15.1/gcc_64/bin/uic
-	/home/lao_jk/Qt/5.15.1/gcc_64/bin/uic NotonlyAddCard/AddCard/addcard.ui -o ui_addcard.h
+	/home/lao_jk/Qt/5.15.1/gcc_64/bin/uic AddCard/addcardmain.ui -o ui_addcardmain.h
 
-ui_addcardmain.h: NotonlyAddCard/AddCard/addcardmain.ui \
+ui_addchoices.h: AddCard/addchoices.ui \
 		/home/lao_jk/Qt/5.15.1/gcc_64/bin/uic
-	/home/lao_jk/Qt/5.15.1/gcc_64/bin/uic NotonlyAddCard/AddCard/addcardmain.ui -o ui_addcardmain.h
+	/home/lao_jk/Qt/5.15.1/gcc_64/bin/uic AddCard/addchoices.ui -o ui_addchoices.h
 
-ui_addchoices.h: NotonlyAddCard/AddCard/addchoices.ui \
+ui_addtext.h: AddCard/addtext.ui \
 		/home/lao_jk/Qt/5.15.1/gcc_64/bin/uic
-	/home/lao_jk/Qt/5.15.1/gcc_64/bin/uic NotonlyAddCard/AddCard/addchoices.ui -o ui_addchoices.h
-
-ui_addtext.h: NotonlyAddCard/AddCard/addtext.ui \
-		/home/lao_jk/Qt/5.15.1/gcc_64/bin/uic
-	/home/lao_jk/Qt/5.15.1/gcc_64/bin/uic NotonlyAddCard/AddCard/addtext.ui -o ui_addtext.h
+	/home/lao_jk/Qt/5.15.1/gcc_64/bin/uic AddCard/addtext.ui -o ui_addtext.h
 
 ui_libwindow.h: libraryPage/libwindow.ui \
 		/home/lao_jk/Qt/5.15.1/gcc_64/bin/uic
@@ -2308,14 +2110,14 @@ main.o: main.cpp LoginAndMainpage/mainwindow.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qtabwidget.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qicon.h \
 		libraryPage/libwindow.h \
-		NotonlyAddCard/AddCard/addcard.h \
-		NotonlyAddCard/AddCard/addcardmain.h \
-		NotonlyAddCard/Cards/Cards.h \
-		NotonlyAddCard/Cards/Card.h \
+		AddCard/addcard.h \
+		AddCard/addcardmain.h \
+		Cards/Cards.h \
+		Cards/Card.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QString \
-		NotonlyAddCard/Cards/Plain.h \
-		NotonlyAddCard/Cards/Word.h \
-		APIs/APIRequest.h \
+		Cards/Plain.h \
+		Cards/Word.h \
+		tools/APIs/APIRequest.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork/QNetworkAccessManager \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork/qnetworkaccessmanager.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork/qtnetworkglobal.h \
@@ -2358,19 +2160,18 @@ main.o: main.cpp LoginAndMainpage/mainwindow.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qjsonarray.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QEventLoop \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qeventloop.h \
-		NotonlyAddCard/Cards/Choices.h \
-		NotonlyAddCard/Cards/Text.h \
-		NotonlyAddCard/AddCard/addtext.h \
+		Cards/Choices.h \
+		Cards/Text.h \
+		AddCard/addtext.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/QTextCursor \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qtextcursor.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qtextformat.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qpen.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qtextoption.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/QColor \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/QBrush \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/QTextCharFormat \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QList \
-		NotonlyAddCard/AddCard/addchoices.h \
+		AddCard/addchoices.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QTextEdit \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qtextedit.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qabstractscrollarea.h \
@@ -2535,7 +2336,7 @@ main.o: main.cpp LoginAndMainpage/mainwindow.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtSql/qtsqlversion.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o main.cpp
 
-APIRequest.o: APIs/APIRequest.cpp APIs/APIRequest.h \
+APIRequest.o: tools/APIs/APIRequest.cpp tools/APIs/APIRequest.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork/QNetworkAccessManager \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork/qnetworkaccessmanager.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork/qtnetworkglobal.h \
@@ -2645,7 +2446,7 @@ APIRequest.o: APIs/APIRequest.cpp APIs/APIRequest.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qjsonarray.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QEventLoop \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qeventloop.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o APIRequest.o APIs/APIRequest.cpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o APIRequest.o tools/APIs/APIRequest.cpp
 
 loginwindow.o: LoginAndMainpage/loginwindow.cpp LoginAndMainpage/loginwindow.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QMainWindow \
@@ -3363,13 +3164,13 @@ mainwindow.o: LoginAndMainpage/mainwindow.cpp LoginAndMainpage/mainwindow.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QString \
 		tools/tools.h \
 		libraryPage/libwindow.h \
-		NotonlyAddCard/AddCard/addcard.h \
-		NotonlyAddCard/AddCard/addcardmain.h \
-		NotonlyAddCard/Cards/Cards.h \
-		NotonlyAddCard/Cards/Card.h \
-		NotonlyAddCard/Cards/Plain.h \
-		NotonlyAddCard/Cards/Word.h \
-		APIs/APIRequest.h \
+		AddCard/addcard.h \
+		AddCard/addcardmain.h \
+		Cards/Cards.h \
+		Cards/Card.h \
+		Cards/Plain.h \
+		Cards/Word.h \
+		tools/APIs/APIRequest.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork/QNetworkAccessManager \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork/qnetworkaccessmanager.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork/qtnetworkglobal.h \
@@ -3410,19 +3211,18 @@ mainwindow.o: LoginAndMainpage/mainwindow.cpp LoginAndMainpage/mainwindow.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QJsonArray \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qjsonarray.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QEventLoop \
-		NotonlyAddCard/Cards/Choices.h \
-		NotonlyAddCard/Cards/Text.h \
-		NotonlyAddCard/AddCard/addtext.h \
+		Cards/Choices.h \
+		Cards/Text.h \
+		AddCard/addtext.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/QTextCursor \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qtextcursor.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qtextformat.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qpen.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qtextoption.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/QColor \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/QBrush \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/QTextCharFormat \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QList \
-		NotonlyAddCard/AddCard/addchoices.h \
+		AddCard/addchoices.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QTextEdit \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qtextedit.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qabstractscrollarea.h \
@@ -3881,534 +3681,6 @@ signupwindow.o: LoginAndMainpage/signupwindow.cpp LoginAndMainpage/signupwindow.
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtSql/qtsqlversion.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o signupwindow.o LoginAndMainpage/signupwindow.cpp
 
-main_test.o: NotonlyAddCard/main_test.cpp NotonlyAddCard/test.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QMainWindow \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qmainwindow.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qtguiglobal.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qglobal.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qconfig-bootstrapped.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qconfig.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qtcore-config.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qsystemdetection.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qprocessordetection.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcompilerdetection.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qtypeinfo.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qsysinfo.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qlogging.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qflags.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qatomic.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qbasicatomic.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qatomic_bootstrap.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qgenericatomic.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qatomic_cxx11.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qatomic_msvc.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qglobalstatic.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qmutex.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qnumeric.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qversiontagging.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qtgui-config.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qtwidgets-config.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qwidget.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qwindowdefs.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qobjectdefs.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qnamespace.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qobjectdefs_impl.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qwindowdefs_win.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qobject.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qstring.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qchar.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qbytearray.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qrefcount.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qarraydata.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qstringliteral.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qstringalgorithms.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qstringview.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qstringbuilder.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qlist.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qalgorithms.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qiterator.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qhashfunctions.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qpair.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qvector.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcontainertools_impl.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qpoint.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qbytearraylist.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qstringlist.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qregexp.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qstringmatcher.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcoreevent.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qscopedpointer.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qmetatype.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qvarlengtharray.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcontainerfwd.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qobject_impl.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qmargins.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qpaintdevice.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qrect.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qsize.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qpalette.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qcolor.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qrgb.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qrgba64.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qbrush.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qmatrix.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qpolygon.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qregion.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qdatastream.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qiodevice.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qline.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qtransform.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qimage.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qpixelformat.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qpixmap.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qsharedpointer.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qshareddata.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qhash.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qsharedpointer_impl.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qfont.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qfontmetrics.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qfontinfo.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qsizepolicy.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qcursor.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qkeysequence.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qevent.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qvariant.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qmap.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qdebug.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qtextstream.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qlocale.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qset.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcontiguouscache.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qurl.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qurlquery.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qfile.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qfiledevice.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qvector2d.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qtouchdevice.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qtabwidget.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qicon.h \
-		NotonlyAddCard/AddCard/addcard.h \
-		NotonlyAddCard/AddCard/addcardmain.h \
-		NotonlyAddCard/Cards/Cards.h \
-		NotonlyAddCard/Cards/Card.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QString \
-		NotonlyAddCard/Cards/Plain.h \
-		NotonlyAddCard/Cards/Word.h \
-		APIs/APIRequest.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork/QNetworkAccessManager \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork/qnetworkaccessmanager.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork/qtnetworkglobal.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork/qtnetwork-config.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork/qnetworkrequest.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QSharedDataPointer \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QUrl \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QVariant \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QVector \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QObject \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork/QSslConfiguration \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork/qsslconfiguration.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork/qsslsocket.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork/qtcpsocket.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork/qabstractsocket.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork/qsslerror.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork/qsslcertificate.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcryptographichash.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qdatetime.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork/qssl.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QFlags \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork/QSslPreSharedKeyAuthenticator \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork/qsslpresharedkeyauthenticator.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QMetaType \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork/QNetworkRequest \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork/QNetworkReply \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork/qnetworkreply.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QIODevice \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QUrlQuery \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QJsonDocument \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qjsondocument.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qjsonvalue.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcborvalue.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcborcommon.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qregularexpression.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/quuid.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QJsonObject \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qjsonobject.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QJsonArray \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qjsonarray.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QEventLoop \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qeventloop.h \
-		NotonlyAddCard/Cards/Choices.h \
-		NotonlyAddCard/Cards/Text.h \
-		NotonlyAddCard/AddCard/addtext.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/QTextCursor \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qtextcursor.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qtextformat.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qpen.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qtextoption.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/QColor \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/QBrush \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/QTextCharFormat \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QList \
-		NotonlyAddCard/AddCard/addchoices.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QTextEdit \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qtextedit.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qabstractscrollarea.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qframe.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qtextdocument.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QCheckBox \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qcheckbox.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qabstractbutton.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QApplication \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qapplication.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcoreapplication.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qdesktopwidget.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qguiapplication.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qinputmethod.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main_test.o NotonlyAddCard/main_test.cpp
-
-test.o: NotonlyAddCard/test.cpp NotonlyAddCard/test.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QMainWindow \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qmainwindow.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qtguiglobal.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qglobal.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qconfig-bootstrapped.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qconfig.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qtcore-config.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qsystemdetection.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qprocessordetection.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcompilerdetection.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qtypeinfo.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qsysinfo.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qlogging.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qflags.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qatomic.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qbasicatomic.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qatomic_bootstrap.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qgenericatomic.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qatomic_cxx11.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qatomic_msvc.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qglobalstatic.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qmutex.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qnumeric.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qversiontagging.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qtgui-config.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qtwidgets-config.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qwidget.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qwindowdefs.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qobjectdefs.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qnamespace.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qobjectdefs_impl.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qwindowdefs_win.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qobject.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qstring.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qchar.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qbytearray.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qrefcount.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qarraydata.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qstringliteral.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qstringalgorithms.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qstringview.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qstringbuilder.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qlist.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qalgorithms.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qiterator.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qhashfunctions.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qpair.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qvector.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcontainertools_impl.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qpoint.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qbytearraylist.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qstringlist.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qregexp.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qstringmatcher.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcoreevent.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qscopedpointer.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qmetatype.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qvarlengtharray.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcontainerfwd.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qobject_impl.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qmargins.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qpaintdevice.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qrect.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qsize.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qpalette.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qcolor.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qrgb.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qrgba64.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qbrush.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qmatrix.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qpolygon.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qregion.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qdatastream.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qiodevice.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qline.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qtransform.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qimage.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qpixelformat.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qpixmap.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qsharedpointer.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qshareddata.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qhash.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qsharedpointer_impl.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qfont.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qfontmetrics.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qfontinfo.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qsizepolicy.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qcursor.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qkeysequence.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qevent.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qvariant.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qmap.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qdebug.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qtextstream.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qlocale.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qset.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcontiguouscache.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qurl.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qurlquery.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qfile.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qfiledevice.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qvector2d.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qtouchdevice.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qtabwidget.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qicon.h \
-		NotonlyAddCard/AddCard/addcard.h \
-		NotonlyAddCard/AddCard/addcardmain.h \
-		NotonlyAddCard/Cards/Cards.h \
-		NotonlyAddCard/Cards/Card.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QString \
-		NotonlyAddCard/Cards/Plain.h \
-		NotonlyAddCard/Cards/Word.h \
-		APIs/APIRequest.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork/QNetworkAccessManager \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork/qnetworkaccessmanager.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork/qtnetworkglobal.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork/qtnetwork-config.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork/qnetworkrequest.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QSharedDataPointer \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QUrl \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QVariant \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QVector \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QObject \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork/QSslConfiguration \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork/qsslconfiguration.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork/qsslsocket.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork/qtcpsocket.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork/qabstractsocket.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork/qsslerror.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork/qsslcertificate.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcryptographichash.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qdatetime.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork/qssl.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QFlags \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork/QSslPreSharedKeyAuthenticator \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork/qsslpresharedkeyauthenticator.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QMetaType \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork/QNetworkRequest \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork/QNetworkReply \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork/qnetworkreply.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QIODevice \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QUrlQuery \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QJsonDocument \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qjsondocument.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qjsonvalue.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcborvalue.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcborcommon.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qregularexpression.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/quuid.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QJsonObject \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qjsonobject.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QJsonArray \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qjsonarray.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QEventLoop \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qeventloop.h \
-		NotonlyAddCard/Cards/Choices.h \
-		NotonlyAddCard/Cards/Text.h \
-		NotonlyAddCard/AddCard/addtext.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/QTextCursor \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qtextcursor.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qtextformat.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qpen.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qtextoption.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/QColor \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/QBrush \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/QTextCharFormat \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QList \
-		NotonlyAddCard/AddCard/addchoices.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QTextEdit \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qtextedit.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qabstractscrollarea.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qframe.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qtextdocument.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QCheckBox \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qcheckbox.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qabstractbutton.h \
-		ui_test.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QApplication \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qapplication.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcoreapplication.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qdesktopwidget.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qguiapplication.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qinputmethod.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QMenuBar \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qmenubar.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qmenu.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qaction.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qactiongroup.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QPushButton \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qpushbutton.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QStatusBar \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qstatusbar.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QWidget \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtSql/QtSql \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtSql/QtSqlDepends \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QtCore \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QtCoreDepends \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qabstractanimation.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qabstracteventdispatcher.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qabstractitemmodel.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qabstractnativeeventfilter.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qabstractproxymodel.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qabstractstate.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qabstracttransition.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qanimationgroup.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qarraydataops.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qarraydatapointer.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qbasictimer.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qbitarray.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qbuffer.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qbytearraymatcher.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcache.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcalendar.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcborarray.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcbormap.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcborstream.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcborstreamreader.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qfloat16.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcborstreamwriter.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcollator.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcommandlineoption.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcommandlineparser.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qconcatenatetablesproxymodel.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qdeadlinetimer.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qelapsedtimer.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qdir.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qfileinfo.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qdiriterator.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qeasingcurve.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qendian.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qeventtransition.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qexception.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qfactoryinterface.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qfileselector.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QStringList \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qfilesystemwatcher.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qfinalstate.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qfuture.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qfutureinterface.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qrunnable.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qresultstore.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qfuturesynchronizer.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qfuturewatcher.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qhistorystate.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qidentityproxymodel.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qisenum.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qitemselectionmodel.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qlibrary.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qlibraryinfo.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qversionnumber.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qlinkedlist.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qlockfile.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qloggingcategory.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qmath.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qmessageauthenticationcode.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qmetaobject.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qmimedata.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qmimedatabase.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qmimetype.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qobjectcleanuphandler.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qoperatingsystemversion.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qparallelanimationgroup.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qpauseanimation.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qplugin.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qpointer.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qpluginloader.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qprocess.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qpropertyanimation.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qvariantanimation.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qqueue.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qrandom.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qreadwritelock.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qresource.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qsavefile.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qscopedvaluerollback.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qscopeguard.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qsemaphore.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qsequentialanimationgroup.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qsettings.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qsharedmemory.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qsignalmapper.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qsignaltransition.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qsocketnotifier.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qsortfilterproxymodel.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qstack.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qstandardpaths.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qstate.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qstatemachine.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qstorageinfo.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qstringlistmodel.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qsystemsemaphore.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qtemporarydir.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qtemporaryfile.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qtextboundaryfinder.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qtextcodec.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qthread.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qthreadpool.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qthreadstorage.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qtimeline.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qtimer.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qtimezone.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qtranslator.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qtransposeproxymodel.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qtypetraits.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qwaitcondition.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QDeadlineTimer \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qwineventnotifier.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qxmlstream.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qtcoreversion.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtSql/qtsqlglobal.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtSql/qtsql-config.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtSql/qsqldatabase.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtSql/qsqldriver.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtSql/qsqldriverplugin.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtSql/qsqlerror.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtSql/qsqlfield.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtSql/qsqlindex.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtSql/qsqlrecord.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtSql/qsqlquery.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtSql/qsqlquerymodel.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtSql/qsqlrelationaldelegate.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qitemdelegate.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qstyleoption.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qabstractspinbox.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qvalidator.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qslider.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qabstractslider.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qstyle.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qtabbar.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qrubberband.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qlistview.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qabstractitemview.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qcombobox.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtSql/qsqlrelationaltablemodel.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtSql/qsqltablemodel.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtSql/qsqlresult.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtSql/qtsqlversion.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o test.o NotonlyAddCard/test.cpp
-
 libwindow.o: libraryPage/libwindow.cpp libraryPage/libwindow.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QMainWindow \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qmainwindow.h \
@@ -4516,14 +3788,14 @@ libwindow.o: libraryPage/libwindow.cpp libraryPage/libwindow.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qtouchdevice.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qtabwidget.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qicon.h \
-		NotonlyAddCard/AddCard/addcard.h \
-		NotonlyAddCard/AddCard/addcardmain.h \
-		NotonlyAddCard/Cards/Cards.h \
-		NotonlyAddCard/Cards/Card.h \
+		AddCard/addcard.h \
+		AddCard/addcardmain.h \
+		Cards/Cards.h \
+		Cards/Card.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QString \
-		NotonlyAddCard/Cards/Plain.h \
-		NotonlyAddCard/Cards/Word.h \
-		APIs/APIRequest.h \
+		Cards/Plain.h \
+		Cards/Word.h \
+		tools/APIs/APIRequest.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork/QNetworkAccessManager \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork/qnetworkaccessmanager.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork/qtnetworkglobal.h \
@@ -4566,19 +3838,18 @@ libwindow.o: libraryPage/libwindow.cpp libraryPage/libwindow.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qjsonarray.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QEventLoop \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qeventloop.h \
-		NotonlyAddCard/Cards/Choices.h \
-		NotonlyAddCard/Cards/Text.h \
-		NotonlyAddCard/AddCard/addtext.h \
+		Cards/Choices.h \
+		Cards/Text.h \
+		AddCard/addtext.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/QTextCursor \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qtextcursor.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qtextformat.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qpen.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qtextoption.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/QColor \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/QBrush \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/QTextCharFormat \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QList \
-		NotonlyAddCard/AddCard/addchoices.h \
+		AddCard/addchoices.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QTextEdit \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qtextedit.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qabstractscrollarea.h \
@@ -4607,7 +3878,6 @@ libwindow.o: libraryPage/libwindow.cpp libraryPage/libwindow.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qlayoutitem.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qgridlayout.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QWidget \
-		NotonlyAddCard/test.h \
 		tools/LoginInfo.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtSql/QtSql \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtSql/QtSqlDepends \
@@ -5108,7 +4378,7 @@ tools.o: tools/tools.cpp tools/tools.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtSql/qtsqlversion.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o tools.o tools/tools.cpp
 
-addcard.o: NotonlyAddCard/AddCard/addcard.cpp NotonlyAddCard/AddCard/addcard.h \
+addcard.o: AddCard/addcard.cpp AddCard/addcard.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QMainWindow \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qmainwindow.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
@@ -5215,13 +4485,13 @@ addcard.o: NotonlyAddCard/AddCard/addcard.cpp NotonlyAddCard/AddCard/addcard.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qtouchdevice.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qtabwidget.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qicon.h \
-		NotonlyAddCard/AddCard/addcardmain.h \
-		NotonlyAddCard/Cards/Cards.h \
-		NotonlyAddCard/Cards/Card.h \
+		AddCard/addcardmain.h \
+		Cards/Cards.h \
+		Cards/Card.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QString \
-		NotonlyAddCard/Cards/Plain.h \
-		NotonlyAddCard/Cards/Word.h \
-		APIs/APIRequest.h \
+		Cards/Plain.h \
+		Cards/Word.h \
+		tools/APIs/APIRequest.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork/QNetworkAccessManager \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork/qnetworkaccessmanager.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork/qtnetworkglobal.h \
@@ -5264,19 +4534,18 @@ addcard.o: NotonlyAddCard/AddCard/addcard.cpp NotonlyAddCard/AddCard/addcard.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qjsonarray.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QEventLoop \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qeventloop.h \
-		NotonlyAddCard/Cards/Choices.h \
-		NotonlyAddCard/Cards/Text.h \
-		NotonlyAddCard/AddCard/addtext.h \
+		Cards/Choices.h \
+		Cards/Text.h \
+		AddCard/addtext.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/QTextCursor \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qtextcursor.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qtextformat.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qpen.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qtextoption.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/QColor \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/QBrush \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/QTextCharFormat \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QList \
-		NotonlyAddCard/AddCard/addchoices.h \
+		AddCard/addchoices.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QTextEdit \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qtextedit.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qabstractscrollarea.h \
@@ -5297,9 +4566,9 @@ addcard.o: NotonlyAddCard/AddCard/addcard.cpp NotonlyAddCard/AddCard/addcard.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QPushButton \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qpushbutton.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QWidget
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o addcard.o NotonlyAddCard/AddCard/addcard.cpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o addcard.o AddCard/addcard.cpp
 
-addcardmain.o: NotonlyAddCard/AddCard/addcardmain.cpp NotonlyAddCard/AddCard/addcardmain.h \
+addcardmain.o: AddCard/addcardmain.cpp AddCard/addcardmain.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QMainWindow \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qmainwindow.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
@@ -5406,12 +4675,12 @@ addcardmain.o: NotonlyAddCard/AddCard/addcardmain.cpp NotonlyAddCard/AddCard/add
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qtouchdevice.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qtabwidget.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qicon.h \
-		NotonlyAddCard/Cards/Cards.h \
-		NotonlyAddCard/Cards/Card.h \
+		Cards/Cards.h \
+		Cards/Card.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QString \
-		NotonlyAddCard/Cards/Plain.h \
-		NotonlyAddCard/Cards/Word.h \
-		APIs/APIRequest.h \
+		Cards/Plain.h \
+		Cards/Word.h \
+		tools/APIs/APIRequest.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork/QNetworkAccessManager \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork/qnetworkaccessmanager.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork/qtnetworkglobal.h \
@@ -5454,8 +4723,8 @@ addcardmain.o: NotonlyAddCard/AddCard/addcardmain.cpp NotonlyAddCard/AddCard/add
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qjsonarray.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QEventLoop \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qeventloop.h \
-		NotonlyAddCard/Cards/Choices.h \
-		NotonlyAddCard/Cards/Text.h \
+		Cards/Choices.h \
+		Cards/Text.h \
 		ui_addcardmain.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QApplication \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qapplication.h \
@@ -5478,9 +4747,9 @@ addcardmain.o: NotonlyAddCard/AddCard/addcardmain.cpp NotonlyAddCard/AddCard/add
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qtextformat.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qpen.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QWidget
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o addcardmain.o NotonlyAddCard/AddCard/addcardmain.cpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o addcardmain.o AddCard/addcardmain.cpp
 
-addchoices.o: NotonlyAddCard/AddCard/addchoices.cpp NotonlyAddCard/AddCard/addchoices.h \
+addchoices.o: AddCard/addchoices.cpp AddCard/addchoices.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QMainWindow \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qmainwindow.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
@@ -5599,12 +4868,12 @@ addchoices.o: NotonlyAddCard/AddCard/addchoices.cpp NotonlyAddCard/AddCard/addch
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QCheckBox \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qcheckbox.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qabstractbutton.h \
-		NotonlyAddCard/Cards/Cards.h \
-		NotonlyAddCard/Cards/Card.h \
+		Cards/Cards.h \
+		Cards/Card.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QString \
-		NotonlyAddCard/Cards/Plain.h \
-		NotonlyAddCard/Cards/Word.h \
-		APIs/APIRequest.h \
+		Cards/Plain.h \
+		Cards/Word.h \
+		tools/APIs/APIRequest.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork/QNetworkAccessManager \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork/qnetworkaccessmanager.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork/qtnetworkglobal.h \
@@ -5647,8 +4916,8 @@ addchoices.o: NotonlyAddCard/AddCard/addchoices.cpp NotonlyAddCard/AddCard/addch
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qjsonarray.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QEventLoop \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qeventloop.h \
-		NotonlyAddCard/Cards/Choices.h \
-		NotonlyAddCard/Cards/Text.h \
+		Cards/Choices.h \
+		Cards/Text.h \
 		ui_addchoices.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QApplication \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qapplication.h \
@@ -5664,9 +4933,9 @@ addchoices.o: NotonlyAddCard/AddCard/addchoices.cpp NotonlyAddCard/AddCard/addch
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QMessageBox \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qmessagebox.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qdialog.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o addchoices.o NotonlyAddCard/AddCard/addchoices.cpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o addchoices.o AddCard/addchoices.cpp
 
-addtext.o: NotonlyAddCard/AddCard/addtext.cpp NotonlyAddCard/AddCard/addtext.h \
+addtext.o: AddCard/addtext.cpp AddCard/addtext.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QMainWindow \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qmainwindow.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
@@ -5773,12 +5042,12 @@ addtext.o: NotonlyAddCard/AddCard/addtext.cpp NotonlyAddCard/AddCard/addtext.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qtouchdevice.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qtabwidget.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qicon.h \
-		NotonlyAddCard/Cards/Cards.h \
-		NotonlyAddCard/Cards/Card.h \
+		Cards/Cards.h \
+		Cards/Card.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QString \
-		NotonlyAddCard/Cards/Plain.h \
-		NotonlyAddCard/Cards/Word.h \
-		APIs/APIRequest.h \
+		Cards/Plain.h \
+		Cards/Word.h \
+		tools/APIs/APIRequest.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork/QNetworkAccessManager \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork/qnetworkaccessmanager.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork/qtnetworkglobal.h \
@@ -5821,15 +5090,14 @@ addtext.o: NotonlyAddCard/AddCard/addtext.cpp NotonlyAddCard/AddCard/addtext.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qjsonarray.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QEventLoop \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qeventloop.h \
-		NotonlyAddCard/Cards/Choices.h \
-		NotonlyAddCard/Cards/Text.h \
+		Cards/Choices.h \
+		Cards/Text.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/QTextCursor \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qtextcursor.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qtextformat.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qpen.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qtextoption.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/QColor \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/QBrush \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/QTextCharFormat \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QList \
 		ui_addtext.h \
@@ -5848,153 +5116,9 @@ addtext.o: NotonlyAddCard/AddCard/addtext.cpp NotonlyAddCard/AddCard/addtext.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qframe.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qtextdocument.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QWidget
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o addtext.o NotonlyAddCard/AddCard/addtext.cpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o addtext.o AddCard/addtext.cpp
 
-Card.o: NotonlyAddCard/Cards/Card.cpp NotonlyAddCard/Cards/Card.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QString \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qstring.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qchar.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qglobal.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qconfig-bootstrapped.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qconfig.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qtcore-config.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qsystemdetection.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qprocessordetection.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcompilerdetection.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qtypeinfo.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qsysinfo.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qlogging.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qflags.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qatomic.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qbasicatomic.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qatomic_bootstrap.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qgenericatomic.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qatomic_cxx11.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qatomic_msvc.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qglobalstatic.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qmutex.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qnumeric.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qversiontagging.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qbytearray.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qrefcount.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qnamespace.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qarraydata.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qstringliteral.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qstringalgorithms.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qstringview.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qstringbuilder.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Card.o NotonlyAddCard/Cards/Card.cpp
-
-Choices.o: NotonlyAddCard/Cards/Choices.cpp NotonlyAddCard/Cards/Choices.h \
-		NotonlyAddCard/Cards/Card.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QString \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qstring.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qchar.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qglobal.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qconfig-bootstrapped.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qconfig.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qtcore-config.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qsystemdetection.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qprocessordetection.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcompilerdetection.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qtypeinfo.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qsysinfo.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qlogging.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qflags.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qatomic.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qbasicatomic.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qatomic_bootstrap.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qgenericatomic.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qatomic_cxx11.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qatomic_msvc.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qglobalstatic.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qmutex.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qnumeric.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qversiontagging.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qbytearray.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qrefcount.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qnamespace.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qarraydata.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qstringliteral.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qstringalgorithms.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qstringview.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qstringbuilder.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Choices.o NotonlyAddCard/Cards/Choices.cpp
-
-Plain.o: NotonlyAddCard/Cards/Plain.cpp NotonlyAddCard/Cards/Plain.h \
-		NotonlyAddCard/Cards/Card.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QString \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qstring.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qchar.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qglobal.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qconfig-bootstrapped.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qconfig.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qtcore-config.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qsystemdetection.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qprocessordetection.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcompilerdetection.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qtypeinfo.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qsysinfo.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qlogging.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qflags.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qatomic.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qbasicatomic.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qatomic_bootstrap.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qgenericatomic.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qatomic_cxx11.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qatomic_msvc.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qglobalstatic.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qmutex.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qnumeric.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qversiontagging.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qbytearray.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qrefcount.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qnamespace.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qarraydata.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qstringliteral.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qstringalgorithms.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qstringview.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qstringbuilder.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Plain.o NotonlyAddCard/Cards/Plain.cpp
-
-Text.o: NotonlyAddCard/Cards/Text.cpp NotonlyAddCard/Cards/Text.h \
-		NotonlyAddCard/Cards/Card.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QString \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qstring.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qchar.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qglobal.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qconfig-bootstrapped.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qconfig.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qtcore-config.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qsystemdetection.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qprocessordetection.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcompilerdetection.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qtypeinfo.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qsysinfo.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qlogging.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qflags.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qatomic.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qbasicatomic.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qatomic_bootstrap.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qgenericatomic.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qatomic_cxx11.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qatomic_msvc.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qglobalstatic.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qmutex.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qnumeric.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qversiontagging.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qbytearray.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qrefcount.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qnamespace.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qarraydata.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qstringliteral.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qstringalgorithms.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qstringview.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qstringbuilder.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Text.o NotonlyAddCard/Cards/Text.cpp
-
-Word.o: NotonlyAddCard/Cards/Word.cpp NotonlyAddCard/Cards/Word.h \
-		NotonlyAddCard/Cards/Card.h \
+Card.o: Cards/Card.cpp Cards/Card.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QString \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qstring.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qchar.h \
@@ -6027,7 +5151,167 @@ Word.o: NotonlyAddCard/Cards/Word.cpp NotonlyAddCard/Cards/Word.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qstringalgorithms.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qstringview.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qstringbuilder.h \
-		APIs/APIRequest.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QDateTime \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qdatetime.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qshareddata.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qhash.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qiterator.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qlist.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qalgorithms.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qhashfunctions.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qpair.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qvector.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcontainertools_impl.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qpoint.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qbytearraylist.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qstringlist.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qregexp.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qstringmatcher.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Card.o Cards/Card.cpp
+
+Choices.o: Cards/Choices.cpp Cards/Choices.h \
+		Cards/Card.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QString \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qstring.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qchar.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qglobal.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qconfig.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qtcore-config.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qsystemdetection.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qprocessordetection.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcompilerdetection.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qtypeinfo.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qsysinfo.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qlogging.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qflags.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qatomic.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qbasicatomic.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qgenericatomic.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qatomic_cxx11.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qatomic_msvc.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qglobalstatic.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qmutex.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qnumeric.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qversiontagging.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qbytearray.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qrefcount.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qnamespace.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qarraydata.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qstringliteral.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qstringalgorithms.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qstringview.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qstringbuilder.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Choices.o Cards/Choices.cpp
+
+Plain.o: Cards/Plain.cpp Cards/Plain.h \
+		Cards/Card.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QString \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qstring.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qchar.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qglobal.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qconfig.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qtcore-config.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qsystemdetection.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qprocessordetection.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcompilerdetection.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qtypeinfo.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qsysinfo.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qlogging.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qflags.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qatomic.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qbasicatomic.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qgenericatomic.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qatomic_cxx11.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qatomic_msvc.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qglobalstatic.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qmutex.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qnumeric.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qversiontagging.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qbytearray.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qrefcount.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qnamespace.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qarraydata.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qstringliteral.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qstringalgorithms.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qstringview.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qstringbuilder.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Plain.o Cards/Plain.cpp
+
+Text.o: Cards/Text.cpp Cards/Text.h \
+		Cards/Card.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QString \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qstring.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qchar.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qglobal.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qconfig.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qtcore-config.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qsystemdetection.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qprocessordetection.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcompilerdetection.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qtypeinfo.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qsysinfo.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qlogging.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qflags.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qatomic.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qbasicatomic.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qgenericatomic.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qatomic_cxx11.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qatomic_msvc.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qglobalstatic.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qmutex.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qnumeric.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qversiontagging.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qbytearray.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qrefcount.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qnamespace.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qarraydata.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qstringliteral.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qstringalgorithms.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qstringview.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qstringbuilder.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Text.o Cards/Text.cpp
+
+Word.o: Cards/Word.cpp Cards/Word.h \
+		Cards/Card.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QString \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qstring.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qchar.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qglobal.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qconfig.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qtcore-config.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qsystemdetection.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qprocessordetection.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcompilerdetection.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qtypeinfo.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qsysinfo.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qlogging.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qflags.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qatomic.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qbasicatomic.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qgenericatomic.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qatomic_cxx11.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qatomic_msvc.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qglobalstatic.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qmutex.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qnumeric.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qversiontagging.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qbytearray.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qrefcount.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qnamespace.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qarraydata.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qstringliteral.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qstringalgorithms.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qstringview.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qstringbuilder.h \
+		tools/APIs/APIRequest.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork/QNetworkAccessManager \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork/qnetworkaccessmanager.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork/qtnetworkglobal.h \
@@ -6105,7 +5389,7 @@ Word.o: NotonlyAddCard/Cards/Word.cpp NotonlyAddCard/Cards/Word.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qjsonarray.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QEventLoop \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qeventloop.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Word.o NotonlyAddCard/Cards/Word.cpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Word.o Cards/Word.cpp
 
 qrc_assets.o: qrc_assets.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_assets.o qrc_assets.cpp
@@ -6121,9 +5405,6 @@ moc_mainwindow.o: moc_mainwindow.cpp
 
 moc_signupwindow.o: moc_signupwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_signupwindow.o moc_signupwindow.cpp
-
-moc_test.o: moc_test.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_test.o moc_test.cpp
 
 moc_libwindow.o: moc_libwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_libwindow.o moc_libwindow.cpp
