@@ -13,14 +13,14 @@ Click [Here](https://drive.google.com/file/d/1QqJLKz9xDS4XIAxSsNljEVxRXbxd51rZ/v
 - [x] Integrate the above with simple console interface
 - [x] Network API encapsulating (done with Qt)
 - [x] Linked List Template
-- [ ] Proficiency calculation method
+- [x] Proficiency calculation method
 
 ### 2. Qt Interface
 **Objective: Qt Design, [Here](https://drive.google.com/file/d/1QqJLKz9xDS4XIAxSsNljEVxRXbxd51rZ/view?usp=sharing) is the GUI Design**
 - [x] Welcome Page
 - [x] Login and Sign Up page
 - [x] Main Library page
-- [ ] Add cards
+- [x] Add cards
 - [ ] Review page
 - [ ] Testing page
 - [ ] Manage page
@@ -29,7 +29,8 @@ Click [Here](https://drive.google.com/file/d/1QqJLKz9xDS4XIAxSsNljEVxRXbxd51rZ/v
 **Optimization The Project**
 - [x] Auto Login and password protection
 - [x] Merge projects
-- [ ] More API to implement auxiliary functions (auto word select, auto translate...)
+- [x] More API to implement auxiliary functions (auto word select, auto translate...)
+- [x] KMP algorithm for string matching
 - [ ] Port to Android platform
 - [ ] Add setting page 
 - [ ] Beautify the UI

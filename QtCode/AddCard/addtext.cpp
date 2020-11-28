@@ -47,22 +47,32 @@ void addText::on_ButAPI_clicked()
 void addText::on_Butauto_clicked()
 {
     extern Card* __card;
-    QString temp = ui->TxtAPI->toPlainText();
-    int m = temp.length();
+    QString t = ui->TxtAPI->toPlainText();
+    int m = t.length();  // t -> object string, using KMP algorithm for string match (with helper array "nxt[]")
     if(m<2) return;
+    // KMP init
+    int* nxt = new int[m];
+    int j=-1;
+    nxt[0]=-1;
+    for(int i=1;i<m;++i)
+    {
+        while(j>-1 && t[j+1]!=t[i]) j=nxt[j];
+        if(t[j+1]==t[i]) j++;
+        nxt[i]=j;
+    }
+    // KMP init end
+    j=-1;
     for(int i=0;i<len;++i)
     {
-        int flag=1;
-        for(int j=0;j<m;++j)
-        if(temp[j]!=__card->get_prob()[i+j])
+        // apply KMP
+        while(j>-1 && t[j+1]!=__card->get_prob()[i]) j=nxt[j];
+        if(t[j+1]==__card->get_prob()[i]) j++;
+        // apply KMP end
+        if(j==m-1)
         {
-            flag=0;
-            break;
-        }
-        if(flag)
-        {
+            j=nxt[j];
             QTextCursor cur = ui->text->textCursor();
-            cur.setPosition(i,QTextCursor::MoveAnchor);
+            cur.setPosition(i+1-m,QTextCursor::MoveAnchor);
             cur.movePosition(QTextCursor::NoMove, QTextCursor::KeepAnchor, m);
             cur.select(QTextCursor::WordUnderCursor);
             selection(cur);
