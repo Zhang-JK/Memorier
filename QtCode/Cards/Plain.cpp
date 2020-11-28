@@ -35,10 +35,16 @@ QString Plain::option(int id , QString str)
     if(id==1) //add ans
     {
         ans=str;
+        return "null";
     }
     if(id==3)
     {
         return ans;
+    }
+    if(id==4)
+    {
+        ans=str;
+        return "null";
     }
     return "null";
 }

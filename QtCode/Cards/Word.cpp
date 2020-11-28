@@ -36,7 +36,11 @@ int Word::print_test()
 
 QString Word::option(int id, QString str)
 {
-    if(id==1) trans = str;
+    if(id==1)
+    {
+        trans = str;
+        return "null";
+    }
     if(id==2)
     {
         return translateAPI(str,"zh","en");
@@ -44,6 +48,11 @@ QString Word::option(int id, QString str)
     if(id==3)
     {
         return trans;
+    }
+    if(id==4)
+    {
+        trans=str;
+        return "null";
     }
     return "null";
 }
