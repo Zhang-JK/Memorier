@@ -2,8 +2,9 @@
 #define LIBWINDOW_H
 
 #include <QMainWindow>
-#include "../AddCard/addcard.h"
-#include "../Cards/Cards.h"
+#include "addcard.h"
+#include "managecard.h"
+#include "Cards.h"
 
 namespace Ui {
 class LibWindow;
@@ -20,6 +21,7 @@ public:
 
 private slots:
     void addCard_push();
+    void manageCard_push();
     void addCard_data(Card*);
 
 private:

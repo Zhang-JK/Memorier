@@ -19,6 +19,7 @@ LibWindow::LibWindow(QWidget *parent) :
     setAutoFillBackground(true); //设置窗体自动填充背景
 
     connect(ui->add, SIGNAL(clicked()), this, SLOT(addCard_push()));
+    connect(ui->manage, SIGNAL(clicked()), this, SLOT(manageCard_push()));
 }
 
 void LibWindow::addCard_push()
@@ -26,6 +27,12 @@ void LibWindow::addCard_push()
     AddCard *addcard = new AddCard(this);
     connect(addcard, SIGNAL(addcard_sendInfo(Card *)), this, SLOT(addCard_data(Card *)));
     addcard->show();
+}
+
+void LibWindow::manageCard_push()
+{
+    ManageCard *manageCard = new ManageCard(this);
+    manageCard->show();
 }
 
 void LibWindow::addCard_data(Card *temp)

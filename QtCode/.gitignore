@@ -12,3 +12,5 @@ moc*
 *.user
 bulid*
 build/
+build*/
+release*/
