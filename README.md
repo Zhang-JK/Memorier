@@ -23,7 +23,7 @@ Click [Here](https://drive.google.com/file/d/1QqJLKz9xDS4XIAxSsNljEVxRXbxd51rZ/v
 - [x] Add cards
 - [ ] Review page
 - [ ] Testing page
-- [ ] Manage page
+- [x] Manage page
 
 ### 3. Optimization
 **Optimization The Project**
@@ -31,9 +31,10 @@ Click [Here](https://drive.google.com/file/d/1QqJLKz9xDS4XIAxSsNljEVxRXbxd51rZ/v
 - [x] Merge projects
 - [x] More API to implement auxiliary functions (auto word select, auto translate...)
 - [x] KMP algorithm for string matching
-- [ ] Port to Android platform
-- [ ] Add setting page 
+- [ ] Edit function in the managment
 - [ ] Beautify the UI
+- [ ] Add setting page 
+- [ ] Port to Android platform
 
 ### 4. Report
 **To Be Continue**
