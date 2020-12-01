@@ -39,7 +39,7 @@ void LibWindow::manageCard_push()
 void LibWindow::review_push()
 {
     reviewMain* reviewCard = new reviewMain(this);
-    reviewCard->generate_review_list();
+    // reviewCard->generate_review_list();
     reviewCard->show();
 }
 

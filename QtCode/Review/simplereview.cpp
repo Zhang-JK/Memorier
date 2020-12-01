@@ -65,3 +65,9 @@ void simpleReview::on_But_extra_clicked()
         return;
     }
 }
+
+
+void simpleReview::closeEvent(QCloseEvent *event)  
+{  
+    emit forceQuit();
+}

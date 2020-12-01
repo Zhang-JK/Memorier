@@ -17,8 +17,13 @@ public:
     ~simpleReview();
     void init(Card*);
 
+
+protected:  
+     void closeEvent(QCloseEvent *event); 
+
 signals:
     void finished();
+    void forceQuit();
 
 private:
     Ui::simpleReview *ui;

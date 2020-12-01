@@ -11,6 +11,7 @@ INCLUDEPATH += . \
                ./LoginAndMainpage \
                ./AddCard \
                ./ManageCard \
+               ./Review \
                ./Cards 
 DESTDIR += ./debug
 QT += widgets core gui

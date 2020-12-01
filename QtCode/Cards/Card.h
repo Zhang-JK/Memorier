@@ -36,19 +36,26 @@ protected:
 public:
     Card();
 	virtual ~Card();
-    void set_id(int i);
+    
     int get_id() const;
+    int get_review_time() const;
+    int get_ac_time() const;
 	cardType get_type() const;
     QString get_prob() const;
     QString get_title() const;
     long get_nextReview() const;
+
     void test_update(int);
     virtual QString add_display(int) const;
     virtual QString option(int id =0, QString str = "");
+
+    void set_id(int i);
     void set_title(QString);
     void set_prob(QString);
     void set_init_time(long t);
-	
+    void set_next_time(long t);
+    void set_review_time(int times);
+    void set_ac_time(int times);
 };
 
 // option id list:
