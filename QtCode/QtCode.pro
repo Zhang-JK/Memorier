@@ -29,6 +29,8 @@ HEADERS += tools/APIs/APIRequest.h \
            LoginAndMainpage/loginwindow.h \
            LoginAndMainpage/mainwindow.h \
            LoginAndMainpage/signupwindow.h \
+           Review/reviewmain.h \
+           Review/simplereview.h \
            libraryPage/libwindow.h \
            tools/LoginInfo.h \
            tools/tools.h \
@@ -49,8 +51,12 @@ FORMS += LoginAndMainpage/loginwindow.ui \
          AddCard/addcardmain.ui \
          AddCard/addchoices.ui \
          AddCard/addtext.ui \
+         Review/reviewmain.ui \
+         Review/simplereview.ui \
          libraryPage/libwindow.ui
 SOURCES += main.cpp \
+           Review/reviewmain.cpp \
+           Review/simplereview.cpp \
            tools/APIs/APIRequest.cpp \
            LoginAndMainpage/loginwindow.cpp \
            LoginAndMainpage/main_login.cpp \
