@@ -16,7 +16,7 @@ CXX           = g++
 DEFINES       = -DUNICODE -D_UNICODE -DWIN32 -DMINGW_HAS_SECURE_API=1 -DQT_QML_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_SQL_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_NEEDS_QMAIN
 CFLAGS        = -fno-keep-inline-dllexport -g -Wall -Wextra -Wextra $(DEFINES)
 CXXFLAGS      = -fno-keep-inline-dllexport -g -Wall -Wextra -Wextra -fexceptions -mthreads $(DEFINES)
-INCPATH       = -I..\QtCode -I. -I..\QtCode -I..\QtCode\APIs -I..\QtCode\tools -I..\QtCode\libraryPage -I..\QtCode\LoginAndMainpage -I./NotonlyAddCard -I./NotonlyAddCard/AddCard -I./NotonlyAddCard/Cards -IC:\Qt\5.15.1\mingw81_64\include -IC:\Qt\5.15.1\mingw81_64\include\QtWidgets -IC:\Qt\5.15.1\mingw81_64\include\QtGui -IC:\Qt\5.15.1\mingw81_64\include\QtANGLE -IC:\Qt\5.15.1\mingw81_64\include\QtSql -IC:\Qt\5.15.1\mingw81_64\include\QtNetwork -IC:\Qt\5.15.1\mingw81_64\include\QtCore -Idebug -I. -I/include -IC:\Qt\5.15.1\mingw81_64\mkspecs\win32-g++ 
+INCPATH       = -I..\QtCode -I. -I..\QtCode -I..\QtCode\tools -I..\QtCode\tools\APIs -I..\QtCode\libraryPage -I..\QtCode\LoginAndMainpage -I..\QtCode\AddCard -I..\QtCode\Cards -IC:\Qt\5.15.1\mingw81_64\include -IC:\Qt\5.15.1\mingw81_64\include\QtWidgets -IC:\Qt\5.15.1\mingw81_64\include\QtGui -IC:\Qt\5.15.1\mingw81_64\include\QtANGLE -IC:\Qt\5.15.1\mingw81_64\include\QtSql -IC:\Qt\5.15.1\mingw81_64\include\QtNetwork -IC:\Qt\5.15.1\mingw81_64\include\QtCore -Idebug -I. -I/include -IC:\Qt\5.15.1\mingw81_64\mkspecs\win32-g++ 
 LINKER      =        g++
 LFLAGS        =        -Wl,-subsystem,windows -mthreads
 LIBS        =        C:\Qt\5.15.1\mingw81_64\lib\libQt5Widgets.a C:\Qt\5.15.1\mingw81_64\lib\libQt5Gui.a C:\Qt\5.15.1\mingw81_64\lib\libQt5Sql.a C:\Qt\5.15.1\mingw81_64\lib\libQt5Network.a C:\Qt\5.15.1\mingw81_64\lib\libQt5Core.a  -lmingw32 C:\Qt\5.15.1\mingw81_64\lib\libqtmain.a -LC:\openssl\lib -LC:\Utils\my_sql\mysql-5.7.25-winx64\lib -LC:\Utils\postgresql\pgsql\lib -lshell32 
@@ -51,7 +51,9 @@ OBJECTS_DIR   = debug
 ####### Files
 
 SOURCES       = ..\QtCode\main.cpp \
-		..\QtCode\APIs\APIRequest.cpp \
+		..\QtCode\Review\reviewmain.cpp \
+		..\QtCode\Review\simplereview.cpp \
+		..\QtCode\tools\APIs\APIRequest.cpp \
 		..\QtCode\LoginAndMainpage\loginwindow.cpp \
 		..\QtCode\LoginAndMainpage\main_login.cpp \
 		..\QtCode\LoginAndMainpage\mainwindow.cpp \
@@ -72,12 +74,16 @@ SOURCES       = ..\QtCode\main.cpp \
 		debug\moc_loginwindow.cpp \
 		debug\moc_mainwindow.cpp \
 		debug\moc_signupwindow.cpp \
+		debug\moc_reviewmain.cpp \
+		debug\moc_simplereview.cpp \
 		debug\moc_libwindow.cpp \
 		debug\moc_addcard.cpp \
 		debug\moc_addcardmain.cpp \
 		debug\moc_addchoices.cpp \
 		debug\moc_addtext.cpp
 OBJECTS       = debug/main.o \
+		debug/reviewmain.o \
+		debug/simplereview.o \
 		debug/APIRequest.o \
 		debug/loginwindow.o \
 		debug/main_login.o \
@@ -100,16 +106,20 @@ OBJECTS       = debug/main.o \
 		debug/moc_loginwindow.o \
 		debug/moc_mainwindow.o \
 		debug/moc_signupwindow.o \
+		debug/moc_reviewmain.o \
+		debug/moc_simplereview.o \
 		debug/moc_libwindow.o \
 		debug/moc_addcard.o \
 		debug/moc_addcardmain.o \
 		debug/moc_addchoices.o \
 		debug/moc_addtext.o
 
-DIST          =  ..\QtCode\APIs\APIRequest.h \
+DIST          =  ..\QtCode\tools\APIs\APIRequest.h \
 		..\QtCode\LoginAndMainpage\loginwindow.h \
 		..\QtCode\LoginAndMainpage\mainwindow.h \
 		..\QtCode\LoginAndMainpage\signupwindow.h \
+		..\QtCode\Review\reviewmain.h \
+		..\QtCode\Review\simplereview.h \
 		..\QtCode\libraryPage\libwindow.h \
 		..\QtCode\tools\LoginInfo.h \
 		..\QtCode\tools\tools.h \
@@ -123,7 +133,9 @@ DIST          =  ..\QtCode\APIs\APIRequest.h \
 		..\QtCode\Cards\Plain.h \
 		..\QtCode\Cards\Text.h \
 		..\QtCode\Cards\Word.h ..\QtCode\main.cpp \
-		..\QtCode\APIs\APIRequest.cpp \
+		..\QtCode\Review\reviewmain.cpp \
+		..\QtCode\Review\simplereview.cpp \
+		..\QtCode\tools\APIs\APIRequest.cpp \
 		..\QtCode\LoginAndMainpage\loginwindow.cpp \
 		..\QtCode\LoginAndMainpage\main_login.cpp \
 		..\QtCode\LoginAndMainpage\mainwindow.cpp \
@@ -150,7 +162,7 @@ DESTDIR_TARGET = debug\Memorier.exe
 first: all
 all: Makefile.Debug  debug/Memorier.exe
 
-debug/Memorier.exe: C:/Qt/5.15.1/mingw81_64/lib/libQt5Widgets.a C:/Qt/5.15.1/mingw81_64/lib/libQt5Gui.a C:/Qt/5.15.1/mingw81_64/lib/libQt5Sql.a C:/Qt/5.15.1/mingw81_64/lib/libQt5Network.a C:/Qt/5.15.1/mingw81_64/lib/libQt5Core.a C:/Qt/5.15.1/mingw81_64/lib/libqtmain.a ui_loginwindow.h ui_mainwindow.h ui_signupwindow.h ui_addcard.h ui_addcardmain.h ui_addchoices.h ui_addtext.h ui_libwindow.h $(OBJECTS) 
+debug/Memorier.exe: C:/Qt/5.15.1/mingw81_64/lib/libQt5Widgets.a C:/Qt/5.15.1/mingw81_64/lib/libQt5Gui.a C:/Qt/5.15.1/mingw81_64/lib/libQt5Sql.a C:/Qt/5.15.1/mingw81_64/lib/libQt5Network.a C:/Qt/5.15.1/mingw81_64/lib/libQt5Core.a C:/Qt/5.15.1/mingw81_64/lib/libqtmain.a ui_loginwindow.h ui_mainwindow.h ui_signupwindow.h ui_addcard.h ui_addcardmain.h ui_addchoices.h ui_addtext.h ui_reviewmain.h ui_simplereview.h ui_libwindow.h $(OBJECTS) 
 	$(LINKER) $(LFLAGS) -o $(DESTDIR_TARGET) @object_script.Memorier.Debug  $(LIBS)
 
 qmake: FORCE
@@ -159,10 +171,10 @@ qmake: FORCE
 qmake_all: FORCE
 
 dist:
-	$(ZIP) Memorier.zip $(SOURCES) $(DIST) ..\QtCode\QtCode.pro C:\Qt\5.15.1\mingw81_64\mkspecs\features\spec_pre.prf C:\Qt\5.15.1\mingw81_64\mkspecs\qdevice.pri C:\Qt\5.15.1\mingw81_64\mkspecs\features\device_config.prf C:\Qt\5.15.1\mingw81_64\mkspecs\common\sanitize.conf C:\Qt\5.15.1\mingw81_64\mkspecs\common\gcc-base.conf C:\Qt\5.15.1\mingw81_64\mkspecs\common\g++-base.conf C:\Qt\5.15.1\mingw81_64\mkspecs\common\angle.conf C:\Qt\5.15.1\mingw81_64\mkspecs\features\win32\windows_vulkan_sdk.prf C:\Qt\5.15.1\mingw81_64\mkspecs\common\windows-vulkan.conf C:\Qt\5.15.1\mingw81_64\mkspecs\common\g++-win32.conf C:\Qt\5.15.1\mingw81_64\mkspecs\common\windows-desktop.conf C:\Qt\5.15.1\mingw81_64\mkspecs\qconfig.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_3danimation.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_3danimation_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_3dcore.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_3dcore_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_3dextras.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_3dextras_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_3dinput.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_3dinput_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_3dlogic.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_3dlogic_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_3dquick.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_3dquick_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_3dquickanimation.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_3dquickanimation_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_3dquickextras.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_3dquickextras_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_3dquickinput.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_3dquickinput_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_3dquickrender.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_3dquickrender_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_3dquickscene2d.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_3dquickscene2d_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_3drender.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_3drender_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_accessibility_support_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_axbase.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_axbase_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_axcontainer.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_axcontainer_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_axserver.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_axserver_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_bluetooth.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_bluetooth_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_bodymovin_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_bootstrap_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_charts.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_charts_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_concurrent.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_concurrent_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_core.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_core_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_datavisualization.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_datavisualization_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_dbus.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_dbus_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_designer.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_designer_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_designercomponents_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_devicediscovery_support_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_edid_support_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_egl_support_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_eventdispatcher_support_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_fb_support_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_fontdatabase_support_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_gamepad.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_gamepad_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_gui.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_gui_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_help.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_help_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_location.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_location_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_multimedia.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_multimedia_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_multimediawidgets.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_multimediawidgets_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_network.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_network_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_networkauth.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_networkauth_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_nfc.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_nfc_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_opengl.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_opengl_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_openglextensions.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_openglextensions_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_packetprotocol_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_platformcompositor_support_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_positioning.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_positioning_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_positioningquick.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_positioningquick_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_printsupport.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_printsupport_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_purchasing.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_purchasing_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_qml.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_qml_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_qmldebug_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_qmldevtools_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_qmlmodels.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_qmlmodels_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_qmltest.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_qmltest_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_qmlworkerscript.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_qmlworkerscript_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_quick.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_quick3d.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_quick3d_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_quick3dassetimport.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_quick3dassetimport_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_quick3drender.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_quick3drender_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_quick3druntimerender.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_quick3druntimerender_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_quick3dutils.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_quick3dutils_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_quick_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_quickcontrols2.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_quickcontrols2_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_quickparticles_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_quickshapes_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_quicktemplates2.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_quicktemplates2_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_quickwidgets.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_quickwidgets_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_remoteobjects.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_remoteobjects_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_repparser.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_repparser_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_script.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_script_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_scripttools.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_scripttools_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_scxml.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_scxml_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_sensors.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_sensors_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_serialbus.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_serialbus_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_serialport.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_serialport_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_sql.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_sql_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_svg.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_svg_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_testlib.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_testlib_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_texttospeech.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_texttospeech_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_theme_support_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_uiplugin.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_uitools.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_uitools_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_virtualkeyboard.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_virtualkeyboard_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_vulkan_support_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_webchannel.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_webchannel_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_websockets.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_websockets_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_widgets.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_widgets_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_windowsuiautomation_support_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_winextras.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_winextras_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_xml.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_xml_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_xmlpatterns.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_xmlpatterns_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_zlib_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\features\qt_functions.prf C:\Qt\5.15.1\mingw81_64\mkspecs\features\qt_config.prf C:\Qt\5.15.1\mingw81_64\mkspecs\win32-g++\qmake.conf C:\Qt\5.15.1\mingw81_64\mkspecs\features\spec_post.prf .qmake.stash C:\Qt\5.15.1\mingw81_64\mkspecs\features\exclusive_builds.prf C:\Qt\5.15.1\mingw81_64\mkspecs\features\toolchain.prf C:\Qt\5.15.1\mingw81_64\mkspecs\features\default_pre.prf C:\Qt\5.15.1\mingw81_64\mkspecs\features\win32\default_pre.prf C:\Qt\5.15.1\mingw81_64\mkspecs\features\resolve_config.prf C:\Qt\5.15.1\mingw81_64\mkspecs\features\exclusive_builds_post.prf C:\Qt\5.15.1\mingw81_64\mkspecs\features\default_post.prf C:\Qt\5.15.1\mingw81_64\mkspecs\features\build_pass.prf C:\Qt\5.15.1\mingw81_64\mkspecs\features\qml_debug.prf C:\Qt\5.15.1\mingw81_64\mkspecs\features\precompile_header.prf C:\Qt\5.15.1\mingw81_64\mkspecs\features\warn_on.prf C:\Qt\5.15.1\mingw81_64\mkspecs\features\qt.prf C:\Qt\5.15.1\mingw81_64\mkspecs\features\resources_functions.prf C:\Qt\5.15.1\mingw81_64\mkspecs\features\resources.prf C:\Qt\5.15.1\mingw81_64\mkspecs\features\moc.prf C:\Qt\5.15.1\mingw81_64\mkspecs\features\win32\opengl.prf C:\Qt\5.15.1\mingw81_64\mkspecs\features\uic.prf C:\Qt\5.15.1\mingw81_64\mkspecs\features\qmake_use.prf C:\Qt\5.15.1\mingw81_64\mkspecs\features\file_copies.prf C:\Qt\5.15.1\mingw81_64\mkspecs\features\win32\windows.prf C:\Qt\5.15.1\mingw81_64\mkspecs\features\testcase_targets.prf C:\Qt\5.15.1\mingw81_64\mkspecs\features\exceptions.prf C:\Qt\5.15.1\mingw81_64\mkspecs\features\yacc.prf C:\Qt\5.15.1\mingw81_64\mkspecs\features\lex.prf ..\QtCode\QtCode.pro ..\QtCode\LoginAndMainpage\assets.qrc ..\QtCode\libraryPage\assets_lib.qrc C:\Qt\5.15.1\mingw81_64\lib\Qt5Widgets.prl C:\Qt\5.15.1\mingw81_64\lib\Qt5Gui.prl C:\Qt\5.15.1\mingw81_64\lib\Qt5Sql.prl C:\Qt\5.15.1\mingw81_64\lib\Qt5Network.prl C:\Qt\5.15.1\mingw81_64\lib\Qt5Core.prl C:\Qt\5.15.1\mingw81_64\lib\qtmain.prl   ..\QtCode\LoginAndMainpage\assets.qrc ..\QtCode\libraryPage\assets_lib.qrc C:\Qt\5.15.1\mingw81_64\mkspecs\features\data\dummy.cpp ..\QtCode\APIs\APIRequest.h ..\QtCode\LoginAndMainpage\loginwindow.h ..\QtCode\LoginAndMainpage\mainwindow.h ..\QtCode\LoginAndMainpage\signupwindow.h ..\QtCode\libraryPage\libwindow.h ..\QtCode\tools\LoginInfo.h ..\QtCode\tools\tools.h ..\QtCode\AddCard\addcard.h ..\QtCode\AddCard\addcardmain.h ..\QtCode\AddCard\addchoices.h ..\QtCode\AddCard\addtext.h ..\QtCode\Cards\Card.h ..\QtCode\Cards\Cards.h ..\QtCode\Cards\Choices.h ..\QtCode\Cards\Plain.h ..\QtCode\Cards\Text.h ..\QtCode\Cards\Word.h  ..\QtCode\main.cpp ..\QtCode\APIs\APIRequest.cpp ..\QtCode\LoginAndMainpage\loginwindow.cpp ..\QtCode\LoginAndMainpage\main_login.cpp ..\QtCode\LoginAndMainpage\mainwindow.cpp ..\QtCode\LoginAndMainpage\signupwindow.cpp ..\QtCode\libraryPage\libwindow.cpp ..\QtCode\tools\LoginInfo.cpp ..\QtCode\tools\tools.cpp ..\QtCode\AddCard\addcard.cpp ..\QtCode\AddCard\addcardmain.cpp ..\QtCode\AddCard\addchoices.cpp ..\QtCode\AddCard\addtext.cpp ..\QtCode\Cards\Card.cpp ..\QtCode\Cards\Choices.cpp ..\QtCode\Cards\Plain.cpp ..\QtCode\Cards\Text.cpp ..\QtCode\Cards\Word.cpp ..\QtCode\LoginAndMainpage\loginwindow.ui ..\QtCode\LoginAndMainpage\mainwindow.ui ..\QtCode\LoginAndMainpage\signupwindow.ui ..\QtCode\AddCard\addcard.ui ..\QtCode\AddCard\addcardmain.ui ..\QtCode\AddCard\addchoices.ui ..\QtCode\AddCard\addtext.ui ..\QtCode\libraryPage\libwindow.ui    
+	$(ZIP) Memorier.zip $(SOURCES) $(DIST) ..\QtCode\QtCode.pro C:\Qt\5.15.1\mingw81_64\mkspecs\features\spec_pre.prf C:\Qt\5.15.1\mingw81_64\mkspecs\qdevice.pri C:\Qt\5.15.1\mingw81_64\mkspecs\features\device_config.prf C:\Qt\5.15.1\mingw81_64\mkspecs\common\sanitize.conf C:\Qt\5.15.1\mingw81_64\mkspecs\common\gcc-base.conf C:\Qt\5.15.1\mingw81_64\mkspecs\common\g++-base.conf C:\Qt\5.15.1\mingw81_64\mkspecs\common\angle.conf C:\Qt\5.15.1\mingw81_64\mkspecs\features\win32\windows_vulkan_sdk.prf C:\Qt\5.15.1\mingw81_64\mkspecs\common\windows-vulkan.conf C:\Qt\5.15.1\mingw81_64\mkspecs\common\g++-win32.conf C:\Qt\5.15.1\mingw81_64\mkspecs\common\windows-desktop.conf C:\Qt\5.15.1\mingw81_64\mkspecs\qconfig.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_3danimation.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_3danimation_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_3dcore.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_3dcore_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_3dextras.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_3dextras_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_3dinput.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_3dinput_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_3dlogic.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_3dlogic_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_3dquick.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_3dquick_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_3dquickanimation.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_3dquickanimation_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_3dquickextras.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_3dquickextras_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_3dquickinput.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_3dquickinput_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_3dquickrender.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_3dquickrender_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_3dquickscene2d.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_3dquickscene2d_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_3drender.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_3drender_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_accessibility_support_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_axbase.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_axbase_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_axcontainer.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_axcontainer_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_axserver.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_axserver_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_bluetooth.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_bluetooth_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_bodymovin_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_bootstrap_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_charts.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_charts_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_concurrent.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_concurrent_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_core.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_core_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_datavisualization.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_datavisualization_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_dbus.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_dbus_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_designer.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_designer_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_designercomponents_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_devicediscovery_support_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_edid_support_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_egl_support_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_eventdispatcher_support_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_fb_support_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_fontdatabase_support_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_gamepad.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_gamepad_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_gui.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_gui_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_help.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_help_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_location.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_location_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_multimedia.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_multimedia_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_multimediawidgets.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_multimediawidgets_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_network.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_network_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_networkauth.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_networkauth_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_nfc.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_nfc_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_opengl.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_opengl_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_openglextensions.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_openglextensions_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_packetprotocol_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_platformcompositor_support_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_positioning.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_positioning_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_positioningquick.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_positioningquick_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_printsupport.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_printsupport_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_purchasing.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_purchasing_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_qml.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_qml_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_qmldebug_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_qmldevtools_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_qmlmodels.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_qmlmodels_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_qmltest.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_qmltest_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_qmlworkerscript.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_qmlworkerscript_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_quick.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_quick3d.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_quick3d_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_quick3dassetimport.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_quick3dassetimport_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_quick3drender.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_quick3drender_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_quick3druntimerender.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_quick3druntimerender_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_quick3dutils.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_quick3dutils_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_quick_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_quickcontrols2.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_quickcontrols2_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_quickparticles_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_quickshapes_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_quicktemplates2.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_quicktemplates2_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_quickwidgets.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_quickwidgets_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_remoteobjects.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_remoteobjects_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_repparser.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_repparser_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_script.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_script_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_scripttools.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_scripttools_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_scxml.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_scxml_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_sensors.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_sensors_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_serialbus.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_serialbus_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_serialport.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_serialport_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_sql.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_sql_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_svg.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_svg_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_testlib.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_testlib_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_texttospeech.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_texttospeech_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_theme_support_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_uiplugin.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_uitools.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_uitools_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_virtualkeyboard.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_virtualkeyboard_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_vulkan_support_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_webchannel.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_webchannel_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_websockets.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_websockets_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_widgets.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_widgets_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_windowsuiautomation_support_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_winextras.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_winextras_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_xml.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_xml_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_xmlpatterns.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_xmlpatterns_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_zlib_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\features\qt_functions.prf C:\Qt\5.15.1\mingw81_64\mkspecs\features\qt_config.prf C:\Qt\5.15.1\mingw81_64\mkspecs\win32-g++\qmake.conf C:\Qt\5.15.1\mingw81_64\mkspecs\features\spec_post.prf .qmake.stash C:\Qt\5.15.1\mingw81_64\mkspecs\features\exclusive_builds.prf C:\Qt\5.15.1\mingw81_64\mkspecs\features\toolchain.prf C:\Qt\5.15.1\mingw81_64\mkspecs\features\default_pre.prf C:\Qt\5.15.1\mingw81_64\mkspecs\features\win32\default_pre.prf C:\Qt\5.15.1\mingw81_64\mkspecs\features\resolve_config.prf C:\Qt\5.15.1\mingw81_64\mkspecs\features\exclusive_builds_post.prf C:\Qt\5.15.1\mingw81_64\mkspecs\features\default_post.prf C:\Qt\5.15.1\mingw81_64\mkspecs\features\build_pass.prf C:\Qt\5.15.1\mingw81_64\mkspecs\features\qml_debug.prf C:\Qt\5.15.1\mingw81_64\mkspecs\features\precompile_header.prf C:\Qt\5.15.1\mingw81_64\mkspecs\features\warn_on.prf C:\Qt\5.15.1\mingw81_64\mkspecs\features\qt.prf C:\Qt\5.15.1\mingw81_64\mkspecs\features\resources_functions.prf C:\Qt\5.15.1\mingw81_64\mkspecs\features\resources.prf C:\Qt\5.15.1\mingw81_64\mkspecs\features\moc.prf C:\Qt\5.15.1\mingw81_64\mkspecs\features\win32\opengl.prf C:\Qt\5.15.1\mingw81_64\mkspecs\features\uic.prf C:\Qt\5.15.1\mingw81_64\mkspecs\features\qmake_use.prf C:\Qt\5.15.1\mingw81_64\mkspecs\features\file_copies.prf C:\Qt\5.15.1\mingw81_64\mkspecs\features\win32\windows.prf C:\Qt\5.15.1\mingw81_64\mkspecs\features\testcase_targets.prf C:\Qt\5.15.1\mingw81_64\mkspecs\features\exceptions.prf C:\Qt\5.15.1\mingw81_64\mkspecs\features\yacc.prf C:\Qt\5.15.1\mingw81_64\mkspecs\features\lex.prf ..\QtCode\QtCode.pro ..\QtCode\LoginAndMainpage\assets.qrc ..\QtCode\libraryPage\assets_lib.qrc C:\Qt\5.15.1\mingw81_64\lib\Qt5Widgets.prl C:\Qt\5.15.1\mingw81_64\lib\Qt5Gui.prl C:\Qt\5.15.1\mingw81_64\lib\Qt5Sql.prl C:\Qt\5.15.1\mingw81_64\lib\Qt5Network.prl C:\Qt\5.15.1\mingw81_64\lib\Qt5Core.prl C:\Qt\5.15.1\mingw81_64\lib\qtmain.prl   ..\QtCode\LoginAndMainpage\assets.qrc ..\QtCode\libraryPage\assets_lib.qrc C:\Qt\5.15.1\mingw81_64\mkspecs\features\data\dummy.cpp ..\QtCode\tools\APIs\APIRequest.h ..\QtCode\LoginAndMainpage\loginwindow.h ..\QtCode\LoginAndMainpage\mainwindow.h ..\QtCode\LoginAndMainpage\signupwindow.h ..\QtCode\Review\reviewmain.h ..\QtCode\Review\simplereview.h ..\QtCode\libraryPage\libwindow.h ..\QtCode\tools\LoginInfo.h ..\QtCode\tools\tools.h ..\QtCode\AddCard\addcard.h ..\QtCode\AddCard\addcardmain.h ..\QtCode\AddCard\addchoices.h ..\QtCode\AddCard\addtext.h ..\QtCode\Cards\Card.h ..\QtCode\Cards\Cards.h ..\QtCode\Cards\Choices.h ..\QtCode\Cards\Plain.h ..\QtCode\Cards\Text.h ..\QtCode\Cards\Word.h  ..\QtCode\main.cpp ..\QtCode\Review\reviewmain.cpp ..\QtCode\Review\simplereview.cpp ..\QtCode\tools\APIs\APIRequest.cpp ..\QtCode\LoginAndMainpage\loginwindow.cpp ..\QtCode\LoginAndMainpage\main_login.cpp ..\QtCode\LoginAndMainpage\mainwindow.cpp ..\QtCode\LoginAndMainpage\signupwindow.cpp ..\QtCode\libraryPage\libwindow.cpp ..\QtCode\tools\LoginInfo.cpp ..\QtCode\tools\tools.cpp ..\QtCode\AddCard\addcard.cpp ..\QtCode\AddCard\addcardmain.cpp ..\QtCode\AddCard\addchoices.cpp ..\QtCode\AddCard\addtext.cpp ..\QtCode\Cards\Card.cpp ..\QtCode\Cards\Choices.cpp ..\QtCode\Cards\Plain.cpp ..\QtCode\Cards\Text.cpp ..\QtCode\Cards\Word.cpp ..\QtCode\LoginAndMainpage\loginwindow.ui ..\QtCode\LoginAndMainpage\mainwindow.ui ..\QtCode\LoginAndMainpage\signupwindow.ui ..\QtCode\AddCard\addcard.ui ..\QtCode\AddCard\addcardmain.ui ..\QtCode\AddCard\addchoices.ui ..\QtCode\AddCard\addtext.ui ..\QtCode\Review\reviewmain.ui ..\QtCode\Review\simplereview.ui ..\QtCode\libraryPage\libwindow.ui    
 
 clean: compiler_clean 
-	-$(DEL_FILE) debug\main.o debug\APIRequest.o debug\loginwindow.o debug\main_login.o debug\mainwindow.o debug\signupwindow.o debug\libwindow.o debug\LoginInfo.o debug\tools.o debug\addcard.o debug\addcardmain.o debug\addchoices.o debug\addtext.o debug\Card.o debug\Choices.o debug\Plain.o debug\Text.o debug\Word.o debug\qrc_assets.o debug\qrc_assets_lib.o debug\moc_loginwindow.o debug\moc_mainwindow.o debug\moc_signupwindow.o debug\moc_libwindow.o debug\moc_addcard.o debug\moc_addcardmain.o debug\moc_addchoices.o debug\moc_addtext.o
+	-$(DEL_FILE) debug\main.o debug\reviewmain.o debug\simplereview.o debug\APIRequest.o debug\loginwindow.o debug\main_login.o debug\mainwindow.o debug\signupwindow.o debug\libwindow.o debug\LoginInfo.o debug\tools.o debug\addcard.o debug\addcardmain.o debug\addchoices.o debug\addtext.o debug\Card.o debug\Choices.o debug\Plain.o debug\Text.o debug\Word.o debug\qrc_assets.o debug\qrc_assets_lib.o debug\moc_loginwindow.o debug\moc_mainwindow.o debug\moc_signupwindow.o debug\moc_reviewmain.o debug\moc_simplereview.o debug\moc_libwindow.o debug\moc_addcard.o debug\moc_addcardmain.o debug\moc_addchoices.o debug\moc_addtext.o
 
 distclean: clean 
 	-$(DEL_FILE) .qmake.stash
@@ -202,9 +214,9 @@ compiler_moc_predefs_clean:
 debug/moc_predefs.h: C:/Qt/5.15.1/mingw81_64/mkspecs/features/data/dummy.cpp
 	g++ -fno-keep-inline-dllexport -g -Wall -Wextra -Wextra -dM -E -o debug\moc_predefs.h C:\Qt\5.15.1\mingw81_64\mkspecs\features\data\dummy.cpp
 
-compiler_moc_header_make_all: debug/moc_loginwindow.cpp debug/moc_mainwindow.cpp debug/moc_signupwindow.cpp debug/moc_libwindow.cpp debug/moc_addcard.cpp debug/moc_addcardmain.cpp debug/moc_addchoices.cpp debug/moc_addtext.cpp
+compiler_moc_header_make_all: debug/moc_loginwindow.cpp debug/moc_mainwindow.cpp debug/moc_signupwindow.cpp debug/moc_reviewmain.cpp debug/moc_simplereview.cpp debug/moc_libwindow.cpp debug/moc_addcard.cpp debug/moc_addcardmain.cpp debug/moc_addchoices.cpp debug/moc_addtext.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) debug\moc_loginwindow.cpp debug\moc_mainwindow.cpp debug\moc_signupwindow.cpp debug\moc_libwindow.cpp debug\moc_addcard.cpp debug\moc_addcardmain.cpp debug\moc_addchoices.cpp debug\moc_addtext.cpp
+	-$(DEL_FILE) debug\moc_loginwindow.cpp debug\moc_mainwindow.cpp debug\moc_signupwindow.cpp debug\moc_reviewmain.cpp debug\moc_simplereview.cpp debug\moc_libwindow.cpp debug\moc_addcard.cpp debug\moc_addcardmain.cpp debug\moc_addchoices.cpp debug\moc_addtext.cpp
 debug/moc_loginwindow.cpp: ../QtCode/LoginAndMainpage/loginwindow.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/QMainWindow \
 		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qmainwindow.h \
@@ -314,7 +326,7 @@ debug/moc_loginwindow.cpp: ../QtCode/LoginAndMainpage/loginwindow.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtGui/qicon.h \
 		debug/moc_predefs.h \
 		C:/Qt/5.15.1/mingw81_64/bin/moc.exe
-	C:\Qt\5.15.1\mingw81_64\bin\moc.exe $(DEFINES) --include "D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/build-QtCode-unknown-Debug/debug/moc_predefs.h" -IC:/Qt/5.15.1/mingw81_64/mkspecs/win32-g++ -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/APIs" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/tools" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/libraryPage" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/LoginAndMainpage" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/NotonlyAddCard" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/NotonlyAddCard/AddCard" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/NotonlyAddCard/Cards" -IC:/Qt/5.15.1/mingw81_64/include -IC:/Qt/5.15.1/mingw81_64/include/QtWidgets -IC:/Qt/5.15.1/mingw81_64/include/QtGui -IC:/Qt/5.15.1/mingw81_64/include/QtANGLE -IC:/Qt/5.15.1/mingw81_64/include/QtSql -IC:/Qt/5.15.1/mingw81_64/include/QtNetwork -IC:/Qt/5.15.1/mingw81_64/include/QtCore -I. -IC:/MinGW64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++ -IC:/MinGW64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32 -IC:/MinGW64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward -IC:/MinGW64/lib/gcc/x86_64-w64-mingw32/8.1.0/include -IC:/MinGW64/lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed -IC:/MinGW64/x86_64-w64-mingw32/include ..\QtCode\LoginAndMainpage\loginwindow.h -o debug\moc_loginwindow.cpp
+	C:\Qt\5.15.1\mingw81_64\bin\moc.exe $(DEFINES) --include "D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/build-QtCode-unknown-Debug/debug/moc_predefs.h" -IC:/Qt/5.15.1/mingw81_64/mkspecs/win32-g++ -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/tools" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/tools/APIs" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/libraryPage" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/LoginAndMainpage" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/AddCard" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/Cards" -IC:/Qt/5.15.1/mingw81_64/include -IC:/Qt/5.15.1/mingw81_64/include/QtWidgets -IC:/Qt/5.15.1/mingw81_64/include/QtGui -IC:/Qt/5.15.1/mingw81_64/include/QtANGLE -IC:/Qt/5.15.1/mingw81_64/include/QtSql -IC:/Qt/5.15.1/mingw81_64/include/QtNetwork -IC:/Qt/5.15.1/mingw81_64/include/QtCore -I. -IC:/MinGW64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++ -IC:/MinGW64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32 -IC:/MinGW64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward -IC:/MinGW64/lib/gcc/x86_64-w64-mingw32/8.1.0/include -IC:/MinGW64/lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed -IC:/MinGW64/x86_64-w64-mingw32/include ..\QtCode\LoginAndMainpage\loginwindow.h -o debug\moc_loginwindow.cpp
 
 debug/moc_mainwindow.cpp: ../QtCode/LoginAndMainpage/mainwindow.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/QMainWindow \
@@ -425,7 +437,7 @@ debug/moc_mainwindow.cpp: ../QtCode/LoginAndMainpage/mainwindow.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtGui/qicon.h \
 		debug/moc_predefs.h \
 		C:/Qt/5.15.1/mingw81_64/bin/moc.exe
-	C:\Qt\5.15.1\mingw81_64\bin\moc.exe $(DEFINES) --include "D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/build-QtCode-unknown-Debug/debug/moc_predefs.h" -IC:/Qt/5.15.1/mingw81_64/mkspecs/win32-g++ -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/APIs" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/tools" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/libraryPage" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/LoginAndMainpage" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/NotonlyAddCard" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/NotonlyAddCard/AddCard" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/NotonlyAddCard/Cards" -IC:/Qt/5.15.1/mingw81_64/include -IC:/Qt/5.15.1/mingw81_64/include/QtWidgets -IC:/Qt/5.15.1/mingw81_64/include/QtGui -IC:/Qt/5.15.1/mingw81_64/include/QtANGLE -IC:/Qt/5.15.1/mingw81_64/include/QtSql -IC:/Qt/5.15.1/mingw81_64/include/QtNetwork -IC:/Qt/5.15.1/mingw81_64/include/QtCore -I. -IC:/MinGW64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++ -IC:/MinGW64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32 -IC:/MinGW64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward -IC:/MinGW64/lib/gcc/x86_64-w64-mingw32/8.1.0/include -IC:/MinGW64/lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed -IC:/MinGW64/x86_64-w64-mingw32/include ..\QtCode\LoginAndMainpage\mainwindow.h -o debug\moc_mainwindow.cpp
+	C:\Qt\5.15.1\mingw81_64\bin\moc.exe $(DEFINES) --include "D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/build-QtCode-unknown-Debug/debug/moc_predefs.h" -IC:/Qt/5.15.1/mingw81_64/mkspecs/win32-g++ -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/tools" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/tools/APIs" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/libraryPage" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/LoginAndMainpage" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/AddCard" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/Cards" -IC:/Qt/5.15.1/mingw81_64/include -IC:/Qt/5.15.1/mingw81_64/include/QtWidgets -IC:/Qt/5.15.1/mingw81_64/include/QtGui -IC:/Qt/5.15.1/mingw81_64/include/QtANGLE -IC:/Qt/5.15.1/mingw81_64/include/QtSql -IC:/Qt/5.15.1/mingw81_64/include/QtNetwork -IC:/Qt/5.15.1/mingw81_64/include/QtCore -I. -IC:/MinGW64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++ -IC:/MinGW64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32 -IC:/MinGW64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward -IC:/MinGW64/lib/gcc/x86_64-w64-mingw32/8.1.0/include -IC:/MinGW64/lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed -IC:/MinGW64/x86_64-w64-mingw32/include ..\QtCode\LoginAndMainpage\mainwindow.h -o debug\moc_mainwindow.cpp
 
 debug/moc_signupwindow.cpp: ../QtCode/LoginAndMainpage/signupwindow.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/QMainWindow \
@@ -536,7 +548,330 @@ debug/moc_signupwindow.cpp: ../QtCode/LoginAndMainpage/signupwindow.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtGui/qicon.h \
 		debug/moc_predefs.h \
 		C:/Qt/5.15.1/mingw81_64/bin/moc.exe
-	C:\Qt\5.15.1\mingw81_64\bin\moc.exe $(DEFINES) --include "D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/build-QtCode-unknown-Debug/debug/moc_predefs.h" -IC:/Qt/5.15.1/mingw81_64/mkspecs/win32-g++ -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/APIs" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/tools" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/libraryPage" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/LoginAndMainpage" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/NotonlyAddCard" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/NotonlyAddCard/AddCard" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/NotonlyAddCard/Cards" -IC:/Qt/5.15.1/mingw81_64/include -IC:/Qt/5.15.1/mingw81_64/include/QtWidgets -IC:/Qt/5.15.1/mingw81_64/include/QtGui -IC:/Qt/5.15.1/mingw81_64/include/QtANGLE -IC:/Qt/5.15.1/mingw81_64/include/QtSql -IC:/Qt/5.15.1/mingw81_64/include/QtNetwork -IC:/Qt/5.15.1/mingw81_64/include/QtCore -I. -IC:/MinGW64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++ -IC:/MinGW64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32 -IC:/MinGW64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward -IC:/MinGW64/lib/gcc/x86_64-w64-mingw32/8.1.0/include -IC:/MinGW64/lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed -IC:/MinGW64/x86_64-w64-mingw32/include ..\QtCode\LoginAndMainpage\signupwindow.h -o debug\moc_signupwindow.cpp
+	C:\Qt\5.15.1\mingw81_64\bin\moc.exe $(DEFINES) --include "D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/build-QtCode-unknown-Debug/debug/moc_predefs.h" -IC:/Qt/5.15.1/mingw81_64/mkspecs/win32-g++ -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/tools" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/tools/APIs" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/libraryPage" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/LoginAndMainpage" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/AddCard" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/Cards" -IC:/Qt/5.15.1/mingw81_64/include -IC:/Qt/5.15.1/mingw81_64/include/QtWidgets -IC:/Qt/5.15.1/mingw81_64/include/QtGui -IC:/Qt/5.15.1/mingw81_64/include/QtANGLE -IC:/Qt/5.15.1/mingw81_64/include/QtSql -IC:/Qt/5.15.1/mingw81_64/include/QtNetwork -IC:/Qt/5.15.1/mingw81_64/include/QtCore -I. -IC:/MinGW64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++ -IC:/MinGW64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32 -IC:/MinGW64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward -IC:/MinGW64/lib/gcc/x86_64-w64-mingw32/8.1.0/include -IC:/MinGW64/lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed -IC:/MinGW64/x86_64-w64-mingw32/include ..\QtCode\LoginAndMainpage\signupwindow.h -o debug\moc_signupwindow.cpp
+
+debug/moc_reviewmain.cpp: ../QtCode/Review/reviewmain.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/QMainWindow \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qmainwindow.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qtwidgetsglobal.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qtguiglobal.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qglobal.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qconfig-bootstrapped.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qconfig.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qtcore-config.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qsystemdetection.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qprocessordetection.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qcompilerdetection.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qtypeinfo.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qsysinfo.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qlogging.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qflags.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qatomic.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qbasicatomic.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qatomic_bootstrap.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qgenericatomic.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qatomic_cxx11.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qatomic_msvc.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qglobalstatic.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qmutex.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qnumeric.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qversiontagging.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qtgui-config.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qtwidgets-config.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qwidget.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qwindowdefs.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qobjectdefs.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qnamespace.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qobjectdefs_impl.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qwindowdefs_win.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qobject.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qstring.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qchar.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qbytearray.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qrefcount.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qarraydata.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qstringliteral.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qstringalgorithms.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qstringview.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qstringbuilder.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qlist.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qalgorithms.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qiterator.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qhashfunctions.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qpair.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qvector.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qcontainertools_impl.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qpoint.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qbytearraylist.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qstringlist.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qregexp.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qstringmatcher.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qcoreevent.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qscopedpointer.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qmetatype.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qvarlengtharray.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qcontainerfwd.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qobject_impl.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qmargins.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qpaintdevice.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qrect.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qsize.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qpalette.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qcolor.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qrgb.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qrgba64.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qbrush.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qmatrix.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qpolygon.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qregion.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qdatastream.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qiodevice.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qline.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qtransform.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qimage.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qpixelformat.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qpixmap.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qsharedpointer.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qshareddata.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qhash.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qsharedpointer_impl.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qfont.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qfontmetrics.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qfontinfo.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qsizepolicy.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qcursor.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qkeysequence.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qevent.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qvariant.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qmap.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qdebug.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qtextstream.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qlocale.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qset.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qcontiguouscache.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qurl.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qurlquery.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qfile.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qfiledevice.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qvector2d.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qtouchdevice.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qtabwidget.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qicon.h \
+		../QtCode/Review/simplereview.h \
+		../QtCode/Cards/Cards.h \
+		../QtCode/Cards/Card.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/QString \
+		../QtCode/Cards/Plain.h \
+		../QtCode/Cards/Word.h \
+		../QtCode/tools/APIs/APIRequest.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/QNetworkAccessManager \
+		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/qnetworkaccessmanager.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/qtnetworkglobal.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/qtnetwork-config.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/qnetworkrequest.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/QSharedDataPointer \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/QUrl \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/QVariant \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/QVector \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/QObject \
+		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/QSslConfiguration \
+		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/qsslconfiguration.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/qsslsocket.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/qtcpsocket.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/qabstractsocket.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/qsslerror.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/qsslcertificate.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qcryptographichash.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qdatetime.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/qssl.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/QFlags \
+		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/QSslPreSharedKeyAuthenticator \
+		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/qsslpresharedkeyauthenticator.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/QMetaType \
+		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/QNetworkRequest \
+		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/QNetworkReply \
+		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/qnetworkreply.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/QIODevice \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/QUrlQuery \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/QJsonDocument \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qjsondocument.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qjsonvalue.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qcborvalue.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qcborcommon.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qregularexpression.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/quuid.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/QJsonObject \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qjsonobject.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/QJsonArray \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qjsonarray.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/QEventLoop \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qeventloop.h \
+		../QtCode/Cards/Choices.h \
+		../QtCode/Cards/Text.h \
+		debug/moc_predefs.h \
+		C:/Qt/5.15.1/mingw81_64/bin/moc.exe
+	C:\Qt\5.15.1\mingw81_64\bin\moc.exe $(DEFINES) --include "D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/build-QtCode-unknown-Debug/debug/moc_predefs.h" -IC:/Qt/5.15.1/mingw81_64/mkspecs/win32-g++ -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/tools" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/tools/APIs" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/libraryPage" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/LoginAndMainpage" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/AddCard" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/Cards" -IC:/Qt/5.15.1/mingw81_64/include -IC:/Qt/5.15.1/mingw81_64/include/QtWidgets -IC:/Qt/5.15.1/mingw81_64/include/QtGui -IC:/Qt/5.15.1/mingw81_64/include/QtANGLE -IC:/Qt/5.15.1/mingw81_64/include/QtSql -IC:/Qt/5.15.1/mingw81_64/include/QtNetwork -IC:/Qt/5.15.1/mingw81_64/include/QtCore -I. -IC:/MinGW64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++ -IC:/MinGW64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32 -IC:/MinGW64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward -IC:/MinGW64/lib/gcc/x86_64-w64-mingw32/8.1.0/include -IC:/MinGW64/lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed -IC:/MinGW64/x86_64-w64-mingw32/include ..\QtCode\Review\reviewmain.h -o debug\moc_reviewmain.cpp
+
+debug/moc_simplereview.cpp: ../QtCode/Review/simplereview.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/QMainWindow \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qmainwindow.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qtwidgetsglobal.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qtguiglobal.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qglobal.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qconfig-bootstrapped.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qconfig.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qtcore-config.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qsystemdetection.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qprocessordetection.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qcompilerdetection.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qtypeinfo.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qsysinfo.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qlogging.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qflags.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qatomic.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qbasicatomic.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qatomic_bootstrap.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qgenericatomic.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qatomic_cxx11.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qatomic_msvc.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qglobalstatic.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qmutex.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qnumeric.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qversiontagging.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qtgui-config.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qtwidgets-config.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qwidget.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qwindowdefs.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qobjectdefs.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qnamespace.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qobjectdefs_impl.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qwindowdefs_win.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qobject.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qstring.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qchar.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qbytearray.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qrefcount.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qarraydata.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qstringliteral.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qstringalgorithms.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qstringview.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qstringbuilder.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qlist.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qalgorithms.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qiterator.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qhashfunctions.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qpair.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qvector.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qcontainertools_impl.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qpoint.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qbytearraylist.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qstringlist.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qregexp.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qstringmatcher.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qcoreevent.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qscopedpointer.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qmetatype.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qvarlengtharray.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qcontainerfwd.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qobject_impl.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qmargins.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qpaintdevice.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qrect.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qsize.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qpalette.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qcolor.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qrgb.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qrgba64.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qbrush.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qmatrix.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qpolygon.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qregion.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qdatastream.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qiodevice.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qline.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qtransform.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qimage.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qpixelformat.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qpixmap.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qsharedpointer.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qshareddata.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qhash.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qsharedpointer_impl.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qfont.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qfontmetrics.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qfontinfo.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qsizepolicy.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qcursor.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qkeysequence.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qevent.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qvariant.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qmap.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qdebug.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qtextstream.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qlocale.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qset.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qcontiguouscache.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qurl.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qurlquery.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qfile.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qfiledevice.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qvector2d.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qtouchdevice.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qtabwidget.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qicon.h \
+		../QtCode/Cards/Cards.h \
+		../QtCode/Cards/Card.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/QString \
+		../QtCode/Cards/Plain.h \
+		../QtCode/Cards/Word.h \
+		../QtCode/tools/APIs/APIRequest.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/QNetworkAccessManager \
+		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/qnetworkaccessmanager.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/qtnetworkglobal.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/qtnetwork-config.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/qnetworkrequest.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/QSharedDataPointer \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/QUrl \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/QVariant \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/QVector \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/QObject \
+		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/QSslConfiguration \
+		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/qsslconfiguration.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/qsslsocket.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/qtcpsocket.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/qabstractsocket.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/qsslerror.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/qsslcertificate.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qcryptographichash.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qdatetime.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/qssl.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/QFlags \
+		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/QSslPreSharedKeyAuthenticator \
+		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/qsslpresharedkeyauthenticator.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/QMetaType \
+		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/QNetworkRequest \
+		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/QNetworkReply \
+		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/qnetworkreply.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/QIODevice \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/QUrlQuery \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/QJsonDocument \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qjsondocument.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qjsonvalue.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qcborvalue.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qcborcommon.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qregularexpression.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/quuid.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/QJsonObject \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qjsonobject.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/QJsonArray \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qjsonarray.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/QEventLoop \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qeventloop.h \
+		../QtCode/Cards/Choices.h \
+		../QtCode/Cards/Text.h \
+		debug/moc_predefs.h \
+		C:/Qt/5.15.1/mingw81_64/bin/moc.exe
+	C:\Qt\5.15.1\mingw81_64\bin\moc.exe $(DEFINES) --include "D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/build-QtCode-unknown-Debug/debug/moc_predefs.h" -IC:/Qt/5.15.1/mingw81_64/mkspecs/win32-g++ -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/tools" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/tools/APIs" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/libraryPage" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/LoginAndMainpage" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/AddCard" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/Cards" -IC:/Qt/5.15.1/mingw81_64/include -IC:/Qt/5.15.1/mingw81_64/include/QtWidgets -IC:/Qt/5.15.1/mingw81_64/include/QtGui -IC:/Qt/5.15.1/mingw81_64/include/QtANGLE -IC:/Qt/5.15.1/mingw81_64/include/QtSql -IC:/Qt/5.15.1/mingw81_64/include/QtNetwork -IC:/Qt/5.15.1/mingw81_64/include/QtCore -I. -IC:/MinGW64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++ -IC:/MinGW64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32 -IC:/MinGW64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward -IC:/MinGW64/lib/gcc/x86_64-w64-mingw32/8.1.0/include -IC:/MinGW64/lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed -IC:/MinGW64/x86_64-w64-mingw32/include ..\QtCode\Review\simplereview.h -o debug\moc_simplereview.cpp
 
 debug/moc_libwindow.cpp: ../QtCode/libraryPage/libwindow.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/QMainWindow \
@@ -652,7 +987,7 @@ debug/moc_libwindow.cpp: ../QtCode/libraryPage/libwindow.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtCore/QString \
 		../QtCode/Cards/Plain.h \
 		../QtCode/Cards/Word.h \
-		../QtCode/APIs/APIRequest.h \
+		../QtCode/tools/APIs/APIRequest.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/QNetworkAccessManager \
 		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/qnetworkaccessmanager.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/qtnetworkglobal.h \
@@ -704,7 +1039,6 @@ debug/moc_libwindow.cpp: ../QtCode/libraryPage/libwindow.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtGui/qpen.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtGui/qtextoption.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtGui/QColor \
-		C:/Qt/5.15.1/mingw81_64/include/QtGui/QBrush \
 		C:/Qt/5.15.1/mingw81_64/include/QtGui/QTextCharFormat \
 		C:/Qt/5.15.1/mingw81_64/include/QtCore/QList \
 		../QtCode/AddCard/addchoices.h \
@@ -716,9 +1050,11 @@ debug/moc_libwindow.cpp: ../QtCode/libraryPage/libwindow.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/QCheckBox \
 		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qcheckbox.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qabstractbutton.h \
+		../QtCode/Review/reviewmain.h \
+		../QtCode/Review/simplereview.h \
 		debug/moc_predefs.h \
 		C:/Qt/5.15.1/mingw81_64/bin/moc.exe
-	C:\Qt\5.15.1\mingw81_64\bin\moc.exe $(DEFINES) --include "D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/build-QtCode-unknown-Debug/debug/moc_predefs.h" -IC:/Qt/5.15.1/mingw81_64/mkspecs/win32-g++ -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/APIs" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/tools" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/libraryPage" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/LoginAndMainpage" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/NotonlyAddCard" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/NotonlyAddCard/AddCard" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/NotonlyAddCard/Cards" -IC:/Qt/5.15.1/mingw81_64/include -IC:/Qt/5.15.1/mingw81_64/include/QtWidgets -IC:/Qt/5.15.1/mingw81_64/include/QtGui -IC:/Qt/5.15.1/mingw81_64/include/QtANGLE -IC:/Qt/5.15.1/mingw81_64/include/QtSql -IC:/Qt/5.15.1/mingw81_64/include/QtNetwork -IC:/Qt/5.15.1/mingw81_64/include/QtCore -I. -IC:/MinGW64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++ -IC:/MinGW64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32 -IC:/MinGW64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward -IC:/MinGW64/lib/gcc/x86_64-w64-mingw32/8.1.0/include -IC:/MinGW64/lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed -IC:/MinGW64/x86_64-w64-mingw32/include ..\QtCode\libraryPage\libwindow.h -o debug\moc_libwindow.cpp
+	C:\Qt\5.15.1\mingw81_64\bin\moc.exe $(DEFINES) --include "D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/build-QtCode-unknown-Debug/debug/moc_predefs.h" -IC:/Qt/5.15.1/mingw81_64/mkspecs/win32-g++ -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/tools" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/tools/APIs" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/libraryPage" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/LoginAndMainpage" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/AddCard" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/Cards" -IC:/Qt/5.15.1/mingw81_64/include -IC:/Qt/5.15.1/mingw81_64/include/QtWidgets -IC:/Qt/5.15.1/mingw81_64/include/QtGui -IC:/Qt/5.15.1/mingw81_64/include/QtANGLE -IC:/Qt/5.15.1/mingw81_64/include/QtSql -IC:/Qt/5.15.1/mingw81_64/include/QtNetwork -IC:/Qt/5.15.1/mingw81_64/include/QtCore -I. -IC:/MinGW64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++ -IC:/MinGW64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32 -IC:/MinGW64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward -IC:/MinGW64/lib/gcc/x86_64-w64-mingw32/8.1.0/include -IC:/MinGW64/lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed -IC:/MinGW64/x86_64-w64-mingw32/include ..\QtCode\libraryPage\libwindow.h -o debug\moc_libwindow.cpp
 
 debug/moc_addcard.cpp: ../QtCode/AddCard/addcard.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/QMainWindow \
@@ -833,7 +1169,7 @@ debug/moc_addcard.cpp: ../QtCode/AddCard/addcard.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtCore/QString \
 		../QtCode/Cards/Plain.h \
 		../QtCode/Cards/Word.h \
-		../QtCode/APIs/APIRequest.h \
+		../QtCode/tools/APIs/APIRequest.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/QNetworkAccessManager \
 		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/qnetworkaccessmanager.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/qtnetworkglobal.h \
@@ -885,7 +1221,6 @@ debug/moc_addcard.cpp: ../QtCode/AddCard/addcard.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtGui/qpen.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtGui/qtextoption.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtGui/QColor \
-		C:/Qt/5.15.1/mingw81_64/include/QtGui/QBrush \
 		C:/Qt/5.15.1/mingw81_64/include/QtGui/QTextCharFormat \
 		C:/Qt/5.15.1/mingw81_64/include/QtCore/QList \
 		../QtCode/AddCard/addchoices.h \
@@ -899,7 +1234,7 @@ debug/moc_addcard.cpp: ../QtCode/AddCard/addcard.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qabstractbutton.h \
 		debug/moc_predefs.h \
 		C:/Qt/5.15.1/mingw81_64/bin/moc.exe
-	C:\Qt\5.15.1\mingw81_64\bin\moc.exe $(DEFINES) --include "D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/build-QtCode-unknown-Debug/debug/moc_predefs.h" -IC:/Qt/5.15.1/mingw81_64/mkspecs/win32-g++ -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/APIs" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/tools" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/libraryPage" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/LoginAndMainpage" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/NotonlyAddCard" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/NotonlyAddCard/AddCard" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/NotonlyAddCard/Cards" -IC:/Qt/5.15.1/mingw81_64/include -IC:/Qt/5.15.1/mingw81_64/include/QtWidgets -IC:/Qt/5.15.1/mingw81_64/include/QtGui -IC:/Qt/5.15.1/mingw81_64/include/QtANGLE -IC:/Qt/5.15.1/mingw81_64/include/QtSql -IC:/Qt/5.15.1/mingw81_64/include/QtNetwork -IC:/Qt/5.15.1/mingw81_64/include/QtCore -I. -IC:/MinGW64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++ -IC:/MinGW64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32 -IC:/MinGW64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward -IC:/MinGW64/lib/gcc/x86_64-w64-mingw32/8.1.0/include -IC:/MinGW64/lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed -IC:/MinGW64/x86_64-w64-mingw32/include ..\QtCode\AddCard\addcard.h -o debug\moc_addcard.cpp
+	C:\Qt\5.15.1\mingw81_64\bin\moc.exe $(DEFINES) --include "D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/build-QtCode-unknown-Debug/debug/moc_predefs.h" -IC:/Qt/5.15.1/mingw81_64/mkspecs/win32-g++ -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/tools" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/tools/APIs" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/libraryPage" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/LoginAndMainpage" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/AddCard" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/Cards" -IC:/Qt/5.15.1/mingw81_64/include -IC:/Qt/5.15.1/mingw81_64/include/QtWidgets -IC:/Qt/5.15.1/mingw81_64/include/QtGui -IC:/Qt/5.15.1/mingw81_64/include/QtANGLE -IC:/Qt/5.15.1/mingw81_64/include/QtSql -IC:/Qt/5.15.1/mingw81_64/include/QtNetwork -IC:/Qt/5.15.1/mingw81_64/include/QtCore -I. -IC:/MinGW64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++ -IC:/MinGW64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32 -IC:/MinGW64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward -IC:/MinGW64/lib/gcc/x86_64-w64-mingw32/8.1.0/include -IC:/MinGW64/lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed -IC:/MinGW64/x86_64-w64-mingw32/include ..\QtCode\AddCard\addcard.h -o debug\moc_addcard.cpp
 
 debug/moc_addcardmain.cpp: ../QtCode/AddCard/addcardmain.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/QMainWindow \
@@ -1013,7 +1348,7 @@ debug/moc_addcardmain.cpp: ../QtCode/AddCard/addcardmain.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtCore/QString \
 		../QtCode/Cards/Plain.h \
 		../QtCode/Cards/Word.h \
-		../QtCode/APIs/APIRequest.h \
+		../QtCode/tools/APIs/APIRequest.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/QNetworkAccessManager \
 		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/qnetworkaccessmanager.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/qtnetworkglobal.h \
@@ -1060,7 +1395,7 @@ debug/moc_addcardmain.cpp: ../QtCode/AddCard/addcardmain.h \
 		../QtCode/Cards/Text.h \
 		debug/moc_predefs.h \
 		C:/Qt/5.15.1/mingw81_64/bin/moc.exe
-	C:\Qt\5.15.1\mingw81_64\bin\moc.exe $(DEFINES) --include "D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/build-QtCode-unknown-Debug/debug/moc_predefs.h" -IC:/Qt/5.15.1/mingw81_64/mkspecs/win32-g++ -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/APIs" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/tools" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/libraryPage" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/LoginAndMainpage" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/NotonlyAddCard" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/NotonlyAddCard/AddCard" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/NotonlyAddCard/Cards" -IC:/Qt/5.15.1/mingw81_64/include -IC:/Qt/5.15.1/mingw81_64/include/QtWidgets -IC:/Qt/5.15.1/mingw81_64/include/QtGui -IC:/Qt/5.15.1/mingw81_64/include/QtANGLE -IC:/Qt/5.15.1/mingw81_64/include/QtSql -IC:/Qt/5.15.1/mingw81_64/include/QtNetwork -IC:/Qt/5.15.1/mingw81_64/include/QtCore -I. -IC:/MinGW64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++ -IC:/MinGW64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32 -IC:/MinGW64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward -IC:/MinGW64/lib/gcc/x86_64-w64-mingw32/8.1.0/include -IC:/MinGW64/lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed -IC:/MinGW64/x86_64-w64-mingw32/include ..\QtCode\AddCard\addcardmain.h -o debug\moc_addcardmain.cpp
+	C:\Qt\5.15.1\mingw81_64\bin\moc.exe $(DEFINES) --include "D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/build-QtCode-unknown-Debug/debug/moc_predefs.h" -IC:/Qt/5.15.1/mingw81_64/mkspecs/win32-g++ -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/tools" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/tools/APIs" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/libraryPage" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/LoginAndMainpage" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/AddCard" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/Cards" -IC:/Qt/5.15.1/mingw81_64/include -IC:/Qt/5.15.1/mingw81_64/include/QtWidgets -IC:/Qt/5.15.1/mingw81_64/include/QtGui -IC:/Qt/5.15.1/mingw81_64/include/QtANGLE -IC:/Qt/5.15.1/mingw81_64/include/QtSql -IC:/Qt/5.15.1/mingw81_64/include/QtNetwork -IC:/Qt/5.15.1/mingw81_64/include/QtCore -I. -IC:/MinGW64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++ -IC:/MinGW64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32 -IC:/MinGW64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward -IC:/MinGW64/lib/gcc/x86_64-w64-mingw32/8.1.0/include -IC:/MinGW64/lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed -IC:/MinGW64/x86_64-w64-mingw32/include ..\QtCode\AddCard\addcardmain.h -o debug\moc_addcardmain.cpp
 
 debug/moc_addchoices.cpp: ../QtCode/AddCard/addchoices.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/QMainWindow \
@@ -1186,7 +1521,7 @@ debug/moc_addchoices.cpp: ../QtCode/AddCard/addchoices.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtCore/QString \
 		../QtCode/Cards/Plain.h \
 		../QtCode/Cards/Word.h \
-		../QtCode/APIs/APIRequest.h \
+		../QtCode/tools/APIs/APIRequest.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/QNetworkAccessManager \
 		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/qnetworkaccessmanager.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/qtnetworkglobal.h \
@@ -1233,7 +1568,7 @@ debug/moc_addchoices.cpp: ../QtCode/AddCard/addchoices.h \
 		../QtCode/Cards/Text.h \
 		debug/moc_predefs.h \
 		C:/Qt/5.15.1/mingw81_64/bin/moc.exe
-	C:\Qt\5.15.1\mingw81_64\bin\moc.exe $(DEFINES) --include "D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/build-QtCode-unknown-Debug/debug/moc_predefs.h" -IC:/Qt/5.15.1/mingw81_64/mkspecs/win32-g++ -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/APIs" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/tools" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/libraryPage" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/LoginAndMainpage" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/NotonlyAddCard" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/NotonlyAddCard/AddCard" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/NotonlyAddCard/Cards" -IC:/Qt/5.15.1/mingw81_64/include -IC:/Qt/5.15.1/mingw81_64/include/QtWidgets -IC:/Qt/5.15.1/mingw81_64/include/QtGui -IC:/Qt/5.15.1/mingw81_64/include/QtANGLE -IC:/Qt/5.15.1/mingw81_64/include/QtSql -IC:/Qt/5.15.1/mingw81_64/include/QtNetwork -IC:/Qt/5.15.1/mingw81_64/include/QtCore -I. -IC:/MinGW64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++ -IC:/MinGW64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32 -IC:/MinGW64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward -IC:/MinGW64/lib/gcc/x86_64-w64-mingw32/8.1.0/include -IC:/MinGW64/lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed -IC:/MinGW64/x86_64-w64-mingw32/include ..\QtCode\AddCard\addchoices.h -o debug\moc_addchoices.cpp
+	C:\Qt\5.15.1\mingw81_64\bin\moc.exe $(DEFINES) --include "D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/build-QtCode-unknown-Debug/debug/moc_predefs.h" -IC:/Qt/5.15.1/mingw81_64/mkspecs/win32-g++ -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/tools" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/tools/APIs" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/libraryPage" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/LoginAndMainpage" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/AddCard" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/Cards" -IC:/Qt/5.15.1/mingw81_64/include -IC:/Qt/5.15.1/mingw81_64/include/QtWidgets -IC:/Qt/5.15.1/mingw81_64/include/QtGui -IC:/Qt/5.15.1/mingw81_64/include/QtANGLE -IC:/Qt/5.15.1/mingw81_64/include/QtSql -IC:/Qt/5.15.1/mingw81_64/include/QtNetwork -IC:/Qt/5.15.1/mingw81_64/include/QtCore -I. -IC:/MinGW64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++ -IC:/MinGW64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32 -IC:/MinGW64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward -IC:/MinGW64/lib/gcc/x86_64-w64-mingw32/8.1.0/include -IC:/MinGW64/lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed -IC:/MinGW64/x86_64-w64-mingw32/include ..\QtCode\AddCard\addchoices.h -o debug\moc_addchoices.cpp
 
 debug/moc_addtext.cpp: ../QtCode/AddCard/addtext.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/QMainWindow \
@@ -1347,7 +1682,7 @@ debug/moc_addtext.cpp: ../QtCode/AddCard/addtext.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtCore/QString \
 		../QtCode/Cards/Plain.h \
 		../QtCode/Cards/Word.h \
-		../QtCode/APIs/APIRequest.h \
+		../QtCode/tools/APIs/APIRequest.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/QNetworkAccessManager \
 		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/qnetworkaccessmanager.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/qtnetworkglobal.h \
@@ -1398,20 +1733,19 @@ debug/moc_addtext.cpp: ../QtCode/AddCard/addtext.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtGui/qpen.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtGui/qtextoption.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtGui/QColor \
-		C:/Qt/5.15.1/mingw81_64/include/QtGui/QBrush \
 		C:/Qt/5.15.1/mingw81_64/include/QtGui/QTextCharFormat \
 		C:/Qt/5.15.1/mingw81_64/include/QtCore/QList \
 		debug/moc_predefs.h \
 		C:/Qt/5.15.1/mingw81_64/bin/moc.exe
-	C:\Qt\5.15.1\mingw81_64\bin\moc.exe $(DEFINES) --include "D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/build-QtCode-unknown-Debug/debug/moc_predefs.h" -IC:/Qt/5.15.1/mingw81_64/mkspecs/win32-g++ -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/APIs" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/tools" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/libraryPage" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/LoginAndMainpage" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/NotonlyAddCard" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/NotonlyAddCard/AddCard" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/NotonlyAddCard/Cards" -IC:/Qt/5.15.1/mingw81_64/include -IC:/Qt/5.15.1/mingw81_64/include/QtWidgets -IC:/Qt/5.15.1/mingw81_64/include/QtGui -IC:/Qt/5.15.1/mingw81_64/include/QtANGLE -IC:/Qt/5.15.1/mingw81_64/include/QtSql -IC:/Qt/5.15.1/mingw81_64/include/QtNetwork -IC:/Qt/5.15.1/mingw81_64/include/QtCore -I. -IC:/MinGW64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++ -IC:/MinGW64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32 -IC:/MinGW64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward -IC:/MinGW64/lib/gcc/x86_64-w64-mingw32/8.1.0/include -IC:/MinGW64/lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed -IC:/MinGW64/x86_64-w64-mingw32/include ..\QtCode\AddCard\addtext.h -o debug\moc_addtext.cpp
+	C:\Qt\5.15.1\mingw81_64\bin\moc.exe $(DEFINES) --include "D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/build-QtCode-unknown-Debug/debug/moc_predefs.h" -IC:/Qt/5.15.1/mingw81_64/mkspecs/win32-g++ -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/tools" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/tools/APIs" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/libraryPage" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/LoginAndMainpage" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/AddCard" -I"D:/OneDrive - HKUST Connect/HKUST/COMP2012H/Project/QtCode/Cards" -IC:/Qt/5.15.1/mingw81_64/include -IC:/Qt/5.15.1/mingw81_64/include/QtWidgets -IC:/Qt/5.15.1/mingw81_64/include/QtGui -IC:/Qt/5.15.1/mingw81_64/include/QtANGLE -IC:/Qt/5.15.1/mingw81_64/include/QtSql -IC:/Qt/5.15.1/mingw81_64/include/QtNetwork -IC:/Qt/5.15.1/mingw81_64/include/QtCore -I. -IC:/MinGW64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++ -IC:/MinGW64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32 -IC:/MinGW64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward -IC:/MinGW64/lib/gcc/x86_64-w64-mingw32/8.1.0/include -IC:/MinGW64/lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed -IC:/MinGW64/x86_64-w64-mingw32/include ..\QtCode\AddCard\addtext.h -o debug\moc_addtext.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_loginwindow.h ui_mainwindow.h ui_signupwindow.h ui_addcard.h ui_addcardmain.h ui_addchoices.h ui_addtext.h ui_libwindow.h
+compiler_uic_make_all: ui_loginwindow.h ui_mainwindow.h ui_signupwindow.h ui_addcard.h ui_addcardmain.h ui_addchoices.h ui_addtext.h ui_reviewmain.h ui_simplereview.h ui_libwindow.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_loginwindow.h ui_mainwindow.h ui_signupwindow.h ui_addcard.h ui_addcardmain.h ui_addchoices.h ui_addtext.h ui_libwindow.h
+	-$(DEL_FILE) ui_loginwindow.h ui_mainwindow.h ui_signupwindow.h ui_addcard.h ui_addcardmain.h ui_addchoices.h ui_addtext.h ui_reviewmain.h ui_simplereview.h ui_libwindow.h
 ui_loginwindow.h: ../QtCode/LoginAndMainpage/loginwindow.ui \
 		C:/Qt/5.15.1/mingw81_64/bin/uic.exe
 	C:\Qt\5.15.1\mingw81_64\bin\uic.exe ..\QtCode\LoginAndMainpage\loginwindow.ui -o ui_loginwindow.h
@@ -1439,6 +1773,14 @@ ui_addchoices.h: ../QtCode/AddCard/addchoices.ui \
 ui_addtext.h: ../QtCode/AddCard/addtext.ui \
 		C:/Qt/5.15.1/mingw81_64/bin/uic.exe
 	C:\Qt\5.15.1\mingw81_64\bin\uic.exe ..\QtCode\AddCard\addtext.ui -o ui_addtext.h
+
+ui_reviewmain.h: ../QtCode/Review/reviewmain.ui \
+		C:/Qt/5.15.1/mingw81_64/bin/uic.exe
+	C:\Qt\5.15.1\mingw81_64\bin\uic.exe ..\QtCode\Review\reviewmain.ui -o ui_reviewmain.h
+
+ui_simplereview.h: ../QtCode/Review/simplereview.ui \
+		C:/Qt/5.15.1/mingw81_64/bin/uic.exe
+	C:\Qt\5.15.1\mingw81_64\bin\uic.exe ..\QtCode\Review\simplereview.ui -o ui_simplereview.h
 
 ui_libwindow.h: ../QtCode/libraryPage/libwindow.ui \
 		C:/Qt/5.15.1/mingw81_64/bin/uic.exe
@@ -1571,7 +1913,7 @@ debug/main.o: ../QtCode/main.cpp ../QtCode/LoginAndMainpage/mainwindow.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtCore/QString \
 		../QtCode/Cards/Plain.h \
 		../QtCode/Cards/Word.h \
-		../QtCode/APIs/APIRequest.h \
+		../QtCode/tools/APIs/APIRequest.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/QNetworkAccessManager \
 		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/qnetworkaccessmanager.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/qtnetworkglobal.h \
@@ -1623,7 +1965,6 @@ debug/main.o: ../QtCode/main.cpp ../QtCode/LoginAndMainpage/mainwindow.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtGui/qpen.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtGui/qtextoption.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtGui/QColor \
-		C:/Qt/5.15.1/mingw81_64/include/QtGui/QBrush \
 		C:/Qt/5.15.1/mingw81_64/include/QtGui/QTextCharFormat \
 		C:/Qt/5.15.1/mingw81_64/include/QtCore/QList \
 		../QtCode/AddCard/addchoices.h \
@@ -1635,6 +1976,8 @@ debug/main.o: ../QtCode/main.cpp ../QtCode/LoginAndMainpage/mainwindow.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/QCheckBox \
 		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qcheckbox.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qabstractbutton.h \
+		../QtCode/Review/reviewmain.h \
+		../QtCode/Review/simplereview.h \
 		../QtCode/tools/LoginInfo.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/QApplication \
 		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qapplication.h \
@@ -1791,7 +2134,331 @@ debug/main.o: ../QtCode/main.cpp ../QtCode/LoginAndMainpage/mainwindow.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtSql/qtsqlversion.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\main.o ..\QtCode\main.cpp
 
-debug/APIRequest.o: ../QtCode/APIs/APIRequest.cpp ../QtCode/APIs/APIRequest.h \
+debug/reviewmain.o: ../QtCode/Review/reviewmain.cpp ../QtCode/Review/reviewmain.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/QMainWindow \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qmainwindow.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qtwidgetsglobal.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qtguiglobal.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qglobal.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qconfig-bootstrapped.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qconfig.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qtcore-config.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qsystemdetection.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qprocessordetection.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qcompilerdetection.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qtypeinfo.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qsysinfo.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qlogging.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qflags.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qatomic.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qbasicatomic.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qatomic_bootstrap.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qgenericatomic.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qatomic_cxx11.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qatomic_msvc.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qglobalstatic.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qmutex.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qnumeric.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qversiontagging.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qtgui-config.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qtwidgets-config.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qwidget.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qwindowdefs.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qobjectdefs.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qnamespace.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qobjectdefs_impl.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qwindowdefs_win.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qobject.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qstring.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qchar.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qbytearray.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qrefcount.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qarraydata.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qstringliteral.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qstringalgorithms.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qstringview.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qstringbuilder.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qlist.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qalgorithms.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qiterator.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qhashfunctions.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qpair.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qvector.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qcontainertools_impl.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qpoint.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qbytearraylist.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qstringlist.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qregexp.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qstringmatcher.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qcoreevent.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qscopedpointer.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qmetatype.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qvarlengtharray.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qcontainerfwd.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qobject_impl.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qmargins.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qpaintdevice.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qrect.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qsize.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qpalette.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qcolor.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qrgb.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qrgba64.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qbrush.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qmatrix.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qpolygon.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qregion.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qdatastream.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qiodevice.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qline.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qtransform.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qimage.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qpixelformat.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qpixmap.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qsharedpointer.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qshareddata.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qhash.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qsharedpointer_impl.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qfont.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qfontmetrics.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qfontinfo.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qsizepolicy.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qcursor.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qkeysequence.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qevent.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qvariant.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qmap.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qdebug.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qtextstream.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qlocale.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qset.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qcontiguouscache.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qurl.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qurlquery.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qfile.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qfiledevice.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qvector2d.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qtouchdevice.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qtabwidget.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qicon.h \
+		../QtCode/Review/simplereview.h \
+		../QtCode/Cards/Cards.h \
+		../QtCode/Cards/Card.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/QString \
+		../QtCode/Cards/Plain.h \
+		../QtCode/Cards/Word.h \
+		../QtCode/tools/APIs/APIRequest.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/QNetworkAccessManager \
+		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/qnetworkaccessmanager.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/qtnetworkglobal.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/qtnetwork-config.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/qnetworkrequest.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/QSharedDataPointer \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/QUrl \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/QVariant \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/QVector \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/QObject \
+		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/QSslConfiguration \
+		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/qsslconfiguration.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/qsslsocket.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/qtcpsocket.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/qabstractsocket.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/qsslerror.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/qsslcertificate.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qcryptographichash.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qdatetime.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/qssl.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/QFlags \
+		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/QSslPreSharedKeyAuthenticator \
+		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/qsslpresharedkeyauthenticator.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/QMetaType \
+		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/QNetworkRequest \
+		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/QNetworkReply \
+		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/qnetworkreply.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/QIODevice \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/QUrlQuery \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/QJsonDocument \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qjsondocument.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qjsonvalue.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qcborvalue.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qcborcommon.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qregularexpression.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/quuid.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/QJsonObject \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qjsonobject.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/QJsonArray \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qjsonarray.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/QEventLoop \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qeventloop.h \
+		../QtCode/Cards/Choices.h \
+		../QtCode/Cards/Text.h \
+		ui_reviewmain.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/QMessageBox \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qmessagebox.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qdialog.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\reviewmain.o ..\QtCode\Review\reviewmain.cpp
+
+debug/simplereview.o: ../QtCode/Review/simplereview.cpp ../QtCode/Review/simplereview.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/QMainWindow \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qmainwindow.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qtwidgetsglobal.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qtguiglobal.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qglobal.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qconfig-bootstrapped.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qconfig.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qtcore-config.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qsystemdetection.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qprocessordetection.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qcompilerdetection.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qtypeinfo.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qsysinfo.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qlogging.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qflags.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qatomic.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qbasicatomic.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qatomic_bootstrap.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qgenericatomic.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qatomic_cxx11.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qatomic_msvc.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qglobalstatic.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qmutex.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qnumeric.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qversiontagging.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qtgui-config.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qtwidgets-config.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qwidget.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qwindowdefs.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qobjectdefs.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qnamespace.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qobjectdefs_impl.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qwindowdefs_win.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qobject.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qstring.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qchar.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qbytearray.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qrefcount.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qarraydata.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qstringliteral.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qstringalgorithms.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qstringview.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qstringbuilder.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qlist.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qalgorithms.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qiterator.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qhashfunctions.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qpair.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qvector.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qcontainertools_impl.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qpoint.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qbytearraylist.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qstringlist.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qregexp.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qstringmatcher.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qcoreevent.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qscopedpointer.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qmetatype.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qvarlengtharray.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qcontainerfwd.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qobject_impl.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qmargins.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qpaintdevice.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qrect.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qsize.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qpalette.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qcolor.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qrgb.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qrgba64.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qbrush.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qmatrix.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qpolygon.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qregion.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qdatastream.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qiodevice.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qline.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qtransform.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qimage.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qpixelformat.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qpixmap.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qsharedpointer.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qshareddata.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qhash.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qsharedpointer_impl.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qfont.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qfontmetrics.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qfontinfo.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qsizepolicy.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qcursor.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qkeysequence.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qevent.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qvariant.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qmap.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qdebug.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qtextstream.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qlocale.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qset.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qcontiguouscache.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qurl.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qurlquery.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qfile.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qfiledevice.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qvector2d.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qtouchdevice.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qtabwidget.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qicon.h \
+		../QtCode/Cards/Cards.h \
+		../QtCode/Cards/Card.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/QString \
+		../QtCode/Cards/Plain.h \
+		../QtCode/Cards/Word.h \
+		../QtCode/tools/APIs/APIRequest.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/QNetworkAccessManager \
+		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/qnetworkaccessmanager.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/qtnetworkglobal.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/qtnetwork-config.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/qnetworkrequest.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/QSharedDataPointer \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/QUrl \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/QVariant \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/QVector \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/QObject \
+		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/QSslConfiguration \
+		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/qsslconfiguration.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/qsslsocket.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/qtcpsocket.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/qabstractsocket.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/qsslerror.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/qsslcertificate.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qcryptographichash.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qdatetime.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/qssl.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/QFlags \
+		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/QSslPreSharedKeyAuthenticator \
+		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/qsslpresharedkeyauthenticator.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/QMetaType \
+		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/QNetworkRequest \
+		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/QNetworkReply \
+		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/qnetworkreply.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/QIODevice \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/QUrlQuery \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/QJsonDocument \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qjsondocument.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qjsonvalue.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qcborvalue.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qcborcommon.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qregularexpression.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/quuid.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/QJsonObject \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qjsonobject.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/QJsonArray \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qjsonarray.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/QEventLoop \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qeventloop.h \
+		../QtCode/Cards/Choices.h \
+		../QtCode/Cards/Text.h \
+		ui_simplereview.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\simplereview.o ..\QtCode\Review\simplereview.cpp
+
+debug/APIRequest.o: ../QtCode/tools/APIs/APIRequest.cpp ../QtCode/tools/APIs/APIRequest.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/QNetworkAccessManager \
 		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/qnetworkaccessmanager.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/qtnetworkglobal.h \
@@ -1901,7 +2568,7 @@ debug/APIRequest.o: ../QtCode/APIs/APIRequest.cpp ../QtCode/APIs/APIRequest.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtCore/qjsonarray.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtCore/QEventLoop \
 		C:/Qt/5.15.1/mingw81_64/include/QtCore/qeventloop.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\APIRequest.o ..\QtCode\APIs\APIRequest.cpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\APIRequest.o ..\QtCode\tools\APIs\APIRequest.cpp
 
 debug/loginwindow.o: ../QtCode/LoginAndMainpage/loginwindow.cpp ../QtCode/LoginAndMainpage/loginwindow.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/QMainWindow \
@@ -2625,7 +3292,7 @@ debug/mainwindow.o: ../QtCode/LoginAndMainpage/mainwindow.cpp ../QtCode/LoginAnd
 		../QtCode/Cards/Card.h \
 		../QtCode/Cards/Plain.h \
 		../QtCode/Cards/Word.h \
-		../QtCode/APIs/APIRequest.h \
+		../QtCode/tools/APIs/APIRequest.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/QNetworkAccessManager \
 		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/qnetworkaccessmanager.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/qtnetworkglobal.h \
@@ -2675,7 +3342,6 @@ debug/mainwindow.o: ../QtCode/LoginAndMainpage/mainwindow.cpp ../QtCode/LoginAnd
 		C:/Qt/5.15.1/mingw81_64/include/QtGui/qpen.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtGui/qtextoption.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtGui/QColor \
-		C:/Qt/5.15.1/mingw81_64/include/QtGui/QBrush \
 		C:/Qt/5.15.1/mingw81_64/include/QtGui/QTextCharFormat \
 		C:/Qt/5.15.1/mingw81_64/include/QtCore/QList \
 		../QtCode/AddCard/addchoices.h \
@@ -2685,6 +3351,8 @@ debug/mainwindow.o: ../QtCode/LoginAndMainpage/mainwindow.cpp ../QtCode/LoginAnd
 		C:/Qt/5.15.1/mingw81_64/include/QtGui/qtextdocument.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/QCheckBox \
 		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qcheckbox.h \
+		../QtCode/Review/reviewmain.h \
+		../QtCode/Review/simplereview.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtSql/QtSql \
 		C:/Qt/5.15.1/mingw81_64/include/QtSql/QtSqlDepends \
 		C:/Qt/5.15.1/mingw81_64/include/QtCore/QtCore \
@@ -3251,7 +3919,7 @@ debug/libwindow.o: ../QtCode/libraryPage/libwindow.cpp ../QtCode/libraryPage/lib
 		C:/Qt/5.15.1/mingw81_64/include/QtCore/QString \
 		../QtCode/Cards/Plain.h \
 		../QtCode/Cards/Word.h \
-		../QtCode/APIs/APIRequest.h \
+		../QtCode/tools/APIs/APIRequest.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/QNetworkAccessManager \
 		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/qnetworkaccessmanager.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/qtnetworkglobal.h \
@@ -3303,7 +3971,6 @@ debug/libwindow.o: ../QtCode/libraryPage/libwindow.cpp ../QtCode/libraryPage/lib
 		C:/Qt/5.15.1/mingw81_64/include/QtGui/qpen.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtGui/qtextoption.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtGui/QColor \
-		C:/Qt/5.15.1/mingw81_64/include/QtGui/QBrush \
 		C:/Qt/5.15.1/mingw81_64/include/QtGui/QTextCharFormat \
 		C:/Qt/5.15.1/mingw81_64/include/QtCore/QList \
 		../QtCode/AddCard/addchoices.h \
@@ -3315,6 +3982,8 @@ debug/libwindow.o: ../QtCode/libraryPage/libwindow.cpp ../QtCode/libraryPage/lib
 		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/QCheckBox \
 		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qcheckbox.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qabstractbutton.h \
+		../QtCode/Review/reviewmain.h \
+		../QtCode/Review/simplereview.h \
 		ui_libwindow.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtGui/QIcon \
 		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/QApplication \
@@ -3948,7 +4617,7 @@ debug/addcard.o: ../QtCode/AddCard/addcard.cpp ../QtCode/AddCard/addcard.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtCore/QString \
 		../QtCode/Cards/Plain.h \
 		../QtCode/Cards/Word.h \
-		../QtCode/APIs/APIRequest.h \
+		../QtCode/tools/APIs/APIRequest.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/QNetworkAccessManager \
 		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/qnetworkaccessmanager.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/qtnetworkglobal.h \
@@ -4000,7 +4669,6 @@ debug/addcard.o: ../QtCode/AddCard/addcard.cpp ../QtCode/AddCard/addcard.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtGui/qpen.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtGui/qtextoption.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtGui/QColor \
-		C:/Qt/5.15.1/mingw81_64/include/QtGui/QBrush \
 		C:/Qt/5.15.1/mingw81_64/include/QtGui/QTextCharFormat \
 		C:/Qt/5.15.1/mingw81_64/include/QtCore/QList \
 		../QtCode/AddCard/addchoices.h \
@@ -4138,7 +4806,7 @@ debug/addcardmain.o: ../QtCode/AddCard/addcardmain.cpp ../QtCode/AddCard/addcard
 		C:/Qt/5.15.1/mingw81_64/include/QtCore/QString \
 		../QtCode/Cards/Plain.h \
 		../QtCode/Cards/Word.h \
-		../QtCode/APIs/APIRequest.h \
+		../QtCode/tools/APIs/APIRequest.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/QNetworkAccessManager \
 		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/qnetworkaccessmanager.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/qtnetworkglobal.h \
@@ -4331,7 +4999,7 @@ debug/addchoices.o: ../QtCode/AddCard/addchoices.cpp ../QtCode/AddCard/addchoice
 		C:/Qt/5.15.1/mingw81_64/include/QtCore/QString \
 		../QtCode/Cards/Plain.h \
 		../QtCode/Cards/Word.h \
-		../QtCode/APIs/APIRequest.h \
+		../QtCode/tools/APIs/APIRequest.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/QNetworkAccessManager \
 		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/qnetworkaccessmanager.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/qtnetworkglobal.h \
@@ -4505,7 +5173,7 @@ debug/addtext.o: ../QtCode/AddCard/addtext.cpp ../QtCode/AddCard/addtext.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtCore/QString \
 		../QtCode/Cards/Plain.h \
 		../QtCode/Cards/Word.h \
-		../QtCode/APIs/APIRequest.h \
+		../QtCode/tools/APIs/APIRequest.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/QNetworkAccessManager \
 		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/qnetworkaccessmanager.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/qtnetworkglobal.h \
@@ -4556,7 +5224,6 @@ debug/addtext.o: ../QtCode/AddCard/addtext.cpp ../QtCode/AddCard/addtext.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtGui/qpen.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtGui/qtextoption.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtGui/QColor \
-		C:/Qt/5.15.1/mingw81_64/include/QtGui/QBrush \
 		C:/Qt/5.15.1/mingw81_64/include/QtGui/QTextCharFormat \
 		C:/Qt/5.15.1/mingw81_64/include/QtCore/QList \
 		ui_addtext.h \
@@ -4770,7 +5437,7 @@ debug/Word.o: ../QtCode/Cards/Word.cpp ../QtCode/Cards/Word.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtCore/qstringalgorithms.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtCore/qstringview.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtCore/qstringbuilder.h \
-		../QtCode/APIs/APIRequest.h \
+		../QtCode/tools/APIs/APIRequest.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/QNetworkAccessManager \
 		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/qnetworkaccessmanager.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/qtnetworkglobal.h \
@@ -4864,6 +5531,12 @@ debug/moc_mainwindow.o: debug/moc_mainwindow.cpp
 
 debug/moc_signupwindow.o: debug/moc_signupwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\moc_signupwindow.o debug\moc_signupwindow.cpp
+
+debug/moc_reviewmain.o: debug/moc_reviewmain.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\moc_reviewmain.o debug\moc_reviewmain.cpp
+
+debug/moc_simplereview.o: debug/moc_simplereview.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\moc_simplereview.o debug\moc_simplereview.cpp
 
 debug/moc_libwindow.o: debug/moc_libwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\moc_libwindow.o debug\moc_libwindow.cpp

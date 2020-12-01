@@ -1,4 +1,6 @@
 debug/main.o
+debug/reviewmain.o
+debug/simplereview.o
 debug/APIRequest.o
 debug/loginwindow.o
 debug/main_login.o
@@ -21,6 +23,8 @@ debug/qrc_assets_lib.o
 debug/moc_loginwindow.o
 debug/moc_mainwindow.o
 debug/moc_signupwindow.o
+debug/moc_reviewmain.o
+debug/moc_simplereview.o
 debug/moc_libwindow.o
 debug/moc_addcard.o
 debug/moc_addcardmain.o

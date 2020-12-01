@@ -32,6 +32,18 @@ QString Text::option(int id, QString str)
     }
     if(id==2)
     {
+        if(str=="```")
+        {
+            prob_all=prob;
+            for(int i=0;i<quiz.size();++i)
+            {
+                for(int j=quiz[i].s;j<=quiz[i].t;++j)
+                {
+                    prob[j] = ' ';
+                }
+            }
+            return "null";
+        }
         int x=0;
         while(str[x]!='-') x++;
         QString t=str;
@@ -68,6 +80,22 @@ QString Text::option(int id, QString str)
             quiz.push_back(temp);
         }
         return "null";
+    }
+    if(id==5)
+    {
+        return hint;
+    }
+    if(id==6)
+    {
+        return "hint";
+    }
+    if(id==7)
+    {
+        return "Show answer";
+    }
+    if(id==8)
+    {
+        return prob_all;
     }
     return "null";
 }

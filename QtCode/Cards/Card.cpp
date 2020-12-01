@@ -27,6 +27,10 @@ QString Card::get_prob() const
     return prob;
 }
 
+QString Card::get_title() const
+{
+    return title;
+}
 
 void Card::set_id(int i){id=i;}
 
@@ -38,7 +42,7 @@ void Card::set_init_time(long t)
 
 long Card::get_nextReview() const {return next_review;}
 
-void Card::test_update(int ac)
+void Card::test_update(int ac)  // 1 for ac, 0 for not
 {
     review_times++;
     if(ac) ac_time++;
@@ -56,10 +60,6 @@ void Card::set_prob(QString prob_)
 {
     prob=prob_;
 }
-
-int Card::print_test(){}
-
-void Card::print(){}
 
 QString Card::add_display(int x) const{return "null";}
 
