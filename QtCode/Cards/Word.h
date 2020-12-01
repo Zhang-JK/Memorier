@@ -16,7 +16,6 @@ private:
 public:
     Word();
     ~Word();
-    virtual int print_test();
     virtual QString add_display(int) const;
     virtual QString option(int id = 0, QString str = "");
 };

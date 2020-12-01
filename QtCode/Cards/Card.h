@@ -40,11 +40,10 @@ public:
     int get_id() const;
 	cardType get_type() const;
     QString get_prob() const;
+    QString get_title() const;
     long get_nextReview() const;
     void test_update(int);
-    virtual int print_test();
     virtual QString add_display(int) const;
-    virtual void print();
     virtual QString option(int id =0, QString str = "");
     void set_title(QString);
     void set_prob(QString);
@@ -57,6 +56,10 @@ public:
 // 2 - set special data for this card
 // 3 - encode to storage
 // 4 - decode
+// 5 - get answer for this card (pair with 1)
+// 6 - Butshow text for review
+// 7 - extra button for review
+// 8 - extra output for review
 
 
 

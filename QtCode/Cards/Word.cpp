@@ -25,15 +25,6 @@ QString Word::add_display(int x) const
     return "null";
 }
 
-
-
-int Word::print_test()
-{
-
-}
-
-
-
 QString Word::option(int id, QString str)
 {
     if(id==1)
@@ -52,6 +43,18 @@ QString Word::option(int id, QString str)
     if(id==4)
     {
         trans=str;
+        return "null";
+    }
+    if(id==5)
+    {
+        return trans;
+    }
+    if(id==6)
+    {
+        return "answer";
+    }
+    if(id==7)
+    {
         return "null";
     }
     return "null";

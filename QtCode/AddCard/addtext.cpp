@@ -97,6 +97,7 @@ void addText::on_Butfinish_clicked()
         __card->option(2, QString::number(i) + "-" + QString::number(j));
         i=j+1;
     }
+    __card->option(2, "```");
     emit second_finish();
     close();
 }

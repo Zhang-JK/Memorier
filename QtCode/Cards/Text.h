@@ -18,6 +18,7 @@ class Text: public Card{
 private:
     vector<Quiz> quiz;
     QString hint;
+    QString prob_all;
 
 public:
     Text();

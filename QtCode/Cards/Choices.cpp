@@ -33,7 +33,9 @@ QString Choices::option(int id , QString str)
         temp.txt=str;
         temp.txt.remove(n-1,1);
         temp.ac=(str[n-1]=="T");
+        prob = prob + '\n' + '\n' + (choice.size()+'A') + ". " + temp.txt ;
         choice.push_back(temp);
+        return "null";
     }
     if(id==3) {
         QString ans = hint + ";;";
@@ -58,6 +60,27 @@ QString Choices::option(int id , QString str)
             str.remove(0,i+5);
         }
         return "null";
+    }
+    if(id==5)
+    {
+        return hint;
+    }
+    if(id==6)
+    {
+        return "hint";
+    }
+    if(id==7)
+    {
+        return "Show answer";
+    }
+    if(id==8)
+    {
+        QString ans="";
+        for(int i=0;i<choice.size();++i)
+        {
+            if(choice[i].ac) ans=ans+(i+'A');
+        }
+        return ans;
     }
     return "null";
 }

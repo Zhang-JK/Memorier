@@ -13,8 +13,6 @@ public:
 	~Plain();
     virtual QString add_display(int) const;
     virtual QString option(int id =0 , QString str="");
-    virtual void print();
-	virtual int print_test();
 };
 
 #endif /* Plain_H_ */

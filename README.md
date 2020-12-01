@@ -21,7 +21,7 @@ Click [Here](https://drive.google.com/file/d/1QqJLKz9xDS4XIAxSsNljEVxRXbxd51rZ/v
 - [x] Login and Sign Up page
 - [x] Main Library page
 - [x] Add cards
-- [ ] Review page
+- [x] Review page
 - [ ] Testing page
 - [x] Manage page
 

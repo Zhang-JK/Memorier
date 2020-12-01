@@ -19,15 +19,7 @@ QString Plain::add_display(int x) const
     return "null";
 }
 
-void Plain::print()
-{
-	//waiting GUI
-}
 
-int Plain::print_test()
-{
-
-}
 
 
 QString Plain::option(int id , QString str)
@@ -44,6 +36,18 @@ QString Plain::option(int id , QString str)
     if(id==4)
     {
         ans=str;
+        return "null";
+    }
+    if(id==5)
+    {
+        return ans;
+    }
+    if(id==6)
+    {
+        return "answer";
+    }
+    if(id==7)
+    {
         return "null";
     }
     return "null";
