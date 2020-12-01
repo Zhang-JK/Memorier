@@ -1,4 +1,5 @@
 release/main.o
+release/managecard.o
 release/reviewmain.o
 release/simplereview.o
 release/APIRequest.o
@@ -23,6 +24,7 @@ release/qrc_assets_lib.o
 release/moc_loginwindow.o
 release/moc_mainwindow.o
 release/moc_signupwindow.o
+release/moc_managecard.o
 release/moc_reviewmain.o
 release/moc_simplereview.o
 release/moc_libwindow.o

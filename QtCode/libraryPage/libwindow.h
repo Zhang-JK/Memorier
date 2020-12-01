@@ -5,6 +5,7 @@
 #include "addcard.h"
 #include "managecard.h"
 #include "Cards.h"
+#include "Review/reviewmain.h"
 
 namespace Ui {
 class LibWindow;
@@ -22,6 +23,7 @@ public:
 private slots:
     void addCard_push();
     void manageCard_push();
+    void review_push();
     void addCard_data(Card*);
 
 private:

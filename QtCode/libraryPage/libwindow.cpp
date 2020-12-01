@@ -20,6 +20,7 @@ LibWindow::LibWindow(QWidget *parent) :
 
     connect(ui->add, SIGNAL(clicked()), this, SLOT(addCard_push()));
     connect(ui->manage, SIGNAL(clicked()), this, SLOT(manageCard_push()));
+    connect(ui->review, SIGNAL(clicked()), this, SLOT(review_push()));
 }
 
 void LibWindow::addCard_push()
@@ -33,6 +34,13 @@ void LibWindow::manageCard_push()
 {
     ManageCard *manageCard = new ManageCard(this);
     manageCard->show();
+}
+
+void LibWindow::review_push()
+{
+    reviewMain* reviewCard = new reviewMain(this);
+    reviewCard->generate_review_list();
+    reviewCard->show();
 }
 
 void LibWindow::addCard_data(Card *temp)
