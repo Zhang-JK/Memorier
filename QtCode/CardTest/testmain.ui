@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>365</width>
-    <height>203</height>
+    <width>600</width>
+    <height>256</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,36 +17,47 @@
    <widget class="QLabel" name="Fixlabel_1">
     <property name="geometry">
      <rect>
-      <x>80</x>
+      <x>0</x>
       <y>20</y>
-      <width>291</width>
+      <width>591</width>
       <height>81</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>35</pointsize>
+     </font>
+    </property>
     <property name="text">
      <string>Test yourself every day!</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
     </property>
    </widget>
    <widget class="QLabel" name="TxtTest">
     <property name="geometry">
      <rect>
-      <x>190</x>
-      <y>90</y>
-      <width>161</width>
-      <height>41</height>
+      <x>270</x>
+      <y>120</y>
+      <width>301</width>
+      <height>21</height>
      </rect>
     </property>
     <property name="text">
      <string>TxtTest</string>
     </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
    </widget>
    <widget class="QPushButton" name="ButToday">
     <property name="geometry">
      <rect>
-      <x>190</x>
-      <y>130</y>
-      <width>151</width>
-      <height>51</height>
+      <x>320</x>
+      <y>140</y>
+      <width>181</width>
+      <height>61</height>
      </rect>
     </property>
     <property name="text">
@@ -56,10 +67,10 @@
    <widget class="QPushButton" name="ButSelf">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>130</y>
-      <width>141</width>
-      <height>51</height>
+      <x>60</x>
+      <y>140</y>
+      <width>171</width>
+      <height>61</height>
      </rect>
     </property>
     <property name="text">
@@ -69,14 +80,59 @@
    <widget class="QLabel" name="TxtInfo">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>100</y>
-      <width>161</width>
-      <height>31</height>
+      <x>0</x>
+      <y>120</y>
+      <width>271</width>
+      <height>20</height>
      </rect>
     </property>
     <property name="text">
      <string>TxtInfo</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelAll_3">
+    <property name="geometry">
+     <rect>
+      <x>280</x>
+      <y>200</y>
+      <width>271</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>8</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>We will choose some cards by Forgetting curve</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelAll_4">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>200</y>
+      <width>271</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>8</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Begin a costomized testing</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
     </property>
    </widget>
   </widget>

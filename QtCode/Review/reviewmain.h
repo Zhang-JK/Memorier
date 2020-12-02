@@ -20,14 +20,16 @@ public:
 
 private:
     Ui::reviewMain *ui;
-    Card** review_list;
+    Card** review_list = nullptr;
     int num, currentCard = 0;
     long generateTimestamp;
+    bool forceQuitFlag = false;
 
 private slots:
     void on_Butstart_clicked();
     void on_ButToday_clicked();
     void next_card();
+    void exit();
 };
 
 #endif // REVIEWMAIN_H

@@ -72,7 +72,7 @@ void reviewMain::generate_review_list(ReviewType type)
     if(type == Today)
         sql.append(QString("AND next_review < %2 ORDER BY next_review ASC ").arg(generateTimestamp));
     if(type == Ramdom)
-        sql.append("ORDER BY RAND()");
+        sql.append(selectDate::get_selection_SQL(generateTimestamp));
     qDebug() << "Generated sql: " << sql;
     if (!query.exec(sql))
     {
@@ -109,11 +109,20 @@ void reviewMain::generate_review_list(ReviewType type)
     }
 }
 
+void reviewMain::exit() {
+    qDebug() << "triggered force quit";
+    forceQuitFlag = true;
+}
+
 void reviewMain::on_Butstart_clicked()
 {
+    num = 0;
     currentCard = 0;
     selectDate* selectdate = new selectDate(this);
+    connect(selectdate, SIGNAL(forceQuit()), this, SLOT(exit()));
+    connect(selectdate, SIGNAL(forceQuit()), this, SLOT(close()));
     selectdate->exec();
+    if (forceQuitFlag) return ;
     generate_review_list(Ramdom);
     if (num == 0)
     {
@@ -131,6 +140,7 @@ void reviewMain::on_Butstart_clicked()
 
 void reviewMain::on_ButToday_clicked()
 {
+    num = 0;
     currentCard = 0;
     generate_review_list(Today);
     if (num == 0)
@@ -153,9 +163,9 @@ void reviewMain::next_card()
     int id = review_list[currentCard]->get_id();
     long nextReview;
     reviewTimes++;
-    if(reviewTimes > 5) nextReview = generateTimestamp + reviewTimes * 30 * 24 * 60 * 60;
+    if(reviewTimes > 5) nextReview = generateTimestamp + 30 * 24 * 60 * 60;
     else nextReview = generateTimestamp + reviewTimes * 48 * 60 * 60;
-
+    
     QSqlQuery update;
     QString sql = QString("UPDATE card SET review_times = %1, last_review = %2, next_review = %3 WHERE account = %4 AND id = %5")
                     .arg(reviewTimes)

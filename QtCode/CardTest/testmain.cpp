@@ -43,6 +43,7 @@ testMain::testMain(QWidget *parent) :
 
 testMain::~testMain()
 {
+    for(int i = 0; i < num; i++) delete testlist[i];
     delete [] testlist;
     delete ui;
 }
@@ -72,7 +73,7 @@ void testMain::generate_testlist(TestType type)
     if(type == Today)
         sql.append(QString("AND next_test < %2 ORDER BY next_test ASC ").arg(generateTimestamp));
     if(type == Self)
-        sql.append("ORDER BY RAND()");
+        sql.append(selectDate::get_selection_SQL(generateTimestamp));
     qDebug() << "Generated sql: " << sql;
     if (!query.exec(sql))
     {
@@ -108,6 +109,12 @@ void testMain::generate_testlist(TestType type)
     }
 }
 
+
+void testMain::exit() {
+    qDebug() << "triggered force quit";
+    forceQuitFlag = true;
+}
+
 void testMain::display_test(Card* card)
 {
     simpleTest *temp = new simpleTest(this);
@@ -121,7 +128,10 @@ void testMain::on_ButSelf_clicked()
 {
     currentCard = 0;
     selectDate* selectdate = new selectDate(this);
+    connect(selectdate, SIGNAL(forceQuit()), this, SLOT(exit()));
+    connect(selectdate, SIGNAL(forceQuit()), this, SLOT(close()));
     selectdate->exec();
+    if (forceQuitFlag) return ;
     generate_testlist(Self);
     if (num == 0)
     {
@@ -147,10 +157,12 @@ void testMain::on_ButToday_clicked()
 
 void testMain::next_card()
 {
-    int next_test = testlist[currentCard]->get_nextTest();
+    int review_time = testlist[currentCard]->get_review_time();
+    int next_test = 0;
+    if(review_time > 7) next_test = generateTimestamp + 30 * 24 * 60 * 60;
+    else next_test = generateTimestamp + review_time * 48 * 60 * 60;
     int ac_time = testlist[currentCard]->get_ac_time();
     int id = testlist[currentCard]->get_id();
-    int review_time = testlist[currentCard]->get_review_time();
     QSqlQuery update;
     QString sql = QString("UPDATE card SET review_times = %1, ac_time = %2, last_review = %3, next_test = %4 WHERE account = %5 AND id = %6")
                     .arg(review_time)
