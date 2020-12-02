@@ -113,7 +113,7 @@ void testMain::display_test(Card* card)
     simpleTest *temp = new simpleTest(this);
     temp->init(card);
     connect(temp, SIGNAL(finished()), this, SLOT(next_card()));
-    temp->setWindowTitle(QString("Review Cards %1/%2").arg(currentCard+1).arg(num));
+    temp->setWindowTitle(QString("Testing- %1/%2").arg(currentCard+1).arg(num));
     temp->show();
 }
 
