@@ -50,5 +50,14 @@ QString Plain::option(int id , QString str)
     {
         return "null";
     }
+    if(id==9)
+    {
+        if(str==ans) return "1";
+        else return "0"+ans;
+    }
+    if(id==10)
+    {
+        return "";
+    }
     return "null";
 }

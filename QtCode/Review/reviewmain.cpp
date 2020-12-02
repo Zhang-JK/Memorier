@@ -1,6 +1,7 @@
 #include "reviewmain.h"
 #include "ui_reviewmain.h"
 #include "LoginInfo.h"
+#include "selectdate.h"
 
 #include <QMessageBox>
 #include <QtSql>
@@ -54,6 +55,8 @@ void reviewMain::generate_review_list(ReviewType type)
     QString sql = QString("SELECT COUNT(*) AS `row` FROM card WHERE account = %1 ").arg(LoginInfo::getId());
     if(type == Today)
         sql.append(QString("AND next_review < %1").arg(generateTimestamp));
+    if(type == Ramdom)
+        sql.append(selectDate::get_selection_SQL(generateTimestamp));
     qDebug() << "Generated sql: " << sql;
     if (!query.exec(sql))
     {
@@ -69,7 +72,7 @@ void reviewMain::generate_review_list(ReviewType type)
     if(type == Today)
         sql.append(QString("AND next_review < %2 ORDER BY next_review ASC ").arg(generateTimestamp));
     if(type == Ramdom)
-        sql.append("ORDER BY RAND() LIMIT 5");
+        sql.append("ORDER BY RAND()");
     qDebug() << "Generated sql: " << sql;
     if (!query.exec(sql))
     {
@@ -109,6 +112,8 @@ void reviewMain::generate_review_list(ReviewType type)
 void reviewMain::on_Butstart_clicked()
 {
     currentCard = 0;
+    selectDate* selectdate = new selectDate(this);
+    selectdate->exec();
     generate_review_list(Ramdom);
     if (num == 0)
     {

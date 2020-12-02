@@ -6,6 +6,7 @@ addcardMain::addcardMain(QWidget *parent) :
     ui(new Ui::addcardMain)
 {
     ui->setupUi(this);
+    this->setWindowTitle("Main Card Info");
 }
 
 void addcardMain::set_type(Card::cardType type_)

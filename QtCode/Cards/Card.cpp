@@ -5,7 +5,8 @@
 const QString Card::typeName[4] = {"Plain", "Text", "Word", "Choices"};
 
 Card::Card() : review_times(0),
-               ac_time(0)
+               ac_time(0),
+               next_test(0)
 {
 }
 
@@ -59,13 +60,15 @@ int Card::get_ac_time() const { return ac_time; }
 
 long Card::get_nextReview() const { return next_review; }
 
+long Card::get_nextTest() const { return next_test; }
+
 void Card::test_update(int ac) // 1 for ac, 0 for not
 {
     review_times++;
     if (ac)
         ac_time++;
     long tnow = QDateTime::currentDateTime().toSecsSinceEpoch();
-    next_review = tnow + (tnow - lastime + 86400) / (2 - ac);
+    next_test = tnow + (tnow - lastime + 86400) / (2 - ac);
     lastime = tnow;
 }
 

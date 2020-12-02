@@ -82,5 +82,42 @@ QString Choices::option(int id , QString str)
         }
         return ans;
     }
+    if(id==9)
+    {
+        QString ans=option(8);
+        if(str==ans) return "1";
+        int flag=0;
+        for(int i=0;i<str.length();i++)
+            if(str[i]<'A'||str[i].toLatin1()-'A'>=choice.size())
+                flag=1;
+        if(flag) str="";
+        return "0Correct answer: "+ans + '\n'+"Your answer: "+str+'\n';
+    }
+    if(id==10)
+    {
+        QString out="";
+        int mid=0;
+        while(str[mid]!='\n') mid++;
+        int i=mid+14;
+        int* flag = new int [choice.size()] {0};
+        while(str[i]!='\n')
+        {
+            int id=str[i].toLatin1()-'A';
+            flag[id]=1;
+            if(choice[id].ac==false)
+                out=out+QString::number(i)+'-'+QString::number(i)+';';
+            i++;
+        }
+        i=16;
+        while(str[i]!='\n')
+        {
+            int id=str[i].toLatin1()-'A';
+            if(flag[id]==0)
+                out=out+QString::number(i)+'-'+QString::number(i)+';';
+            i++;
+        }
+        delete [] flag;
+        return out;
+    }
     return "null";
 }

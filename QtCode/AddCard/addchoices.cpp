@@ -7,6 +7,8 @@ addChoices::addChoices(QWidget *parent) :
     ui(new Ui::addChoices)
 {
     ui->setupUi(this);
+    this->setWindowTitle("Add choices");
+
     num=2;
     Inac[1] = ui->Inac1;
     Inac[2] = ui->Inac2;

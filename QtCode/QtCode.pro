@@ -21,6 +21,8 @@ CONFIG += debug
 
 # Input
 HEADERS += tools/APIs/APIRequest.h \
+           CardTest/simpletest.h \
+           CardTest/testmain.h \
            LoginAndMainpage/loginwindow.h \
            LoginAndMainpage/mainwindow.h \
            LoginAndMainpage/signupwindow.h \
@@ -29,6 +31,7 @@ HEADERS += tools/APIs/APIRequest.h \
            Review/simplereview.h \
            libraryPage/libwindow.h \
            tools/LoginInfo.h \
+           tools/selectdate.h \
            tools/tools.h \
            AddCard/addcard.h \
            AddCard/addcardmain.h \
@@ -41,6 +44,8 @@ HEADERS += tools/APIs/APIRequest.h \
            Cards/Text.h \
            Cards/Word.h
 FORMS += LoginAndMainpage/loginwindow.ui \
+         CardTest/simpletest.ui \
+         CardTest/testmain.ui \
          LoginAndMainpage/mainwindow.ui \
          LoginAndMainpage/signupwindow.ui \
          AddCard/addcard.ui \
@@ -50,8 +55,11 @@ FORMS += LoginAndMainpage/loginwindow.ui \
          ManageCard/managecard.ui \
          Review/reviewmain.ui \
          Review/simplereview.ui \
-         libraryPage/libwindow.ui
+         libraryPage/libwindow.ui \
+         tools/selectdate.ui
 SOURCES += main.cpp \
+           CardTest/simpletest.cpp \
+           CardTest/testmain.cpp \
            ManageCard/managecard.cpp \
            Review/reviewmain.cpp \
            Review/simplereview.cpp \
@@ -62,6 +70,7 @@ SOURCES += main.cpp \
            LoginAndMainpage/signupwindow.cpp \
            libraryPage/libwindow.cpp \
            tools/LoginInfo.cpp \
+           tools/selectdate.cpp \
            tools/tools.cpp \
            AddCard/addcard.cpp \
            AddCard/addcardmain.cpp \

@@ -6,6 +6,7 @@ AddCard::AddCard(QWidget *parent)
     , ui(new Ui::AddCard)
 {
     ui->setupUi(this);
+    this->setWindowTitle("Chooce a type");
 }
 
 Card* __card = nullptr;
