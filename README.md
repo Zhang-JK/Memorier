@@ -62,5 +62,5 @@ Click [Here](doc/Report.md) to see our project report
 - [ ] Add uploading image function
 
 ## Contact Us
-ZHANG Zhong:  zzhangfc@connect.ust.hk
+ZHANG Zhong:  zzhangfc@connect.ust.hk  
 ZHANG Jiekai: jzhanger@connect.ust.hk
