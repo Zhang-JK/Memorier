@@ -40,6 +40,7 @@ Click [Here](doc/Report.md) to see our project report
 - [x] KMP algorithm for string matching
 - [x] Two ways of reviewing and testing 
 - [x] Filter in the review function
+- [ ] Beautify the UI
 - [ ] Edit function in the managment
 
 ### 4. Report
@@ -53,7 +54,6 @@ Click [Here](doc/Report.md) to see our project report
 
 ### 5. Future plan
 **Yes, This Project Will Continue Even After the Project Period**
-- [ ] Beautify the UI
 - [ ] Add setting page 
 - [ ] Port to Android platform
 - [ ] Add label feature to classify cards
