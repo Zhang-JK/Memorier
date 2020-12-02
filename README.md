@@ -6,7 +6,8 @@ Click [Here](https://drive.google.com/file/d/1QqJLKz9xDS4XIAxSsNljEVxRXbxd51rZ/v
 Click [Here](doc/Report.md) to see our project report
 
 ## How to Compile and Run the Project
-- You can directly use Qt to compile the code.
+<font color=red size=4>**Very Important Section!**</font>
+- You can directly use Qt to compile the code or using qmake and make.
 - But for runing the program, since we are using MySQL database in the code, please make sure that you have built the QMYSQL plugin. **There is no integrated support for MySQL plugin in Qt**, you need to download and compile the source code yourself.
 - If you want to would like to know how to compile the MySQL plugin, click [HERE](https://www.codenong.com/cs106162868/) for Linux and [HERE](https://blog.csdn.net/liang19890820/article/details/105071549) for Windows
 
@@ -38,7 +39,7 @@ Click [Here](doc/Report.md) to see our project report
 - [x] More API to implement auxiliary functions (auto word select, auto translate...)
 - [x] KMP algorithm for string matching
 - [x] Two ways of reviewing and testing 
-- [ ] Filter in the review function
+- [x] Filter in the review function
 - [ ] Edit function in the managment
 
 ### 4. Report

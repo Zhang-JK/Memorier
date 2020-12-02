@@ -102,7 +102,7 @@ public:
 		cout << "------PRINT_END------" << endl << endl;
 	}
 
-	void operator+=(T t){ add(t); }
+	void operator+=(T t){ add(&t); }
 	T * operator[](int index){ return get(index); }
 
 private:
