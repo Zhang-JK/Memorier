@@ -5,6 +5,8 @@ Click [Here](Proposal.md) to see our project proposal
 Click [Here](https://drive.google.com/file/d/1QqJLKz9xDS4XIAxSsNljEVxRXbxd51rZ/view?usp=sharing) to accsee the GUI Logic diagram  
 Click [Here](doc/Report.md) to see our project report
 
+**The First Fully Functionly Release: 12.3 00:02**
+
 ## How to Compile and Run the Project
 <font color=red size=4>**Very Important Section!**</font>
 - You can directly use Qt to compile the code or using qmake and make.
@@ -23,7 +25,7 @@ Click [Here](doc/Report.md) to see our project report
 - [x] MySQL API design // **Aborted!**
 
 ### 2. Qt Interface
-**Objective: Qt Design, [Here](https://drive.google.com/file/d/1QqJLKz9xDS4XIAxSsNljEVxRXbxd51rZ/view?usp=sharing) is the GUI Design**
+**Objective: Qt Design, [HERE](https://drive.google.com/file/d/1QqJLKz9xDS4XIAxSsNljEVxRXbxd51rZ/view?usp=sharing) is the GUI Design**
 - [x] Welcome Page
 - [x] Login and Sign Up page
 - [x] Main Library page
