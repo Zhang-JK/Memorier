@@ -29,7 +29,7 @@ Click [Here](doc/Report.md) to see our project report
 - [x] Main Library page
 - [x] Add cards
 - [x] Review page
-- [ ] Testing page
+- [x] Testing page
 - [x] Manage page
 
 ### 3. Optimization
@@ -45,6 +45,10 @@ Click [Here](doc/Report.md) to see our project report
 ### 4. Report
 **You can view the report [HERE](doc/Report.md)**  
 - [x] Report OutLine
+- [x] Part 1-2
+- [ ] Part 3
+- [ ] Part 4
+- [x] Part 5-6
 
 
 ### 5. Future plan
@@ -53,3 +57,4 @@ Click [Here](doc/Report.md) to see our project report
 - [ ] Add setting page 
 - [ ] Port to Android platform
 - [ ] Add label feature to classify cards
+- [ ] Add uploading image function

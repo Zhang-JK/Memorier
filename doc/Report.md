@@ -183,7 +183,7 @@ The pages we use:
 ### III. Code Reusability
 
 ## 5. SQL data structure
-**SQL structure diagram**:
+**SQL structure diagram**:  
 ![SQL Diagram](SQL_diagram.png)
  - **account**: store the account infomation, the password here is encrypted. And the id is unique identifier of the user.
  - **account_log**: store the log of every user's activities, including login, add, delete, edit, review, test.
