@@ -83,3 +83,5 @@ SOURCES += main.cpp \
            Cards/Word.cpp
 RESOURCES += LoginAndMainpage/assets.qrc \
              libraryPage/assets_lib.qrc
+
+QMAKE_LFLAGS += -no-pie

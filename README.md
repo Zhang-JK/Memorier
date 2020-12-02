@@ -60,3 +60,7 @@ Click [Here](doc/Report.md) to see our project report
 - [ ] Port to Android platform
 - [ ] Add label feature to classify cards
 - [ ] Add uploading image function
+
+## Contact Us
+ZHANG Zhong:  zzhangfc@connect.ust.hk
+ZHANG Jiekai: jzhanger@connect.ust.hk
