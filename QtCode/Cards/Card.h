@@ -29,6 +29,7 @@ protected:
     long timestamp;
     long lastime;
     long next_review;
+    long next_test;
 	int id;
     cardType type;
 
@@ -44,6 +45,7 @@ public:
     QString get_prob() const;
     QString get_title() const;
     long get_nextReview() const;
+    long get_nextTest() const;
 
     void test_update(int);
     virtual QString add_display(int) const;
@@ -67,6 +69,8 @@ public:
 // 6 - Butshow text for review
 // 7 - extra button for review
 // 8 - extra output for review
+// 9 - return correct answer when test::submit
+// 10 - return supplement data for test
 
 
 

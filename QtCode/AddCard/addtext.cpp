@@ -9,6 +9,8 @@ addText::addText(QWidget *parent) :
     ui(new Ui::addText)
 {
     ui->setupUi(this);
+    this->setWindowTitle("Add hollows");
+
     extern Card* __card;
     connect(ui->text, SIGNAL(selectionChanged()), this, SLOT(selection()));
     ui->text->setText(__card->get_prob());
@@ -72,9 +74,11 @@ void addText::on_Butauto_clicked()
         {
             j=nxt[j];
             QTextCursor cur = ui->text->textCursor();
-            cur.setPosition(i+1-m,QTextCursor::MoveAnchor);
-            cur.movePosition(QTextCursor::NoMove, QTextCursor::KeepAnchor, m);
-            cur.select(QTextCursor::WordUnderCursor);
+            //cur.setPosition(i+1-m,QTextCursor::MoveAnchor);
+            //cur.movePosition(QTextCursor::NoMove, QTextCursor::KeepAnchor, m);
+            //cur.select(QTextCursor::WordUnderCursor);
+            cur.setPosition(i+1-m);
+            cur.setPosition(i+1, QTextCursor::KeepAnchor);
             selection(cur);
         }
     }
@@ -97,7 +101,7 @@ void addText::on_Butfinish_clicked()
         __card->option(2, QString::number(i) + "-" + QString::number(j));
         i=j+1;
     }
-    __card->option(2, "```");
+    __card->option(2, "$$$");
     emit second_finish();
     close();
 }

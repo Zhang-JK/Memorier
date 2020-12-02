@@ -6,6 +6,7 @@
 #include "managecard.h"
 #include "Cards.h"
 #include "Review/reviewmain.h"
+#include "CardTest/testmain.h"
 
 namespace Ui {
 class LibWindow;
@@ -24,6 +25,7 @@ private slots:
     void addCard_push();
     void manageCard_push();
     void review_push();
+    void test_push();
     void addCard_data(Card*);
 
 private:

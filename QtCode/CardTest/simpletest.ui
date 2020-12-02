@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>simpleTest</class>
+ <widget class="QMainWindow" name="simpleTest">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>664</width>
+    <height>457</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QLabel" name="LabelTitle">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>20</y>
+      <width>131</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>LableTitle</string>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="Txt_Prob">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>60</y>
+      <width>621</width>
+      <height>192</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="ButYES">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>370</y>
+      <width>201</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>ButYES</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="ButNO">
+    <property name="geometry">
+     <rect>
+      <x>440</x>
+      <y>370</y>
+      <width>201</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>ButNO</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="ButSubmit">
+    <property name="geometry">
+     <rect>
+      <x>230</x>
+      <y>370</y>
+      <width>201</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>ButSubmit</string>
+    </property>
+   </widget>
+   <widget class="QTextEdit" name="Txt_Ans">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>270</y>
+      <width>621</width>
+      <height>91</height>
+     </rect>
+    </property>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>testMain</class>
+ <widget class="QMainWindow" name="testMain">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>365</width>
+    <height>203</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QLabel" name="Fixlabel_1">
+    <property name="geometry">
+     <rect>
+      <x>80</x>
+      <y>20</y>
+      <width>291</width>
+      <height>81</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Test yourself every day!</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="TxtTest">
+    <property name="geometry">
+     <rect>
+      <x>190</x>
+      <y>90</y>
+      <width>161</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>TxtTest</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="ButToday">
+    <property name="geometry">
+     <rect>
+      <x>190</x>
+      <y>130</y>
+      <width>151</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Today's tests</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="ButSelf">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>130</y>
+      <width>141</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Self test</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="TxtInfo">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>100</y>
+      <width>161</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>TxtInfo</string>
+    </property>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

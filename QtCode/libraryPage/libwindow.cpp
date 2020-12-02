@@ -21,6 +21,7 @@ LibWindow::LibWindow(QWidget *parent) :
     connect(ui->add, SIGNAL(clicked()), this, SLOT(addCard_push()));
     connect(ui->manage, SIGNAL(clicked()), this, SLOT(manageCard_push()));
     connect(ui->review, SIGNAL(clicked()), this, SLOT(review_push()));
+    connect(ui->test, SIGNAL(clicked()), this, SLOT(test_push()));
 }
 
 void LibWindow::addCard_push()
@@ -43,13 +44,19 @@ void LibWindow::review_push()
     reviewCard->show();
 }
 
+void LibWindow::test_push()
+{
+    testMain* testCard = new testMain(this);
+    testCard->show();
+}
+
 void LibWindow::addCard_data(Card *temp)
 {
     QSqlQuery update;
     long timestamp = QDateTime::currentDateTime().toSecsSinceEpoch();
     temp->set_id(LoginInfo::getId());
     temp->set_init_time(timestamp);
-    QString sqlUpdate = QString("INSERT INTO card (`type`,account,title,review_times,ac_time,create_time,last_review,question,answer,next_review) VALUES (%1,%2,'%3',%4,%5,%6,%7,'%8','%9',%10)")
+    QString sqlUpdate = QString("INSERT INTO card (`type`,account,title,review_times,ac_time,create_time,last_review,question,answer,next_review,next_test) VALUES (%1,%2,'%3',%4,%5,%6,%7,'%8','%9',%10,%11)")
                             .arg(int(temp->get_type()))     // type
                             .arg(temp->get_id())            // accountId
                             .arg(temp->title)               // title
@@ -59,7 +66,8 @@ void LibWindow::addCard_data(Card *temp)
                             .arg(timestamp)                 // last_review
                             .arg(temp->get_prob())          // question
                             .arg(temp->option(3))           // answer
-                            .arg(temp->get_nextReview());   // next_review
+                            .arg(temp->get_nextReview())    // next_review
+                            .arg(temp->get_nextTest());     // next_text
     qDebug() << "Generated sql: " << sqlUpdate;
     if (!update.exec(sqlUpdate))
         qDebug() << "Query Error: " << update.lastError().driverText();
