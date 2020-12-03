@@ -183,7 +183,7 @@ void testMain::next_card()
     {
         QMessageBox *temp = new QMessageBox;
         temp->addButton("OK", QMessageBox::AcceptRole);
-        temp->setText("No more cards to review!");
+        temp->setText("No more cards to Test!");
         temp->setIcon(QMessageBox::Information);
         temp->show();
         this->close();

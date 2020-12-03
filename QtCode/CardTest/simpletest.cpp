@@ -70,7 +70,7 @@ void simpleTest::on_ButNO_clicked()
     }
     if(ui->ButNO->text()[0]=='I')
     {
-        ui->Txt_Ans->setText(card->option(5));
+        ui->Txt_Ans->setText(card->option(8));
         ui->ButNO->setText("Next->");
         ui->ButSubmit->setVisible(false);
         ui->ButYES->setVisible(false);
