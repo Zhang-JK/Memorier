@@ -1,9 +1,12 @@
 # Your study assistant - Memorier
 ### COMP2012H Project H20
 Deadline: Dec 4  
-Click [Here](Proposal.md) to see our project proposal  
+Click [Here](doc/Proposal.md) to see our project proposal  
 Click [Here](https://drive.google.com/file/d/1QqJLKz9xDS4XIAxSsNljEVxRXbxd51rZ/view?usp=sharing) to accsee the GUI Logic diagram  
-Click [Here](doc/Report.md) to see our project report
+Click [Here](doc/Report.md) to see our project report  
+Click [Here](doc/Report.pdf) is the PDF version of report  
+
+And you can visit our [github page here](https://github.com/Zhang-JK/Memorier).  
 
 **The First Fully Functionly Release: 12.3 00:02**
 
@@ -51,8 +54,8 @@ Click [Here](doc/Report.md) to see our project report
 **You can view the report [HERE](doc/Report.md)**  
 - [x] Report OutLine
 - [x] Part 1-2
-- [ ] Part 3
-- [ ] Part 4
+- [x] Part 3
+- [x] Part 4
 - [x] Part 5-6
 
 

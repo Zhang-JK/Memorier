@@ -1,6 +1,8 @@
 # Memoeier Documentation and Report
-### Group: H20 
-### Author: ZHANG Zhong & ZHANG Jiekai
+### **Group: H20**  
+### **Author: ZHANG Zhong & ZHANG Jiekai**
+
+#### And you can visit our [github page here](https://github.com/Zhang-JK/Memorier).
 - [0. Overview](#0-overview)        
   - [Our Objective](#our-objective) 
   - [The file struct and usage:](#the-file-struct-and-usage)    
@@ -351,6 +353,7 @@ The pages we use:
 ## 5. SQL data structure
 **SQL structure diagram**:  
 ![SQL Diagram](SQL_diagram.png)
+**The SQL database structure is exported to the ["MySQL_Config"](../MySQL_Config/README.md) folder, you can check it there**
  - **account**: store the account infomation, the password here is encrypted. And the id is unique identifier of the user.
  - **account_log**: store the log of every user's activities, including login, add, delete, edit, review, test.
  - **account_session**: store the session id and its expire timestamp, used for auto login and security.
