@@ -29,6 +29,7 @@ In addition, all your cards will be **automatically synchronized** on your cloud
 ![GUI Login](file_struct.png)
 
 ## 1. Compile and run the program
+- **Important Reminder: If you want to share the code, please delete the database info in [main.cpp](../QtCode/main.cpp)!**
 - You can directly use Qt to compile the code.
 - Since we are using MySQL database in the code, to run the program, please make sure that you have built the QMYSQL plugin. **There is no integrated support for MySQL plugin in Qt**, you need to download and compile the source code yourself.
 - If you would like to know how to compile the MySQL plugin, click [HERE](https://www.codenong.com/cs106162868/) for Linux and [HERE](https://blog.csdn.net/liang19890820/article/details/105071549) for Windows

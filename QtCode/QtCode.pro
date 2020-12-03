@@ -84,4 +84,4 @@ SOURCES += main.cpp \
 RESOURCES += LoginAndMainpage/assets.qrc \
              libraryPage/assets_lib.qrc
 
-QMAKE_LFLAGS += -no-pie
+# QMAKE_LFLAGS += -no-pie
