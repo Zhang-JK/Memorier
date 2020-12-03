@@ -9,8 +9,7 @@ test
 *.bat
 .qmake*
 moc*
-main.cpp
-./QtCode/main.cpp
+main.h
 *.user
 bulid*
 build/

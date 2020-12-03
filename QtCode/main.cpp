@@ -10,6 +10,8 @@
 
 #include <QtSql>
 
+#include "main.h"
+
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
@@ -19,10 +21,10 @@ int main(int argc, char *argv[])
     QSqlDatabase db;
     db = QSqlDatabase::addDatabase("QMYSQL");
     // delete the database info if you want to share the code!
-    db.setHostName("laojk.club");   //数据库服务器IP
-    db.setUserName("root");         //用户名
-    db.setPassword("45922622qaz");  //密码
-    db.setDatabaseName("Memorier"); //使用的数据库
+    db.setHostName(DATABASE_URL);   //数据库服务器IP
+    db.setUserName(DATABASE_USER);         //用户名
+    db.setPassword(DATABASE_PASSWORD);  //密码
+    db.setDatabaseName(DATABASE_NAME); //使用的数据库
     // delete the database info if you want to share the code!
     qDebug() << "Database Connecting...";
 
