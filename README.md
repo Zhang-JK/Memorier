@@ -9,9 +9,11 @@ Click [Here](doc/Report.md) to see our project report
 
 ## How to Compile and Run the Project
 <font color=red size=4>**Very Important Section!**</font>
+- **Important Reminder: If you want to share the code, please delete the database info in [main.cpp](/QtCode/main.cpp)!**
 - You can directly use Qt to compile the code or using qmake and make.
 - But for runing the program, since we are using MySQL database in the code, please make sure that you have built the QMYSQL plugin. **There is no integrated support for MySQL plugin in Qt**, you need to download and compile the source code yourself.
 - If you want to would like to know how to compile the MySQL plugin, click [HERE](https://www.codenong.com/cs106162868/) for Linux and [HERE](https://blog.csdn.net/liang19890820/article/details/105071549) for Windows
+- **If cannot run the compiled program correctly, there is a release version in the ["relaese"](/release/README.md) folder, you can use that one**
 
 ## Current Progress
 ### 1. Basic Class Design

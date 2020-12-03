@@ -9,6 +9,7 @@ test
 *.bat
 .qmake*
 moc*
+main.h
 *.user
 bulid*
 build/

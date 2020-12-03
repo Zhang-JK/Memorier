@@ -329,7 +329,8 @@ DIST          = /home/lao_jk/Qt/5.15.1/gcc_64/mkspecs/features/spec_pre.prf \
 		Cards/Choices.h \
 		Cards/Plain.h \
 		Cards/Text.h \
-		Cards/Word.h main.cpp \
+		Cards/Word.h \
+		main.h main.cpp \
 		CardTest/simpletest.cpp \
 		CardTest/testmain.cpp \
 		ManageCard/managecard.cpp \
@@ -740,7 +741,7 @@ distdir: FORCE
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents LoginAndMainpage/assets.qrc libraryPage/assets_lib.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents /home/lao_jk/Qt/5.15.1/gcc_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents tools/APIs/APIRequest.h CardTest/simpletest.h CardTest/testmain.h LoginAndMainpage/loginwindow.h LoginAndMainpage/mainwindow.h LoginAndMainpage/signupwindow.h ManageCard/managecard.h Review/reviewmain.h Review/simplereview.h libraryPage/libwindow.h tools/LoginInfo.h tools/selectdate.h tools/tools.h AddCard/addcard.h AddCard/addcardmain.h AddCard/addchoices.h AddCard/addtext.h Cards/Card.h Cards/Cards.h Cards/Choices.h Cards/Plain.h Cards/Text.h Cards/Word.h $(DISTDIR)/
+	$(COPY_FILE) --parents tools/APIs/APIRequest.h CardTest/simpletest.h CardTest/testmain.h LoginAndMainpage/loginwindow.h LoginAndMainpage/mainwindow.h LoginAndMainpage/signupwindow.h ManageCard/managecard.h Review/reviewmain.h Review/simplereview.h libraryPage/libwindow.h tools/LoginInfo.h tools/selectdate.h tools/tools.h AddCard/addcard.h AddCard/addcardmain.h AddCard/addchoices.h AddCard/addtext.h Cards/Card.h Cards/Cards.h Cards/Choices.h Cards/Plain.h Cards/Text.h Cards/Word.h main.h $(DISTDIR)/
 	$(COPY_FILE) --parents main.cpp CardTest/simpletest.cpp CardTest/testmain.cpp ManageCard/managecard.cpp Review/reviewmain.cpp Review/simplereview.cpp tools/APIs/APIRequest.cpp LoginAndMainpage/loginwindow.cpp LoginAndMainpage/main_login.cpp LoginAndMainpage/mainwindow.cpp LoginAndMainpage/signupwindow.cpp libraryPage/libwindow.cpp tools/LoginInfo.cpp tools/selectdate.cpp tools/tools.cpp AddCard/addcard.cpp AddCard/addcardmain.cpp AddCard/addchoices.cpp AddCard/addtext.cpp Cards/Card.cpp Cards/Choices.cpp Cards/Plain.cpp Cards/Text.cpp Cards/Word.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents LoginAndMainpage/loginwindow.ui CardTest/simpletest.ui CardTest/testmain.ui LoginAndMainpage/mainwindow.ui LoginAndMainpage/signupwindow.ui AddCard/addcard.ui AddCard/addcardmain.ui AddCard/addchoices.ui AddCard/addtext.ui ManageCard/managecard.ui Review/reviewmain.ui Review/simplereview.ui libraryPage/libwindow.ui tools/selectdate.ui $(DISTDIR)/
 
@@ -3297,7 +3298,8 @@ main.o: main.cpp LoginAndMainpage/mainwindow.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtSql/qsqlrelationaltablemodel.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtSql/qsqltablemodel.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtSql/qsqlresult.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtSql/qtsqlversion.h
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtSql/qtsqlversion.h \
+		main.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o main.cpp
 
 simpletest.o: CardTest/simpletest.cpp CardTest/simpletest.h \
