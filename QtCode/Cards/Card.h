@@ -38,6 +38,7 @@ public:
     Card();
 	virtual ~Card();
     
+
     int get_id() const;
     int get_review_time() const;
     int get_ac_time() const;
@@ -48,8 +49,8 @@ public:
     long get_nextTest() const;
 
     void test_update(int);
-    virtual QString add_display(int) const;
-    virtual QString option(int id =0, QString str = "");
+    virtual QString add_display(int) const;              // Display message for AddCard
+    virtual QString option(int id =0, QString str = ""); // main overloading function, please refer to id list below
 
     void set_id(int i);
     void set_title(QString);

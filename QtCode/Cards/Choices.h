@@ -1,7 +1,6 @@
 #ifndef CHOICES_H_
 #define CHOICES_H_
 
-//#include "LinkedList.h"
 #include<vector>
 #include "Card.h"
 

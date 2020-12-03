@@ -25,7 +25,7 @@ signals:
 private:
     Ui::simpleTest *ui;
     Card* card;
-    void select(int,int);
+    void select(int,int);           // mark text between the two indicator with a different color/font
 
 private slots:
     void on_ButYES_clicked();

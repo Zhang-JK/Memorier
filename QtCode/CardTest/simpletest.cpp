@@ -91,6 +91,7 @@ void simpleTest::on_ButYES_clicked()
     this->close();
 }
 
+// mark text between st & en with a different color/font
 void simpleTest::select(int st,int en)
 {
     QTextCursor cur = ui->Txt_Ans->textCursor();
