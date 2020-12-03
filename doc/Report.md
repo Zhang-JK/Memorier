@@ -37,7 +37,11 @@ In addition, all your cards will be **automatically synchronized** on your cloud
 
 ## 2. How to use Memorier
 - Log in/Sign up for your account (All your cards will be stored in the cloud, so sign an account is a must)
-- Add your card by click "**Add Card**" button on the library page, there are 4 types of cards, we will explain them each later.
+- Add your card by click "**Add Card**" button on the library page, there are 4 types of cards:
+  > * Plain text: the most basic card, you can type Problem and Answer to it.  
+  > * Hollow text: you can type Problem and hint to it, you can add some "hollow" in it. At the corresponding window, you can simply select the text using mouse and click "add"; you can also try our auto generate keywords, you can see the button "Show suggest" and "Next suggest", all text clip that match the keyword will be select once you click "apply"; the box showing keywords is editable, so you can type in your own word and click "apply", all text clip that match will be selected.  
+  > * Word: you can type the word you want to remember, the first time you click translation box, the program will automatically translate it for you, you can edit it if you are not satisfied.  
+  > * Multi choices: you can type problem and hint, later you can add up to 5 choices and set any number of them as correct answer.  
 - After adding the card you can "**Review**" them, either by their type or by the time you added it. (In the latter case, we will arrange the next review time according to the forgetting curve)
 - The "**Test**" function is similar to review, but you need to answer the question in the card and we will record your score for future Review and Test
 - In "**Management**" page you can delete or edit(later) your cards, there is a filter for searching cards.
@@ -220,21 +224,74 @@ The pages we use:
   The logic flow of this function is quite simple, I will use the number to represent the execution sequence  
   - 1. **[AddCard](../QtCode/AddCard/addcard.h)** class:  
     Choose a card type  
-    > * signals void addcard_sendInfo(Card\*): Return the data  
-    > * private slots: void on_ButPlain_clicked(): auto connect by Qt, trigger by push button, open addcardMain and call "set_type(Plain)", "pre_finish()" is connect to "send_data()"  
-    > * private slots: void on_ButWord_clicked(): auto connect by Qt, trigger by push button, open addcardMain and call "set_type(Word)", "pre_finish()" is connect to "send_data()"  
-    > * private slots: void on_ButChoices_clicked(): auto connect by Qt, trigger by push button, open addcardMain and call "set_type(Choices)", "pre_finish()" is connect to "add_choices()"  
-    > * private slots: void on_ButText_clicked(): auto connect by Qt, trigger by push button, open addcardMain and call "set_type(Text", "pre_finish()" is connect to "add_text()"  
+    > * signals: void addcard_sendInfo(Card\*): Return the data  
+    > * private slots: void on_ButPlain_clicked(): open addcardMain and call "set_type(Plain)", connect: "pre_finish()" -> "send_data()"  
+    > * private slots: void on_ButWord_clicked(): open addcardMain and call "set_type(Word)", connect: "pre_finish()" -> "send_data()"  
+    > * private slots: void on_ButChoices_clicked(): open addcardMain and call "set_type(Choices)", connect: "pre_finish()" -> "add_choices()"  
+    > * private slots: void on_ButText_clicked(): open addcardMain and call "set_type(Text", connect: "pre_finish()" -> "add_text()"  
     > * private slots: void on_ButEnd_clicked(): emit signal and close Window  
-    > * private slots: void add_choices(): open addChoices window  
-    > * private slots: void add_text(): open addText window  
+    > * private slots: void add_choices(): open addChoices window, connect: "second_finish()" -> "send_data()"  
+    > * private slots: void add_text(): open addText window, connect: "second_finish()" -> "send_data()"  
   - 2. **[addcardMain](../QtCode/AddCard/addcardmain.h)** class:  
-    > * public member function: void set_type(Card::cardType): Initalize the window accroding to the parameter  
-    > * signals: pre_finish(): marked the end of this window  
-    > * private slots: void on_Butconfirm_clicked(): Transform data into \__card, emit signal, close the window
-
+    Let user input main (or even all) card data
+    > * void set_type(Card::cardType): Initalize the window accroding to the parameter  
+    > * signals: pre_finish(): mark the end of this window  
+    > * private slots: void on_Butconfirm_clicked(): Transform data into \__card, emit signal, close the window  
+    > * private slots: void on_Butcancel_clicked(): Discard all data, close window  
+    > * private slots: void option(): change display in answer QTextEdit accroding to \__card->option(2)  
+  - 3(a). **[addChoices](../QtCode/AddCard/addchoices.h)** class:  
+    For Choices card only, let user input multi choice data
+    > * signals: void second_finish(): mark the end of this window  
+    > * private slots: void on_Butadd_clicked(): set a new line of QTextEdit and QCheckBox visible  
+    > * private slots: void on_Butfinish_clicked(): Transform data into \__card, emit signal, close the window  
+  - 3(b). **[addText](../QtCode/AddCard/addtext.h)** class:  
+    For hollow text card only, let user make some hollow
+    > * signals: void second_finish(): mark the end of this window  
+    > * private slots: void on_Butfinish_clicked(): Transform data into \__card, emit signal, close the window  
+    > * void on_Butadd_clicked(): mark the text under QTextCursor  
+    > * void on_ButAPI_clicked(): call API and generate a list of keywords / switch to next keyword  
+    > * void on_Butauto_clicked(): match the string in API display box and the problem, mark all that matched  
+    > * private: void selection(QTextCursor cur): mark the text under cur  
 - Review page
+  **This page is used for review**
+  - **[reviewMain](../QtCode/Review/reviewmain.h)** class:  
+  Use for choose review by type or by time and generate review list accrodingly
+    > * enum ReviewType {Today = 0, Ramdom = 1};  
+    > * Card\*\* review_list: storage the review list  
+    > * int num, currentCard: the length of the review list / the card index we are in now
+    > * void generate_review_list(ReviewType): generate review list accroding to review type  
+    > * private slots: void on_Butstart_clicked(): call "generate_review_list(Ramdom)", open simpleReview for first card and connect: "finished()"->"next_card()"    
+    > * private slots: void on_ButToday_clicked(): call "generate_review_list(Today)", open simpleReview for first card and connect: "finished()"->"next_card()"  
+    > * private slots: void next_card(): update card review-related info, open simpleReview for next card and connect: "finished()"->"next_card()"  
+    > * private slots: void exit(): tackle force exit  
+  - **[simpleReview](../QtCode/Review/simplereview.h)** class:  
+  The review window  
+    > * public: void init(Card\*): set all box accordingly  
+    > * signals: void finished(): mark the normal end of this window  
+    > * signals: void forceQuit(): mark force quit  
+    > * private: int showAns, showExtra: flag for whether the box is showing ans / extra info
+    > * private signals: void on_But_show_clicked(): show/hide answer
+    > * private signals: void on_But_extra_clicked(): show/hide extra info
+    > * private signals: void on_But_finish_clicked(): emit finished() and close window
 - Test page
+- **[testMain](../QtCode/CardTest/testmain.h)** class:  
+  Use for choose test by type or by time and generate test list accrodingly
+    > * enum TestType{Self, Today};  
+    > * Card\*\* testlist: storage the test list  
+    > * int num, currentCard: the length of the test list / the card index we are in now
+    > * void generate_testlist(TestType): generate test list accroding to test type  
+    > * private slots: void display_test(Card\*):  open simpleTest and connect: "finished()"->"next_card()"  
+    > * private slots: void on_ButSelf_clicked(): call "generate_testlist(Self)", and call display_test  
+    > * private slots: void on_ButToday_clicked(): call "generate_testlist(Today)", and call display_test  
+    > * private slots: void next_card(): update card test-related info and call display_test  
+    > * private slots: void exit(): tackle force exit  
+- **[simpleTest](../QtCode/CardTest/simpletest.h)** class:  
+  The test window  
+    > * signals: finished(): mark the end of this window  
+    > * private: void select(int,int): mark the text between two indicators  
+    > * private slots: void on_ButYES_clicked(): update card info, close window
+    > * private slots: void on_ButNO_clicked(): update ui->ButNO condition / uodate card info / close window
+    > * private slots: void on_ButSubmit_clicked(): call card->option(9/10) to collect and apply side-to-side compare info
 - Manage page  
   **This page is used for manage your existing cards, you can delete/edit them, also there is a fliter for you to select cards**   
   - **[ManageCard](../QtCode/ManageCard/managecard.h)** class:  
@@ -259,9 +316,9 @@ The pages we use:
 
   - A series of classes inherited from the base class (Card) is applied to simplify coding.
 
-  - All managing-related data that is useful for all cards are stored in the base class. The main program can use these data to easily generate card series using different criteria, and it is no need (and should not) to consider what specific type is it.
+  - All managing-related data that is useful for all cards are stored in the base class. Core codes can use these data to easily generate card series using different criteria, and it is no need (and should not) to consider what specific type is it.
 
-  - All card type-related functions and data are stored in derived classes. Using function overloading and the powerful QString class, one version of main program is enough to implement all necessary procedures. Specifically, 4 different cards have different “answer type” or even structure to store data, it is tedious to implement the almost-the-same procedure for 4 times in the main program. Therefore, all 4 classes are designed to follow a same protocol to package its data and after sending it to the main program, only one unpackage procedure is needed to apply and data in different types will be transformed into a unified format and can display easily.
+  - All card type-related functions and data are stored in derived classes. Using function overloading and the powerful QString class, one version of core codes is enough to implement all necessary procedures. Specifically, 4 different cards have different “answer type” or even structure to store data, it is tedious to implement the almost-the-same procedure for 4 times in core codes. Therefore, all 4 classes are designed to follow a same protocol to package its data and after sending it to core codes, only one unpackage procedure is needed to apply and data in different types will be transformed into a unified format and can display easily.
 
   - Through this design, it is very easy to reuse the code or doing further development. More on [Part III code reusability](#iii-code-reusability)
 
@@ -271,13 +328,25 @@ The pages we use:
 
   - In considering the two developers’ expertise in different areas, it is decided that all code will be well packed. The other developer can use a pre-set function as a port to easily gain all data who needs, and should send data in a specific format to a . It increases working efficiency and make it easier to reuse the code and do further development.
 
-
-
-
-
 ### II. Use of Data Structures
 
+  - **Vector**: in card classes to store additionl card info  
+
+  - **SQL**: more on [part 5](#5-sql-data-structure);
+
+  - **Dynamic (pointer) arrays**: to save card lists
+
+  - **Linked list**: more on [part 3.II](#ii-tool-classes)
+
+  - **splay tree (abandoned)**: in the origin plan, we will implement a user-frendly lightweight class that support dynamic insert, remove, query, sort, merge, etc. using splay tree. only a little non-OOP style test code was produced.
+
 ### III. Code Reusability
+
+  - The code is very easy to reuse / further develop
+
+  - To create new card type, it should be derived from Card class or Plain class, and add more feature in "virtual function option()", almost no need to change other core codes.
+
+  - To create new UI window, you can add ui programs in AddCard/Review/CardTest and call them through each "main program", very little edit to core codes is enough
 
 ## 5. SQL data structure
 **SQL structure diagram**:  

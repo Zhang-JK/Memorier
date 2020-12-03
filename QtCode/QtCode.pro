@@ -30,6 +30,7 @@ HEADERS += tools/APIs/APIRequest.h \
            Review/reviewmain.h \
            Review/simplereview.h \
            libraryPage/libwindow.h \
+           main.h \
            tools/LoginInfo.h \
            tools/selectdate.h \
            tools/tools.h \

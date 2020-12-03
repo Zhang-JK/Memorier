@@ -16,7 +16,6 @@ public:
     enum ReviewType {Today = 0, Ramdom = 1};
     explicit reviewMain(QWidget *parent = nullptr);
     ~reviewMain();
-    void generate_review_list(ReviewType);
 
 private:
     Ui::reviewMain *ui;
@@ -24,6 +23,7 @@ private:
     int num, currentCard = 0;
     long generateTimestamp;
     bool forceQuitFlag = false;
+    void generate_review_list(ReviewType);
 
 private slots:
     void on_Butstart_clicked();
