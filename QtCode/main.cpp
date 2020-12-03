@@ -19,10 +19,10 @@ int main(int argc, char *argv[])
     QSqlDatabase db;
     db = QSqlDatabase::addDatabase("QMYSQL");
     // delete the database info if you want to share the code!
-    db.setHostName("laojk.club");   //数据库服务器IP
-    db.setUserName("root");         //用户名
-    db.setPassword("45922622qaz");  //密码
-    db.setDatabaseName("Memorier"); //使用的数据库
+    db.setHostName("");   //数据库服务器IP
+    db.setUserName("");         //用户名
+    db.setPassword("");  //密码
+    db.setDatabaseName(""); //使用的数据库
     // delete the database info if you want to share the code!
     qDebug() << "Database Connecting...";
 
