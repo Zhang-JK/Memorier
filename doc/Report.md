@@ -212,16 +212,35 @@ The pages we use:
     > * private slots: void review_push(): will be triggered by push button, open review page  
     > * private slots: void test_push(): will be triggered by push button, open testing page  
     > * private slots: void addCard_data(): will be triggered by adding one valid card, store the card info to database  
-- Add page
+- Add page  
+  **This page is used for adding new cards**  
+  This was our fisrt page, so a some design are quite naive and were abandoned in other classes.
+  In this page, a global variable "extern Card\* \__card" is used to store data.
+  The logic flow of this function is quite simple, I will use the number to represent the execution sequence  
+  - 1. **[AddCard](../QtCode/AddCard/addcard.h)** class:  
+    Choose a card type  
+    > * signals void addcard_sendInfo(Card\*): Return the data  
+    > * private slots: void on_ButPlain_clicked(): auto connect by Qt, trigger by push button, open addcardMain and call "set_type(Plain)", "pre_finish()" is connect to "send_data()"  
+    > * private slots: void on_ButWord_clicked(): auto connect by Qt, trigger by push button, open addcardMain and call "set_type(Word)", "pre_finish()" is connect to "send_data()"  
+    > * private slots: void on_ButChoices_clicked(): auto connect by Qt, trigger by push button, open addcardMain and call "set_type(Choices)", "pre_finish()" is connect to "add_choices()"  
+    > * private slots: void on_ButText_clicked(): auto connect by Qt, trigger by push button, open addcardMain and call "set_type(Text", "pre_finish()" is connect to "add_text()"  
+    > * private slots: void on_ButEnd_clicked(): emit signal and close Window  
+    > * private slots: void add_choices(): open addChoices window  
+    > * private slots: void add_text(): open addText window  
+  - 2. **[addcardMain](../QtCode/AddCard/addcardmain.h)** class:  
+    > * public member function: void set_type(Card::cardType): Initalize the window accroding to the parameter  
+    > * signals: pre_finish(): marked the end of this window  
+    > * private slots: void on_Butconfirm_clicked(): Transform data into \__card, emit signal, close the window
+
 - Review page
 - Test page
 - Manage page  
   **This page is used for manage your existing cards, you can delete/edit them, also there is a fliter for you to select cards**   
   - **[ManageCard](../QtCode/ManageCard/managecard.h)** class:  
     > data member:  
-    > * int selectId = -1: indicting which row is selected
-    > * QString selectedTitle = "": the title of selected row
-    > * QLable * labCellIndex: the label for GUI, showing the selection info to user
+    > * int selectId = -1: indicting which row is selected  
+    > * QString selectedTitle = "": the title of selected row  
+    > * QLable * labCellIndex: the label for GUI, showing the selection info to user  
 
     > member functions:  
     > * private slots: void setCostumRows(): will be triggered by the filter, display the cards by user's request  
@@ -249,7 +268,7 @@ The pages we use:
 
   - As it may cause low efficiency and very likely to go into chaos if two developers kept editing the same file or same function repeatedly, or make the file very large and cause confusion, we tried to disperse the coding mission into small parts and finish them one by one. It turns out that this greatly reduced workload of the project.
 
-  - In considering the two developers’ expertise in different areas, it is decided that all code will be well packed. The other developer can use a pre-set function as a port to easily gain all data who needs. It increases working efficiency and make it easier to reuse the code and do further development.
+  - In considering the two developers’ expertise in different areas, it is decided that all code will be well packed. The other developer can use a pre-set function as a port to easily gain all data who needs, and should send data in a specific format to a . It increases working efficiency and make it easier to reuse the code and do further development.
 
 
 
