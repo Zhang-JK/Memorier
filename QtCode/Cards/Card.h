@@ -65,10 +65,10 @@ public:
 // 2 - set special data for this card
 // 3 - encode to storage
 // 4 - decode
-// 5 - get answer for this card (pair with 1)
+// 5 - get answer/hint for this card (pair with 1)
 // 6 - Butshow text for review
 // 7 - extra button for review
-// 8 - extra output for review
+// 8 - extra output for review (get full answer)
 // 9 - return correct answer when test::submit
 // 10 - return supplement data for test
 
