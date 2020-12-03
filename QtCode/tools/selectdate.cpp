@@ -73,6 +73,7 @@ void selectDate::check_selection_all()
     ui->CheckAll->setCheckState((allchecked == 1 ? Qt::Checked : Qt::Unchecked));
 }
 
+// generate the data and type condition part of query sql
 QString selectDate::get_selection_SQL(long timestamp)
 {
     int i = 0;

@@ -18,6 +18,8 @@ SignUpWindow::~SignUpWindow()
     delete ui;
 }
 
+// a validator for checking the user input
+// and set the notice label for showing the mistake
 void SignUpWindow::inputValidator()
 {
     ui->errorMsg->clear();
@@ -94,6 +96,7 @@ void SignUpWindow::inputValidator()
     }
 }
 
+// update the user data in the database and encrype the password
 bool SignUpWindow::updateUserData(QString username, QString password)
 {
     QString salt = getRandomString(32);

@@ -11,6 +11,7 @@
 
 extern LibWindow lw;
 
+// set the background in the constructor
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::MainWindow)
 {
@@ -35,6 +36,7 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+// open sign up window
 void MainWindow::openSignUp()
 {
     SignUpWindow *signUp = new SignUpWindow(this);
@@ -42,6 +44,7 @@ void MainWindow::openSignUp()
     signUp->show();
 }
 
+// open login window
 void MainWindow::openLogin()
 {
     LoginWindow *login = new LoginWindow(this);
@@ -49,6 +52,8 @@ void MainWindow::openLogin()
     login->show();
 }
 
+// will be triggered by successful login
+// and then modify the .session file and the database
 void MainWindow::receiveLoginInfo(QString username, int accountId)
 {
 
@@ -95,6 +100,7 @@ void MainWindow::receiveLoginInfo(QString username, int accountId)
     emit libStart();
 }
 
+// used for direct login, checking whether the session is vaild
 void MainWindow::directLogin()
 {
     int id = 0;

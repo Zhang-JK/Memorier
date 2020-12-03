@@ -4,6 +4,7 @@
 
 #include <QtSql>
 
+// set the background image and its size
 LibWindow::LibWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::LibWindow)
@@ -24,6 +25,7 @@ LibWindow::LibWindow(QWidget *parent) :
     connect(ui->test, SIGNAL(clicked()), this, SLOT(test_push()));
 }
 
+// open add card
 void LibWindow::addCard_push()
 {
     AddCard *addcard = new AddCard(this);
@@ -31,12 +33,14 @@ void LibWindow::addCard_push()
     addcard->show();
 }
 
+// open manage card
 void LibWindow::manageCard_push()
 {
     ManageCard *manageCard = new ManageCard(this);
     manageCard->show();
 }
 
+// open review
 void LibWindow::review_push()
 {
     reviewMain* reviewCard = new reviewMain(this);
@@ -44,12 +48,15 @@ void LibWindow::review_push()
     reviewCard->show();
 }
 
+// open test
 void LibWindow::test_push()
 {
     testMain* testCard = new testMain(this);
     testCard->show();
 }
 
+// will receive data from the add card page
+// add add the card to the database with useful data
 void LibWindow::addCard_data(Card *temp)
 {
     QSqlQuery update;

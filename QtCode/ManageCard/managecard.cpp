@@ -6,6 +6,7 @@
 #include <QMessageBox>
 #include <QElapsedTimer>
 
+// the constructor will create a base table with all cards created by the user
 ManageCard::ManageCard(QWidget *parent) : QMainWindow(parent),
                                           ui(new Ui::ManageCard)
 {
@@ -49,6 +50,7 @@ ManageCard::ManageCard(QWidget *parent) : QMainWindow(parent),
     setRows(-1, "");
 }
 
+// use the filter info to get the needed info from the database
 void ManageCard::setRows(int type, QString title)
 {
     ui->tableInfo->clearContents();
@@ -100,6 +102,7 @@ void ManageCard::setRows(int type, QString title)
     }
 }
 
+// when the filter is used, reset the table
 void ManageCard::setCostumRows()
 {
     int type = ui->typeSelect->currentIndex() - 1;
@@ -107,6 +110,7 @@ void ManageCard::setCostumRows()
     setRows(type, title);
 }
 
+// delete a row from the database and refresh the table
 void ManageCard::deleteRow()
 {
     if (selectedId == -1)
@@ -128,11 +132,13 @@ void ManageCard::deleteRow()
     }
 }
 
+// open edit window
 void ManageCard::editRow()
 {
     QMessageBox::warning(this, "没写", "是真的妹写", QMessageBox::No);
 }
 
+// whenever you click on the table, change the selected id
 void ManageCard::selectOnTable()
 {
     QList<QTableWidgetItem *> items = ui->tableInfo->selectedItems();

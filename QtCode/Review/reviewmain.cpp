@@ -47,6 +47,7 @@ reviewMain::~reviewMain()
     delete [] review_list;
 }
 
+// fetch data from the database to generate the review card list
 void reviewMain::generate_review_list(ReviewType type)
 {
     num = 0;
@@ -109,11 +110,13 @@ void reviewMain::generate_review_list(ReviewType type)
     }
 }
 
+// if the force quit is triggered
 void reviewMain::exit() {
     qDebug() << "triggered force quit";
     forceQuitFlag = true;
 }
 
+// the random or costomized test
 void reviewMain::on_Butstart_clicked()
 {
     num = 0;
@@ -138,6 +141,7 @@ void reviewMain::on_Butstart_clicked()
     temp->show();
 }
 
+// the daily test
 void reviewMain::on_ButToday_clicked()
 {
     num = 0;
@@ -157,6 +161,8 @@ void reviewMain::on_ButToday_clicked()
     temp->show();
 }
 
+// record the current card state and switch to the next one
+// note that the window is reopened
 void reviewMain::next_card()
 {
     int reviewTimes = review_list[currentCard]->get_review_time();

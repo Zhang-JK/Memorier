@@ -5,6 +5,7 @@
 #include <QtSql>
 #include <QMessageBox>
 
+// set the page and fetch card data from the database
 testMain::testMain(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::testMain)
@@ -48,6 +49,7 @@ testMain::~testMain()
     delete ui;
 }
 
+// fetch data according to the fliter and generate the test list
 void testMain::generate_testlist(TestType type)
 {
     num = 0;
@@ -109,12 +111,13 @@ void testMain::generate_testlist(TestType type)
     }
 }
 
-
+// handle the force quit case
 void testMain::exit() {
     qDebug() << "triggered force quit";
     forceQuitFlag = true;
 }
 
+// display the test case
 void testMain::display_test(Card* card)
 {
     simpleTest *temp = new simpleTest(this);
@@ -155,6 +158,8 @@ void testMain::on_ButToday_clicked()
     display_test(testlist[0]);
 }
 
+// record the current card state and switch to the next one
+// note that the window is reopened
 void testMain::next_card()
 {
     int review_time = testlist[currentCard]->get_review_time();
