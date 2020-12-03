@@ -69,8 +69,8 @@ public:
 // 6 - Butshow text for review
 // 7 - extra button for review
 // 8 - extra output for review (get full answer)
-// 9 - return correct answer when test::submit
-// 10 - return supplement data for test
+// 9 - return side-to-side compare version correct answer when test::submit
+// 10 - return noting for side-to-side compare when test::submit
 
 
 

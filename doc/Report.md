@@ -22,26 +22,26 @@
 ### Our Objective
 #### **Memorier is a learning aid for you, which can help you remember and review better.**  
 You can store knowledge in the form of **adding memory cards**, and Memorier will arrange regular **review and test** functions for you.  
-The review and test of the cards is according to the **forgetting curve** to strengthen your memory of knowledge. Also, we support **custom review and test**. You can select the **type you want** and the **time period** for the creation of the card to generate a review and test sequence.  
+The arrangement of reviewing and testing the cards is according to the **forgetting curve** to strengthen your memory of knowledge. Also, we support **custom review and test**. You can select the **type you want** and the **time period** to create the card set and generate a review or test sequence. 
 In addition, all your cards will be **automatically synchronized** on your cloud account, which is convenient for multi-device switching.
 
 ### The file struct and usage:
 picture here
 
-## 1. Compile and run the progeam
+## 1. Compile and run the program
 - You can directly use Qt to compile the code.
-- But for runing the program, since we are using MySQL database in the code, please make sure that you have built the QMYSQL plugin. **There is no integrated support for MySQL plugin in Qt**, you need to download and compile the source code yourself.
-- If you want to would like to know how to compile the MySQL plugin, click [HERE](https://www.codenong.com/cs106162868/) for Linux and [HERE](https://blog.csdn.net/liang19890820/article/details/105071549) for Windows
+- Since we are using MySQL database in the code, to run the program, please make sure that you have built the QMYSQL plugin. **There is no integrated support for MySQL plugin in Qt**, you need to download and compile the source code yourself.
+- If you would like to know how to compile the MySQL plugin, click [HERE](https://www.codenong.com/cs106162868/) for Linux and [HERE](https://blog.csdn.net/liang19890820/article/details/105071549) for Windows
 
 ## 2. How to use Memorier
-- Log in/Sign up your account (All your cards will be stored in cloud, so sign an account is a must)
-- Add your card by cilck "**Add Card**" botton in the library page, there are 4 types of cards, we will explain each later.
+- Log in/Sign up for your account (All your cards will be stored in the cloud, so sign an account is a must)
+- Add your card by click "**Add Card**" button on the library page, there are 4 types of cards, we will explain them each later.
 - After adding the card you can "**Review**" them, either by their type or by the time you added it. (In the latter case, we will arrange the next review time according to the forgetting curve)
 - The "**Test**" function is similar to review, but you need to answer the question in the card and we will record your score for future Review and Test
 - In "**Management**" page you can delete or edit(later) your cards, there is a filter for searching cards.
 
 ## 3. Class structure and functions  
-In the part we will go through all the important classes and functions used in our project.
+In this part, we will go through all the important classes and functions used in our project.
 
 ### **I. Card class and its drived classes**
 Class diagram:  
@@ -62,7 +62,7 @@ It contains all the common data members of a class
   > **Member functions**:  
   > * accessors and mutators: gets and sets
   > * void test_update(int): update the data members after test  
-  > * virtual QString option(int option, QString data): all the encoding and decoding functions (for storing/reading the data to/from database)  
+  > * virtual QString option(int option, QString data): all the encoding and decoding functions (for storing/reading the data to/from database)  new functions should be added here
   >   **option id list**:
   >   > * 1 - set answer for this card
   >   > * 2 - set special data for this card
@@ -71,7 +71,10 @@ It contains all the common data members of a class
   >   > * 5 - get answer for this card (pair with 1)
   >   > * 6 - Butshow text for review
   >   > * 7 - extra button for review
-  >   > * 8 - extra output for review
+  >   > * 8 - extra output for review (get full answer)
+  >   > * 9 - return side-to-side compare version correct answer when test::submit
+  >   > * 10 - return noting for side-to-side compare when test::submit
+
 
 * Drived class1: [Plain Text](../QtCode/Cards/Plain.h)  
 The **Plain Text** is for storing a card with only problem and answer  
@@ -160,6 +163,14 @@ Some commonly used **tools** in programs
   > * bool InsertLog(int id, QString recording): store the use log to the database, like, login, add card...
   >   > we have a sql table for storing users' log, all the login and card activities will be recorded for safety. For detial please refer to [5. SQL data structure](#5-sql-data-structure).  
 
+* **[selectdate](../QtCode/tools/selectdate.h)**  
+This Qt Dialog class is used to select cardtype and timeperiod when generating review and test list.
+  > **Member functions**:
+  > * Butfinsh_clicked(): generate a QString type selection data and stored in "static QString selection"
+  > * static QString get_selection_SQL(): translate the selection data to SQL-style QString. It can be attached to SQL query string directly.
+
+
+
 ### III. GUI(Qt) classes and GUI login
 **Basic GUI logic:**  
 ![GUI Login](GUI_Logic.png)
@@ -177,6 +188,26 @@ The pages we use:
 ## 4. Brief description of program design
 
 ### I. Use of OOP constructs and techniques
+
+#### Storing and using data based on inheritence and function overloading
+
+  - A series of classes inherited from the base class (Card) is applied to simplify coding.
+
+  - All managing-related data that is useful for all cards are stored in the base class. The main program can use these data to easily generate card series using different criteria, and it is no need (and should not) to consider what specific type is it.
+
+  - All card type-related functions and data are stored in derived classes. Using function overloading and the powerful QString class, one version of main program is enough to implement all necessary procedures. Specifically, 4 different cards have different “answer type” or even structure to store data, it is tedious to implement the almost-the-same procedure for 4 times in the main program. Therefore, all 4 classes are designed to follow a same protocol to package its data and after sending it to the main program, only one unpackage procedure is needed to apply and data in different types will be transformed into a unified format and can display easily.
+
+  - Through this design, it is very easy to reuse the code or doing further development. More on [Part III code reusability](#iii-code-reusability)
+
+#### Dispersed and well-packed coding
+
+  - As it may cause low efficiency and very likely to go into chaos if two developers kept editing the same file or same function repeatedly, or make the file very large and cause confusion, we tried to disperse the coding mission into small parts and finish them one by one. It turns out that this greatly reduced workload of the project.
+
+  - In considering the two developers’ expertise in different areas, it is decided that all code will be well packed. The other developer can use a pre-set function as a port to easily gain all data who needs. It increases working efficiency and make it easier to reuse the code and do further development.
+
+
+
+
 
 ### II. Use of Data Structures
 
