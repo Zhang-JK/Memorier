@@ -26,30 +26,13 @@ The arrangement of reviewing and testing the cards is according to the **forgett
 In addition, all your cards will be **automatically synchronized** on your cloud account, which is convenient for multi-device switching.
 
 ### The file struct and usage:
-.
-├── doc
-├── QtCode
-│   ├── AddCard
-│   ├── Cards
-│   ├── CardTest
-│   ├── libraryPage
-│   │   └── images
-│   ├── LoginAndMainpage
-│   │   └── images
-│   ├── ManageCard
-│   ├── Review
-│   └── tools
-│       ├── APIs
-│       ├── LinkedList
-│       └── MySQL_API
-└── release
-    ├── linux
-    └── windows
+![GUI Login](file_struct.png)
 
 ## 1. Compile and run the program
 - You can directly use Qt to compile the code.
 - Since we are using MySQL database in the code, to run the program, please make sure that you have built the QMYSQL plugin. **There is no integrated support for MySQL plugin in Qt**, you need to download and compile the source code yourself.
 - If you would like to know how to compile the MySQL plugin, click [HERE](https://www.codenong.com/cs106162868/) for Linux and [HERE](https://blog.csdn.net/liang19890820/article/details/105071549) for Windows
+- **If cannot run the compiled program correctly, there is a release version in the ["relaese"](../release/README.md) folder, you can use that one**
 
 ## 2. How to use Memorier
 - Log in/Sign up for your account (All your cards will be stored in the cloud, so sign an account is a must)
@@ -153,7 +136,7 @@ The **LoginInfo** class is used to store and read the login info of the user, it
   > * static void readLoginInfo(): read the login infomation from the local ".session" file
   > * static void cleanLoginInfo(): clean ".session" file (used when session expired or the session id is not correct)
 
-* **[LinkedList\<T>](../QtCode/tools/LoginInfo.h)**  
+* **[LinkedList\<T>](../QtCode/tools/LinkedList/LinkedList.h)**  
 The **LinkedList\<T>** class is a template class of linked list, used to store our various data, such as cards and MySQL query datas
   > **Data members**:  
   > * Node\<T> * head: the head of the linked list
@@ -185,6 +168,7 @@ Some commonly used **tools** in programs
 This Qt Dialog class is used to select cardtype and timeperiod when generating review and test list.
   > **Member functions**:
   > * Butfinsh_clicked(): generate a QString type selection data and stored in "static QString selection"
+  > * void closeEvent(QCloseEvent): together with forceQuitFlag to handle with the close event, make sure the current activity will stop if the user do force quit
   > * static QString get_selection_SQL(): translate the selection data to SQL-style QString. It can be attached to SQL query string directly.
 
 
@@ -193,15 +177,59 @@ This Qt Dialog class is used to select cardtype and timeperiod when generating r
 **Basic GUI logic:**  
 ![GUI Login](GUI_Logic.png)
 **Class diagram:**  
-
+![GUI Login](GUI_classes.png)
 
 The pages we use:
-- Login page
-- Library page
+- Login page  
+  **This page is used for login or sign up your account**  
+  Before reading the explanation of each function, please make sure you understand our login and sign up strategy:  
+  > **Our Login logic**:  
+  > 1. **Sign up**: After the user input the password, we will first **generate a random salt** append to the password, and then use the **hash algorithm to encrypt** it. And sent the encrypted password and its salt to the database.
+  > 2. **Login**: The program will fetch the **encrypted password and salt** from the database, and hash the password entered by the user append by salt. **If the password after hash is the same, then login success**.
+  > 3. **When login success**: The program will **generate a session id and its corresponding expire time**, store it in the local ".session" file and also the database.
+  > 4. **Auto Login**: When the next time user open the login window, the program will detect the local ".session" file and **compare it will the session id in the database**, if the **session is the same and not expired**, user can be auto login. 
+  - **[LoginWindow](../QtCode/LoginAndMainpage/loginwindow.h)** class:  
+    Used for login window
+    > * signals: void sendLoginInfo(QString, int): will be emited after the user login successfully. The signal is received by MainWindow  
+    > * private slots: void inputValidator(): will be triggered by user input, to check whether the input is vaild.  
+  - **[SignUpWindow](../QtCode/LoginAndMainpage/signupwindow.h)** class:  
+    Used for sign up an account
+    > * signals: void sendLoginInfo(QString, int): same as above  
+    > * private slots: void inputValidator(): same as above  
+    > * bool updateUserData(QString, QString): add encrypted information to the database  
+  - **[MainWindow](../QtCode/LoginAndMainpage/mainwindow.h)** class:  
+    Welcome page (I know the class name is bad, but I am too lazy to change it XD)
+    > * signals: void libStart(): start the library(main) page  
+    > * private slots: void receiveLoginInfo(QString account, int accountId): will be triggered by success of login, save the session file to the database and local ".session" file  
+    > * private slots: void directLogin(): handle auto login, will read and check the ".session" file  
+    > * private slots: void openLogin(): triggered by push button, open corresponding window  
+    > * private slots: void openSignUp(): triggered by push button, open corresponding window  
+- Library page  
+  **This page is used for main page of Menorier, all your operation after login will begin here**   
+  - **[LibWindow](../QtCode/libraryPage/libwindow.h)** class:  
+    > * private slots: void addCard_push(): will be triggered by push button, open add card page  
+    > * private slots: void manageCard_push(): will be triggered by push button, open manage card page  
+    > * private slots: void review_push(): will be triggered by push button, open review page  
+    > * private slots: void test_push(): will be triggered by push button, open testing page  
+    > * private slots: void addCard_data(): will be triggered by adding one valid card, store the card info to database  
 - Add page
 - Review page
 - Test page
-- Manage page
+- Manage page  
+  **This page is used for manage your existing cards, you can delete/edit them, also there is a fliter for you to select cards**   
+  - **[ManageCard](../QtCode/ManageCard/managecard.h)** class:  
+    > data member:  
+    > * int selectId = -1: indicting which row is selected
+    > * QString selectedTitle = "": the title of selected row
+    > * QLable * labCellIndex: the label for GUI, showing the selection info to user
+
+    > member functions:  
+    > * private slots: void setCostumRows(): will be triggered by the filter, display the cards by user's request  
+    > * private slots: void deleteRows(): will be triggered by push button, delete the selected row from database, and refresh the table view  
+    > * private slots: void editRow(): will be triggered by push button, open edit page(in progress)  
+    > * private slots: void test_push(): will be triggered by push button, open testing page  
+    > * private slots: void selectOnTable(): will be triggered by selection on table, change the selectId and selectedTitle, also the label  
+    > * void setRows(int type, QString title): query from the database, get the card data needed to set the table, type and title are filter conditions  
 
 ## 4. Brief description of program design
 
