@@ -23,7 +23,7 @@ signals:
 private slots:
     void on_Butconfirm_clicked();
     void on_Butcancel_clicked();
-    void option();
+    void option();               // auto API display for card::word, if more card is needed, one should edit this function
 
 private:
     Ui::addcardMain *ui;

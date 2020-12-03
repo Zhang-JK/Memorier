@@ -23,7 +23,7 @@ signals:
 
 private:
     Ui::addChoices *ui;
-    QCheckBox* Inac[6];
+    QCheckBox* Inac[6];     //to fast go through the checklist
     QTextEdit* Intxt[6];
     int num;
 

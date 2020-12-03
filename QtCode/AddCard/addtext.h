@@ -27,8 +27,8 @@ signals:
 
 private slots:
     void on_Butadd_clicked();
-    void on_ButAPI_clicked();
-    void on_Butauto_clicked();
+    void on_ButAPI_clicked();           // check API
+    void on_Butauto_clicked();          // auto select string
     void on_Butfinish_clicked();
 
 private:
@@ -36,8 +36,8 @@ private:
     int len;
     int *a;
     int api = -1;
-    QList<QString> TXTapi;
-    void selection(QTextCursor cur);
+    QList<QString> TXTapi;              // API info
+    void selection(QTextCursor cur);    // mark the text under cur using a different color/font
 };
 
 #endif // ADDTEXT_H

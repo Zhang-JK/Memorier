@@ -28,9 +28,10 @@ private slots:
     void on_ButChoices_clicked();
     void on_ButText_clicked();
     void on_ButEnd_clicked();
-    void send_data();
-    void add_choices();
-    void add_text();
+
+    void send_data();   // transform data and tackle global variable
+    void add_choices(); // display another window for special card type
+    void add_text();    // display another window for special card type
 
 private:
     Ui::AddCard *ui;
