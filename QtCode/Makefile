@@ -287,7 +287,6 @@ DIST          = /home/lao_jk/Qt/5.15.1/gcc_64/mkspecs/features/spec_pre.prf \
 		/home/lao_jk/Qt/5.15.1/gcc_64/mkspecs/features/qt_config.prf \
 		/home/lao_jk/Qt/5.15.1/gcc_64/mkspecs/linux-g++/qmake.conf \
 		/home/lao_jk/Qt/5.15.1/gcc_64/mkspecs/features/spec_post.prf \
-		.qmake.stash \
 		/home/lao_jk/Qt/5.15.1/gcc_64/mkspecs/features/exclusive_builds.prf \
 		/home/lao_jk/Qt/5.15.1/gcc_64/mkspecs/features/toolchain.prf \
 		/home/lao_jk/Qt/5.15.1/gcc_64/mkspecs/features/default_pre.prf \
@@ -521,7 +520,6 @@ Makefile: QtCode.pro /home/lao_jk/Qt/5.15.1/gcc_64/mkspecs/linux-g++/qmake.conf 
 		/home/lao_jk/Qt/5.15.1/gcc_64/mkspecs/features/qt_config.prf \
 		/home/lao_jk/Qt/5.15.1/gcc_64/mkspecs/linux-g++/qmake.conf \
 		/home/lao_jk/Qt/5.15.1/gcc_64/mkspecs/features/spec_post.prf \
-		.qmake.stash \
 		/home/lao_jk/Qt/5.15.1/gcc_64/mkspecs/features/exclusive_builds.prf \
 		/home/lao_jk/Qt/5.15.1/gcc_64/mkspecs/features/toolchain.prf \
 		/home/lao_jk/Qt/5.15.1/gcc_64/mkspecs/features/default_pre.prf \
@@ -701,7 +699,6 @@ Makefile: QtCode.pro /home/lao_jk/Qt/5.15.1/gcc_64/mkspecs/linux-g++/qmake.conf 
 /home/lao_jk/Qt/5.15.1/gcc_64/mkspecs/features/qt_config.prf:
 /home/lao_jk/Qt/5.15.1/gcc_64/mkspecs/linux-g++/qmake.conf:
 /home/lao_jk/Qt/5.15.1/gcc_64/mkspecs/features/spec_post.prf:
-.qmake.stash:
 /home/lao_jk/Qt/5.15.1/gcc_64/mkspecs/features/exclusive_builds.prf:
 /home/lao_jk/Qt/5.15.1/gcc_64/mkspecs/features/toolchain.prf:
 /home/lao_jk/Qt/5.15.1/gcc_64/mkspecs/features/default_pre.prf:
@@ -3297,7 +3294,8 @@ main.o: main.cpp LoginAndMainpage/mainwindow.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtSql/qsqlrelationaltablemodel.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtSql/qsqltablemodel.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtSql/qsqlresult.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtSql/qtsqlversion.h
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtSql/qtsqlversion.h \
+		main.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o main.cpp
 
 simpletest.o: CardTest/simpletest.cpp CardTest/simpletest.h \
@@ -3462,26 +3460,7 @@ simpletest.o: CardTest/simpletest.cpp CardTest/simpletest.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qtextformat.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qpen.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qtextoption.h \
-		ui_simpletest.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QApplication \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qapplication.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcoreapplication.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qdesktopwidget.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qguiapplication.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qinputmethod.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QLabel \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qlabel.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qframe.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QPushButton \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qpushbutton.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qabstractbutton.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QTextBrowser \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qtextbrowser.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qtextedit.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qabstractscrollarea.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qtextdocument.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QTextEdit \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QWidget
+		ui_simpletest.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o simpletest.o CardTest/simpletest.cpp
 
 testmain.o: CardTest/testmain.cpp CardTest/testmain.h \
@@ -3648,25 +3627,13 @@ testmain.o: CardTest/testmain.cpp CardTest/testmain.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qpen.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qtextoption.h \
 		ui_testmain.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QApplication \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qapplication.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcoreapplication.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qdesktopwidget.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qguiapplication.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qinputmethod.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QLabel \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qlabel.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qframe.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QPushButton \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qpushbutton.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qabstractbutton.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QWidget \
 		tools/LoginInfo.h \
 		tools/selectdate.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QDialog \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qdialog.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QCheckBox \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qcheckbox.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qabstractbutton.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtSql/QtSql \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtSql/QtSqlDepends \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QtCore \
@@ -3696,6 +3663,7 @@ testmain.o: CardTest/testmain.cpp CardTest/testmain.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcollator.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcommandlineoption.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcommandlineparser.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcoreapplication.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qconcatenatetablesproxymodel.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qdeadlinetimer.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qelapsedtimer.h \
@@ -3805,6 +3773,7 @@ testmain.o: CardTest/testmain.cpp CardTest/testmain.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qstyle.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qtabbar.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qrubberband.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qframe.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qlistview.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qabstractitemview.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qabstractscrollarea.h \
@@ -3932,55 +3901,14 @@ managecard.o: ManageCard/managecard.cpp tools/LoginInfo.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QDateTime \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qdatetime.h \
 		ui_managecard.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QVariant \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QApplication \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qapplication.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcoreapplication.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qeventloop.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qdesktopwidget.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qguiapplication.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qinputmethod.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QComboBox \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qcombobox.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qstyleoption.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qabstractspinbox.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qvalidator.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qregularexpression.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qslider.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qabstractslider.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qstyle.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qtabbar.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qrubberband.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qabstractitemmodel.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QHeaderView \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qheaderview.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qabstractitemview.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qabstractscrollarea.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qitemselectionmodel.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QLineEdit \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qlineedit.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qtextcursor.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qtextformat.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qpen.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qtextoption.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QPushButton \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qpushbutton.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qabstractbutton.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QScrollArea \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qscrollarea.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QStatusBar \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qstatusbar.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QTableWidget \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qtablewidget.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qtableview.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QWidget \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtSql/QtSql \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtSql/QtSqlDepends \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QtCore \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QtCoreDepends \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qabstractanimation.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qabstracteventdispatcher.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qeventloop.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qabstractitemmodel.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qabstractnativeeventfilter.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qabstractproxymodel.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qabstractstate.h \
@@ -3997,6 +3925,7 @@ managecard.o: ManageCard/managecard.cpp tools/LoginInfo.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcborarray.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcborvalue.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcborcommon.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qregularexpression.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/quuid.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcbormap.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcborstream.h \
@@ -4006,6 +3935,7 @@ managecard.o: ManageCard/managecard.cpp tools/LoginInfo.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcollator.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcommandlineoption.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcommandlineparser.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcoreapplication.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qconcatenatetablesproxymodel.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcryptographichash.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qdeadlinetimer.h \
@@ -4032,6 +3962,7 @@ managecard.o: ManageCard/managecard.cpp tools/LoginInfo.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qhistorystate.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qidentityproxymodel.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qisenum.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qitemselectionmodel.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qjsonarray.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qjsonvalue.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qjsondocument.h \
@@ -4111,7 +4042,19 @@ managecard.o: ManageCard/managecard.cpp tools/LoginInfo.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtSql/qsqlquerymodel.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtSql/qsqlrelationaldelegate.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qitemdelegate.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qstyleoption.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qabstractspinbox.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qvalidator.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qslider.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qabstractslider.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qstyle.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qtabbar.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qrubberband.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qlistview.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qabstractitemview.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qcombobox.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtSql/qsqlrelationaltablemodel.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtSql/qsqltablemodel.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtSql/qsqlresult.h \
@@ -4281,25 +4224,13 @@ reviewmain.o: Review/reviewmain.cpp Review/reviewmain.h \
 		Cards/Choices.h \
 		Cards/Text.h \
 		ui_reviewmain.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QApplication \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qapplication.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcoreapplication.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qdesktopwidget.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qguiapplication.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qinputmethod.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QLabel \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qlabel.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qframe.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QPushButton \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qpushbutton.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qabstractbutton.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QWidget \
 		tools/LoginInfo.h \
 		tools/selectdate.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QDialog \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qdialog.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QCheckBox \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qcheckbox.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qabstractbutton.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QMessageBox \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qmessagebox.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtSql/QtSql \
@@ -4331,6 +4262,7 @@ reviewmain.o: Review/reviewmain.cpp Review/reviewmain.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcollator.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcommandlineoption.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcommandlineparser.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcoreapplication.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qconcatenatetablesproxymodel.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qdeadlinetimer.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qelapsedtimer.h \
@@ -4440,6 +4372,7 @@ reviewmain.o: Review/reviewmain.cpp Review/reviewmain.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qstyle.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qtabbar.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qrubberband.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qframe.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qlistview.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qabstractitemview.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qabstractscrollarea.h \
@@ -4607,29 +4540,7 @@ simplereview.o: Review/simplereview.cpp Review/simplereview.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qeventloop.h \
 		Cards/Choices.h \
 		Cards/Text.h \
-		ui_simplereview.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QApplication \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qapplication.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcoreapplication.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qdesktopwidget.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qguiapplication.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qinputmethod.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QLabel \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qlabel.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qframe.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QPushButton \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qpushbutton.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qabstractbutton.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QTextBrowser \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qtextbrowser.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qtextedit.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qabstractscrollarea.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qtextdocument.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qtextoption.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qtextcursor.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qtextformat.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qpen.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QWidget
+		ui_simplereview.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o simplereview.o Review/simplereview.cpp
 
 APIRequest.o: tools/APIs/APIRequest.cpp tools/APIs/APIRequest.h \
@@ -4852,35 +4763,6 @@ loginwindow.o: LoginAndMainpage/loginwindow.cpp LoginAndMainpage/loginwindow.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qtabwidget.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qicon.h \
 		ui_loginwindow.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QVariant \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/QIcon \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QApplication \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qapplication.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcoreapplication.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qeventloop.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qdesktopwidget.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qguiapplication.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qinputmethod.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QHBoxLayout \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qboxlayout.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qlayout.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qlayoutitem.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qgridlayout.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QLabel \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qlabel.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qframe.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QLineEdit \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qlineedit.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qtextcursor.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qtextformat.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qpen.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qtextoption.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QPushButton \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qpushbutton.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qabstractbutton.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QStatusBar \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qstatusbar.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QWidget \
 		tools/LoginInfo.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QString \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtSql/QtSql \
@@ -4889,6 +4771,7 @@ loginwindow.o: LoginAndMainpage/loginwindow.cpp LoginAndMainpage/loginwindow.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QtCoreDepends \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qabstractanimation.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qabstracteventdispatcher.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qeventloop.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qabstractitemmodel.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qabstractnativeeventfilter.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qabstractproxymodel.h \
@@ -4917,6 +4800,7 @@ loginwindow.o: LoginAndMainpage/loginwindow.cpp LoginAndMainpage/loginwindow.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcollator.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcommandlineoption.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcommandlineparser.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcoreapplication.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qconcatenatetablesproxymodel.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcryptographichash.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qdeadlinetimer.h \
@@ -5032,6 +4916,7 @@ loginwindow.o: LoginAndMainpage/loginwindow.cpp LoginAndMainpage/loginwindow.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qstyle.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qtabbar.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qrubberband.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qframe.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qlistview.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qabstractitemview.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qabstractscrollarea.h \
@@ -5433,29 +5318,6 @@ mainwindow.o: LoginAndMainpage/mainwindow.cpp LoginAndMainpage/mainwindow.h \
 		LoginAndMainpage/signupwindow.h \
 		LoginAndMainpage/loginwindow.h \
 		ui_mainwindow.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QVariant \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/QIcon \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QApplication \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qapplication.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcoreapplication.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qeventloop.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qdesktopwidget.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qguiapplication.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qinputmethod.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QLabel \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qlabel.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qframe.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QPushButton \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qpushbutton.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qabstractbutton.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QStatusBar \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qstatusbar.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QVBoxLayout \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qboxlayout.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qlayout.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qlayoutitem.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qgridlayout.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QWidget \
 		tools/LoginInfo.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QString \
 		tools/tools.h \
@@ -5474,6 +5336,7 @@ mainwindow.o: LoginAndMainpage/mainwindow.cpp LoginAndMainpage/mainwindow.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork/qnetworkrequest.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QSharedDataPointer \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QUrl \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QVariant \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QVector \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QObject \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtNetwork/QSslConfiguration \
@@ -5507,6 +5370,7 @@ mainwindow.o: LoginAndMainpage/mainwindow.cpp LoginAndMainpage/mainwindow.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QJsonArray \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qjsonarray.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QEventLoop \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qeventloop.h \
 		Cards/Choices.h \
 		Cards/Text.h \
 		AddCard/addtext.h \
@@ -5522,10 +5386,14 @@ mainwindow.o: LoginAndMainpage/mainwindow.cpp LoginAndMainpage/mainwindow.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QTextEdit \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qtextedit.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qframe.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qtextdocument.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QCheckBox \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qcheckbox.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qabstractbutton.h \
 		ManageCard/managecard.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QLabel \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qlabel.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QDateTime \
 		Review/reviewmain.h \
 		Review/simplereview.h \
@@ -5560,6 +5428,7 @@ mainwindow.o: LoginAndMainpage/mainwindow.cpp LoginAndMainpage/mainwindow.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcollator.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcommandlineoption.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcommandlineparser.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcoreapplication.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qconcatenatetablesproxymodel.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qdeadlinetimer.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qelapsedtimer.h \
@@ -5791,36 +5660,6 @@ signupwindow.o: LoginAndMainpage/signupwindow.cpp LoginAndMainpage/signupwindow.
 		tools/tools.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QString \
 		ui_signupwindow.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QVariant \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/QIcon \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QApplication \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qapplication.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcoreapplication.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qeventloop.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qdesktopwidget.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qguiapplication.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qinputmethod.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QHBoxLayout \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qboxlayout.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qlayout.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qlayoutitem.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qgridlayout.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QLabel \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qlabel.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qframe.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QLineEdit \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qlineedit.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qtextcursor.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qtextformat.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qpen.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qtextoption.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QPushButton \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qpushbutton.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qabstractbutton.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QStatusBar \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qstatusbar.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QVBoxLayout \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QWidget \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QMessageBox \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qmessagebox.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qdialog.h \
@@ -5830,6 +5669,7 @@ signupwindow.o: LoginAndMainpage/signupwindow.cpp LoginAndMainpage/signupwindow.
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QtCoreDepends \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qabstractanimation.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qabstracteventdispatcher.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qeventloop.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qabstractitemmodel.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qabstractnativeeventfilter.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qabstractproxymodel.h \
@@ -5858,6 +5698,7 @@ signupwindow.o: LoginAndMainpage/signupwindow.cpp LoginAndMainpage/signupwindow.
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcollator.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcommandlineoption.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcommandlineparser.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcoreapplication.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qconcatenatetablesproxymodel.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcryptographichash.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qdeadlinetimer.h \
@@ -5973,6 +5814,7 @@ signupwindow.o: LoginAndMainpage/signupwindow.cpp LoginAndMainpage/signupwindow.
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qstyle.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qtabbar.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qrubberband.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qframe.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qlistview.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qabstractitemview.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qabstractscrollarea.h \
@@ -6169,23 +6011,6 @@ libwindow.o: libraryPage/libwindow.cpp libraryPage/libwindow.h \
 		CardTest/testmain.h \
 		CardTest/simpletest.h \
 		ui_libwindow.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/QIcon \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QApplication \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qapplication.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcoreapplication.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qdesktopwidget.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qguiapplication.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qinputmethod.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QPushButton \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qpushbutton.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QStatusBar \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qstatusbar.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QVBoxLayout \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qboxlayout.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qlayout.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qlayoutitem.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qgridlayout.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QWidget \
 		tools/LoginInfo.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtSql/QtSql \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtSql/QtSqlDepends \
@@ -6216,6 +6041,7 @@ libwindow.o: libraryPage/libwindow.cpp libraryPage/libwindow.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcollator.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcommandlineoption.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcommandlineparser.h \
+		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcoreapplication.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qconcatenatetablesproxymodel.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qdeadlinetimer.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qelapsedtimer.h \
@@ -6528,33 +6354,6 @@ selectdate.o: tools/selectdate.cpp tools/selectdate.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qabstractbutton.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qicon.h \
 		ui_selectdate.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QVariant \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QApplication \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qapplication.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcoreapplication.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qeventloop.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qdesktopwidget.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qguiapplication.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qinputmethod.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QComboBox \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qcombobox.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qstyleoption.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qabstractspinbox.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qvalidator.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qregularexpression.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qslider.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qabstractslider.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qstyle.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qtabbar.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qtabwidget.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qrubberband.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qframe.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qabstractitemmodel.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QLabel \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qlabel.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QPushButton \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qpushbutton.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QMessageBox \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qmessagebox.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o selectdate.o tools/selectdate.cpp
@@ -7003,18 +6802,7 @@ addcard.o: AddCard/addcard.cpp AddCard/addcard.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QCheckBox \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qcheckbox.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qabstractbutton.h \
-		ui_addcard.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QApplication \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qapplication.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcoreapplication.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qdesktopwidget.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qguiapplication.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qinputmethod.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QLabel \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qlabel.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QPushButton \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qpushbutton.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QWidget
+		ui_addcard.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o addcard.o AddCard/addcard.cpp
 
 addcardmain.o: AddCard/addcardmain.cpp AddCard/addcardmain.h \
@@ -7174,28 +6962,7 @@ addcardmain.o: AddCard/addcardmain.cpp AddCard/addcardmain.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qeventloop.h \
 		Cards/Choices.h \
 		Cards/Text.h \
-		ui_addcardmain.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QApplication \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qapplication.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcoreapplication.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qdesktopwidget.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qguiapplication.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qinputmethod.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QLabel \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qlabel.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qframe.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QPushButton \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qpushbutton.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qabstractbutton.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QTextEdit \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qtextedit.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qabstractscrollarea.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qtextdocument.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qtextoption.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qtextcursor.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qtextformat.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qpen.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QWidget
+		ui_addcardmain.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o addcardmain.o AddCard/addcardmain.cpp
 
 addchoices.o: AddCard/addchoices.cpp AddCard/addchoices.h \
@@ -7368,17 +7135,6 @@ addchoices.o: AddCard/addchoices.cpp AddCard/addchoices.h \
 		Cards/Choices.h \
 		Cards/Text.h \
 		ui_addchoices.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QApplication \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qapplication.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcoreapplication.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qdesktopwidget.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qguiapplication.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qinputmethod.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QPushButton \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qpushbutton.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QTextBrowser \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qtextbrowser.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QWidget \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QMessageBox \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qmessagebox.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qdialog.h
@@ -7549,22 +7305,7 @@ addtext.o: AddCard/addtext.cpp AddCard/addtext.h \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/QColor \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/QTextCharFormat \
 		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/QList \
-		ui_addtext.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QApplication \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qapplication.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtCore/qcoreapplication.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qdesktopwidget.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qguiapplication.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qinputmethod.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QPushButton \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qpushbutton.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qabstractbutton.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QTextEdit \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qtextedit.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qabstractscrollarea.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/qframe.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtGui/qtextdocument.h \
-		/home/lao_jk/Qt/5.15.1/gcc_64/include/QtWidgets/QWidget
+		ui_addtext.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o addtext.o AddCard/addtext.cpp
 
 Card.o: Cards/Card.cpp Cards/Card.h \

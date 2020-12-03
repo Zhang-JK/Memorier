@@ -42,7 +42,8 @@ HEADERS += tools/APIs/APIRequest.h \
            Cards/Choices.h \
            Cards/Plain.h \
            Cards/Text.h \
-           Cards/Word.h
+           Cards/Word.h \
+           main.h
 FORMS += LoginAndMainpage/loginwindow.ui \
          CardTest/simpletest.ui \
          CardTest/testmain.ui \
