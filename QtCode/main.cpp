@@ -33,6 +33,7 @@ int main(int argc, char *argv[])
         qDebug() << "Database Connection Failed!";
         qDebug() << "ERROR: " << db.lastError().text(); //数据库打开失败
         QMessageBox::warning(nullptr, "Database Fail to Connect", "Please check your network connection and make sure you have QMYSQL driver ready!\nError: "+db.lastError().text(), QMessageBox::Close);
+        return 0;
     }
     else
     {
@@ -40,7 +41,7 @@ int main(int argc, char *argv[])
         w.show();
         lw.hide();
         QObject::connect(&w, SIGNAL(libStart()), &lw, SLOT(show()));
+        return a.exec();
     }
 
-    return a.exec();
 }
