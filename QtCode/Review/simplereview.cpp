@@ -13,6 +13,7 @@ simpleReview::~simpleReview()
     delete ui;
 }
 
+// config the ui interface
 void simpleReview::init(Card* init_card)
 {
     card = init_card;

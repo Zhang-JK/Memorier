@@ -7,6 +7,8 @@
 
 #include <QtSql>
 
+// This file is used to test login function, not useful in the project
+
 // int main(int argc, char *argv[])
 // {
 //     QApplication a(argc, argv);

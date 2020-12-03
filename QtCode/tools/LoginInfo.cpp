@@ -9,6 +9,7 @@ int LoginInfo::id = 0;
 QString LoginInfo::username = "";
 QString LoginInfo::session = "";
 
+// save the log info to the local file .session
 void LoginInfo::saveLoginInfo()
 {
     QFile file(".session");
@@ -23,6 +24,7 @@ void LoginInfo::saveLoginInfo()
     }
 }
 
+// read the login info from the local file .session
 void LoginInfo::readLoginInfo()
 {
     QFile file(".session");
@@ -40,6 +42,7 @@ void LoginInfo::readLoginInfo()
     else return ;
 }
 
+// clean .session for safety
 void LoginInfo::cleanLoginInfo() {
     id = 0; username = ""; session = ""; loginState = false;
     QFile file(".session");

@@ -5,6 +5,7 @@
 #include <QtSql>
 #include <QMessageBox>
 
+// set the ui and background
 LoginWindow::LoginWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::LoginWindow)
 {
     ui->setupUi(this);
@@ -26,6 +27,8 @@ LoginWindow::~LoginWindow()
     delete ui;
 }
 
+// a validator for checking the user input
+// and set the notice label for showing the mistake
 void LoginWindow::inputValidator()
 {
     ui->directLoginButton->setVisible(false);

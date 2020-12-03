@@ -2,6 +2,7 @@
 
 #include <QtSql>
 
+// generate a random string of certain length, will be used in salt and session
 QString getRandomString(int length)
 {
     qsrand(QDateTime::currentMSecsSinceEpoch());
@@ -23,6 +24,7 @@ QString getRandomString(int length)
     return res;
 }
 
+// add log to the database
 bool InsertLog(int id, QString recording) {
     QSqlQuery insert;
     QString sqlInsLog = QString("INSERT INTO account_log SET account_id=%1, log_time='%2', recording='%3'")

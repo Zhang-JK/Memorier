@@ -13,6 +13,7 @@ simpleTest::~simpleTest()
     delete ui;
 }
 
+// set the ui
 void simpleTest::init(Card* init_card)
 {
     card=init_card;
@@ -27,6 +28,7 @@ void simpleTest::init(Card* init_card)
         ui->ButNO->setText("I don't remember >_<");
 }
 
+// check the answer
 void simpleTest::on_ButSubmit_clicked()
 {
     QString str=card->option(9,ui->Txt_Ans->toPlainText());
@@ -60,6 +62,7 @@ void simpleTest::on_ButSubmit_clicked()
     }
 }
 
+// click on the not remember button
 void simpleTest::on_ButNO_clicked()
 {
     if(ui->ButNO->text()[0]=='S')
@@ -84,6 +87,7 @@ void simpleTest::on_ButNO_clicked()
     }
 }
 
+// click on the I remember button
 void simpleTest::on_ButYES_clicked()
 {
     card->test_update(1);
