@@ -26,7 +26,25 @@ The arrangement of reviewing and testing the cards is according to the **forgett
 In addition, all your cards will be **automatically synchronized** on your cloud account, which is convenient for multi-device switching.
 
 ### The file struct and usage:
-picture here
+.
+├── doc
+├── QtCode
+│   ├── AddCard
+│   ├── Cards
+│   ├── CardTest
+│   ├── libraryPage
+│   │   └── images
+│   ├── LoginAndMainpage
+│   │   └── images
+│   ├── ManageCard
+│   ├── Review
+│   └── tools
+│       ├── APIs
+│       ├── LinkedList
+│       └── MySQL_API
+└── release
+    ├── linux
+    └── windows
 
 ## 1. Compile and run the program
 - You can directly use Qt to compile the code.
