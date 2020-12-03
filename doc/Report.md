@@ -26,7 +26,25 @@ The review and test of the cards is according to the **forgetting curve** to str
 In addition, all your cards will be **automatically synchronized** on your cloud account, which is convenient for multi-device switching.
 
 ### The file struct and usage:
-picture here
+.
+├── doc
+├── QtCode
+│   ├── AddCard
+│   ├── Cards
+│   ├── CardTest
+│   ├── libraryPage
+│   │   └── images
+│   ├── LoginAndMainpage
+│   │   └── images
+│   ├── ManageCard
+│   ├── Review
+│   └── tools
+│       ├── APIs
+│       ├── LinkedList
+│       └── MySQL_API
+└── release
+    ├── linux
+    └── windows
 
 ## 1. Compile and run the progeam
 - You can directly use Qt to compile the code.
