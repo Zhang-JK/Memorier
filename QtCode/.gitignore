@@ -15,3 +15,5 @@ main.cpp
 build/
 build*/
 release*/
+Make*
+make*
